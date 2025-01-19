@@ -1,20 +1,20 @@
 extends Node
 var bulletShot : bool = false
 
-export(float) var fireRate: float
-export(int) var bulletDamage : float
+@export var fireRate: float
+@export var bulletDamage: int
 var bulletLifeTime : float = 5
 var bulletScaleFactor : float = 1
 var bulletSpeedFactor : float = 1
 var maxAmmo : int = 180
 var ammoCount : int = maxAmmo
-export(int) var ammoConsumption : int
+@export var ammoConsumption: int
 var piercingBullets : bool = false
 var splittingBullets : bool = false
 var shootingAngles : Array
 
 var gunType : int
-var user : KinematicBody2D
+var user : CharacterBody2D
 var cooldown : float;
 var bulletScene : PackedScene = load(GlobalReferences.bullet)
 var bullet : Area2D
@@ -29,7 +29,7 @@ func shoot(target : Vector2):
 	
 	var gunAngle : float = (target - user.position).angle()
 	for angle in shootingAngles:
-		bullet = bulletScene.instance()
+		bullet = bulletScene.instantiate()
 		var shootingVector : Vector2 = Vector2(cos(angle+gunAngle),sin(angle+gunAngle)) * user.bulletSpawnDistance
 		bullet.position = user.position + shootingVector
 		bullet.rotation = gunAngle + angle

@@ -1,20 +1,20 @@
-extends Container
+extends GridContainer
 
-var bar1 : TextureProgress
-var bar2 : TextureProgress
+var bar1 : TextureProgressBar
+var bar2 : TextureProgressBar
 var gun1 : Node = null
 var gun2 : Node = null
 var tween : Tween
 
-var baseTints : PoolColorArray = [Color("00258b"), Color("c00000"), Color("ffef00")]
+var baseTints : PackedColorArray = [Color("00258b"), Color("c00000"), Color("ffef00")]
 enum BASETINTS {Blue, Red, Yellow}
 
 
 
 func _ready():
 	tween = GlobalReferences.tween
-	bar1 = $Under/HBoxCont/Bar1
-	bar2 = $Under/HBoxCont/Bar2
+	bar1 = $Bar1
+	bar2 = $Bar2
 
 
 func update_ammo_bar():

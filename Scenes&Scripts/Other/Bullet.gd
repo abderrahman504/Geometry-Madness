@@ -1,6 +1,6 @@
 extends Area2D
 
-export (int) var speed : float = 150
+@export (int) var speed : float = 150
 var direction : Vector2
 var velocity : Vector2
 var bulletDespawnTime : float = 5
@@ -14,7 +14,7 @@ var piercing : bool = false
 var scaleFactor : float = 1
 
 enum TINTS{Blue, Red, Yellow, Orange, Grey} #The orange tint will be used by enemy bullets, the grey one will be used by the pistol bullets
-var tints : PoolColorArray = [Color("00258b"), Color("c00000"), Color("ffef00"),Color("e87d00"), Color("666666")]
+var tints : PackedColorArray = [Color("00258b"), Color("c00000"), Color("ffef00"),Color("e87d00"), Color("666666")]
 
 var innerTint : int = TINTS.Grey
 var outerTint : int = TINTS.Grey
@@ -30,7 +30,7 @@ func _process(delta):
 	bulletDespawnTime -= delta
 	if bulletDespawnTime <= 0:
 		queue_free()
-		var shatterEffect = load(GlobalReferences.shatterEffect).instance()
+		var shatterEffect = load(GlobalReferences.shatterEffect).instantiate()
 		shatterEffect.scale *= scaleFactor
 		shatterEffect.position = position
 		shatterEffect.modulate = shatterTint
@@ -46,18 +46,18 @@ func _process(delta):
 
 func _on_Bullet_body_entered(body):
 	
-	var destroyEffect : Sprite
+	var destroyEffect : Sprite2D
 	
-	if body is KinematicBody2D:
+	if body is CharacterBody2D:
 		var appliedDamage : float = damage
 		if body != GlobalReferences.player: #If bullet hit an enemy
 			if body.enemyType == innerTint or body.enemyType == outerTint: #If the enemy colour is the same as either of the bullet's colours
 				appliedDamage = int(mixed)*(damage * mixedDamageBoostFactor)+int(not mixed)*(damage * damageBoostFactor)
 		
 		body.recieve_damage(appliedDamage)
-		destroyEffect = load(GlobalReferences.hitEffect).instance()
+		destroyEffect = load(GlobalReferences.hitEffect).instantiate()
 	else:
-		destroyEffect = load(GlobalReferences.shatterEffect).instance()
+		destroyEffect = load(GlobalReferences.shatterEffect).instantiate()
 		destroyEffect.scale *= scaleFactor
 		destroyEffect.modulate = shatterTint
 	
@@ -69,7 +69,7 @@ func _on_Bullet_body_entered(body):
 		split()
 	
 	
-	if piercing and (body is KinematicBody2D):
+	if piercing and (body is CharacterBody2D):
 		return
 	queue_free()
 
@@ -81,7 +81,7 @@ func split():
 	for i in range(4):
 		var newAngle = (PI/4) + i*(PI/2) #+ bulletAngle
 		var newDirection = Vector2(cos(newAngle), sin(newAngle))
-		var newBullet : Area2D = bulletScene.instance()
+		var newBullet : Area2D = bulletScene.instantiate()
 		newBullet.direction = newDirection
 		newBullet.position = position + newDirection * 20
 		newBullet.rotation = newAngle

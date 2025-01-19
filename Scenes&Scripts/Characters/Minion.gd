@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var enemyType : int = -1
 var orbitMinRange : float = 50
@@ -12,8 +12,8 @@ var aggroTriggerRange : float = 220
 var aggroed : bool = false
 var aggroBreakerRange : float = 300
 var dFromPlayer : float 
-var player : KinematicBody2D
-var parent : KinematicBody2D
+var player : CharacterBody2D
+var parent : CharacterBody2D
 var rotationalSpeed : float = 2
 
 
@@ -24,8 +24,8 @@ func _ready():
 
 func _physics_process(delta):
 	handle_movement(delta)
-	if get_slide_count() > 0:
-		for i in range(get_slide_count()-1):
+	if get_slide_collision_count() > 0:
+		for i in range(get_slide_collision_count()-1):
 			var collision : KinematicCollision2D = get_slide_collision(i)
 			if collision.collider == player:
 				player.recieve_damage(touchDamage)
@@ -52,12 +52,14 @@ func handle_movement(delta):
 		aggroed = false
 		velocity = velocity.move_toward(follow_parent(), acceletation * delta)
 	
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 
 func follow_parent():
 	var vectorToParent : Vector2 = (parent.position - position).normalized()
-	var moveVector : Vector2 = vectorToParent.tangent()
+	var moveVector : Vector2 = vectorToParent.orthogonal()
 	if dFromParent > orbitMaxRange or dFromParent < orbitMinRange:
 		
 		var s = pow(-1 ,int(dFromParent < orbitMinRange))

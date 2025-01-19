@@ -7,18 +7,18 @@ var speed : float = 350;
 var deceleration : float = 500;
 
 
-var player : KinematicBody2D
-export (int) var pickUpRange : float = 75;
-export (float) var lifeSpan : float = 8;
-export (float) var fadeTime : float = 5;
-export (int) var fadeSpeed : float = 250;
+var player : CharacterBody2D
+@export (int) var pickUpRange : float = 75;
+@export (float) var lifeSpan : float = 8;
+@export (float) var fadeTime : float = 5;
+@export (int) var fadeSpeed : float = 250;
 var increasingAlpha : bool = false;
 var beingPickedUp : bool = false;
 
 
 
 func _ready():
-	GlobalReferences.tween.connect("tween_completed", self, "move_to_player_finished")
+	GlobalReferences.tween.connect("tween_completed", Callable(self, "move_to_player_finished"))
 	player = GlobalReferences.player
 	velocity = directionVector * speed
 

@@ -1,41 +1,41 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal dead
 const kill_points= preload("res://Scenes&Scripts/UI/Score.tscn")
 
-var player : KinematicBody2D
+var player : CharacterBody2D
 
-export(int) var enemySpeed : float
-export(int) var acceleration : float;
-export(int) var deceleration : float;
+@export var enemySpeed: int
+@export var acceleration: int;
+@export var deceleration: int;
 var velocity : Vector2
 var health : int = 8
-var myHealthBar : TextureProgress
+var myHealthBar : TextureProgressBar
 var gun : Node
-export (float) var bulletSpawnDistance : float
-export(float) var attackInterval : float 
+@export (float) var bulletSpawnDistance : float
+@export var attackInterval: float 
 var attackIntervalCounter : float
-export(float) var breakTime : float 
+@export var breakTime: float 
 var breakTimeCounter : float
 var enemyType : int
 
 
 var gunDropPath : String;
-export(float) var healthDropChance : float = 0.3
+@export var healthDropChance: float = 0.3
 
 var tween : Tween
 
 
 func _ready():
-	connect("dead",GlobalReferences.sceneRoot.get_node("UI/Control/ScoreCounter"), "UpdateScore")
+	connect("dead", Callable(GlobalReferences.sceneRoot.get_node("UI/Control/ScoreCounter"), "UpdateScore"))
 	tween = GlobalReferences.tween
 	GlobalReferences.sceneRoot.enemiesInLevel.append(self)
 	player = GlobalReferences.player
 	attackIntervalCounter = attackInterval
 	breakTimeCounter = 1
-	var healthbarNode : Node2D = load(GlobalReferences.healthbarPath).instance()
+	var healthbarNode : Node2D = load(GlobalReferences.healthbarPath).instantiate()
 	healthbarNode.myOwner = self
-	myHealthBar = healthbarNode.get_node("TextureProgress")
+	myHealthBar = healthbarNode.get_node("TextureProgressBar")
 	healthbarNode.position = position
 	myHealthBar.max_value = health
 	myHealthBar.value = health
@@ -87,7 +87,7 @@ func recieve_damage(damage):
 
 
 func drop_gun():
-	var newGunDrop : Node2D = load(gunDropPath).instance();
+	var newGunDrop : Node2D = load(gunDropPath).instantiate();
 	
 	
 	newGunDrop.position = position
@@ -102,7 +102,7 @@ func drop_gun():
 func try_drop_health():
 	var e = GlobalReferences.randNoGen.randf()
 	if e < healthDropChance:
-		var healthPickup : Node2D = load(GlobalReferences.healthPickupPath).instance()
+		var healthPickup : Node2D = load(GlobalReferences.healthPickupPath).instantiate()
 		healthPickup.position = position
 		var angle : float = GlobalReferences.randNoGen.randf_range(0, 2*PI)
 		healthPickup.directionVector = Vector2(cos(angle), sin(angle))

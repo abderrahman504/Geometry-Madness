@@ -38,16 +38,20 @@ func handle_movement(delta):
 	look_at(player.position)
 	if creatingMinions:
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
-		velocity = move_and_slide(velocity)
+		set_velocity(velocity)
+		move_and_slide()
+		velocity = velocity
 		return
 
-	var moveVector = (player.position - position).tangent().normalized() *pow(-1, int(clockwiseMove)) + (player.position - position).normalized()*0.5
+	var moveVector = (player.position - position).orthogonal().normalized() *pow(-1, int(clockwiseMove)) + (player.position - position).normalized()*0.5
 	var dFromPlayer : float = (position - player.position).length()
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 
 	velocity = velocity.move_toward(moveVector*enemySpeed, acceleration * delta)
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 
 func handle_shooting(delta):
@@ -69,7 +73,7 @@ func handle_shooting(delta):
 func create_minion():
 	var spawnAngle : float = GlobalReferences.randNoGen.randf_range(0, 2*PI)
 	var spawnVector : Vector2 = position + Vector2(cos(spawnAngle), sin(spawnAngle)) * minionSpawnRange
-	var minion : KinematicBody2D = minionScene.instance()
+	var minion : CharacterBody2D = minionScene.instantiate()
 	minion.position = spawnVector
 	minion.parent = self
 	GlobalReferences.sceneRoot.add_child(minion)
@@ -79,7 +83,7 @@ func create_minion():
 
 
 func recieve_damage(damage):
-	.recieve_damage(damage)
+	super.recieve_damage(damage)
 	
 	if health <= 0:
 		var temp : Array = minions.duplicate()

@@ -17,7 +17,7 @@ func UpdateScore():
 
 
 func movetolevel2():
-	var transitionAnimation = load(GlobalReferences.Level2Transition).instance()
+	var transitionAnimation = load(GlobalReferences.Level2Transition).instantiate()
 	get_tree().paused = true
 	transitionAnimation.position = GlobalReferences.sceneRoot.get_node("Camera2D").position
 	GlobalReferences.sceneRoot.add_child(transitionAnimation)

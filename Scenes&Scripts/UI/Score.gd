@@ -4,7 +4,7 @@ func _process(delta):
 	
 	$AnimationPlayer.play("ScaleUp")
 	
-	yield($AnimationPlayer , "animation_finished")
+	await $AnimationPlayer.animation_finished
 	
 	queue_free()
 	

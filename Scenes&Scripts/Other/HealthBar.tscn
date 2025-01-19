@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Sprites/Bar64x64.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Bar64x64.png" type="Texture2D" id=1]
 [ext_resource path="res://Scenes&Scripts/Other/HealthBar.gd" type="Script" id=2]
 
 [node name="HealthBar" type="Node2D"]
@@ -11,11 +11,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = -31.404
-margin_top = -62.158
-margin_right = 32.596
-margin_bottom = 1.842
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -31.404
+offset_top = -62.158
+offset_right = 32.596
+offset_bottom = 1.842
 mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 1 )

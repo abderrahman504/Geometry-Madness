@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(float) var maxSpeed : float
-export(float) var acceleration : float
-export(float) var deceleration : float
-export(int) var maxHealth : int
+@export var maxSpeed: float
+@export var acceleration: float
+@export var deceleration: float
+@export var maxHealth: int
 var health : int
-var myHealthBar : TextureProgress
+var myHealthBar : TextureProgressBar
 var gun : Node
 var gun1 : Node
 var gun2 : Node
@@ -31,15 +31,15 @@ func _ready():
 	#Creating the player health bar
 	health = maxHealth
 	var healthbarNode : Node2D
-	healthbarNode = load(GlobalReferences.healthbarPath).instance()
+	healthbarNode = load(GlobalReferences.healthbarPath).instantiate()
 	healthbarNode.myOwner = self
-	myHealthBar = healthbarNode.get_node("TextureProgress")
+	myHealthBar = healthbarNode.get_node("TextureProgressBar")
 	healthbarNode.position = position
 	myHealthBar.max_value = maxHealth
 	myHealthBar.value = health
 	add_child(healthbarNode)
 	#spawning the pistol weapon for the player
-	var pistol : Node = load(GlobalReferences.GunPaths["pistol"]).instance()
+	var pistol : Node = load(GlobalReferences.GunPaths["pistol"]).instantiate()
 	GlobalReferences.playerPistol = pistol
 	pistol.user = self
 	gun = pistol
@@ -66,7 +66,9 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	
 
 
@@ -79,7 +81,7 @@ func recieve_damage(damage):
 		GlobalReferences.sceneRoot.get_node("DeathSound").play()
 		queue_free()
 		GlobalReferences.playerExists = false
-		var deathMenu = load(GlobalReferences.DeathMenu).instance()
+		var deathMenu = load(GlobalReferences.DeathMenu).instantiate()
 		GlobalReferences.sceneRoot.get_node("UI").add_child(deathMenu)
 
 
@@ -109,13 +111,13 @@ func get_new_gun(gunPickupType : int):
 	
 	var newGun : Node
 	if gunPickupType == GlobalReferences.GUNTYPES.Machinegun:
-		newGun = load(GlobalReferences.GunPaths["machinegun"]).instance()
+		newGun = load(GlobalReferences.GunPaths["machinegun"]).instantiate()
 	elif gunPickupType == GlobalReferences.GUNTYPES.Shotgun:
-		newGun = load(GlobalReferences.GunPaths["shotgun"]).instance()
+		newGun = load(GlobalReferences.GunPaths["shotgun"]).instantiate()
 	elif gunPickupType == GlobalReferences.GUNTYPES.SplitRifle:
-		newGun = load(GlobalReferences.GunPaths["split rifle"]).instance()
+		newGun = load(GlobalReferences.GunPaths["split rifle"]).instantiate()
 	elif gunPickupType == GlobalReferences.GUNTYPES.HeavyCanon:
-		newGun = load(GlobalReferences.GunPaths["heavy canon"]).instance()
+		newGun = load(GlobalReferences.GunPaths["heavy canon"]).instantiate()
 	
 	newGun.user = self
 	
@@ -132,7 +134,7 @@ func get_new_gun(gunPickupType : int):
 	gun2 = gun1
 	gun1 = newGun
 	add_child(newGun)
-	var mixedGun = load(GlobalReferences.GunPaths["mixed gun"]).instance()
+	var mixedGun = load(GlobalReferences.GunPaths["mixed gun"]).instantiate()
 	mixedGun.user = self
 	mixedGun.parent1 = gun1
 	mixedGun.parent2 = gun2

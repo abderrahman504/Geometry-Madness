@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var myOwner : KinematicBody2D
+var myOwner : CharacterBody2D
 
 
 

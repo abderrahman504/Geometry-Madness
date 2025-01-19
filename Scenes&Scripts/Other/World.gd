@@ -3,8 +3,8 @@ extends Node2D
 
 var enemiesInLevel : Array
 
-export var TLCorner : Vector2
-export var BRCorner : Vector2
+@export var TLCorner : Vector2
+@export var BRCorner : Vector2
 
 func _init():
 	GlobalReferences.randNoGen = RandomNumberGenerator.new()

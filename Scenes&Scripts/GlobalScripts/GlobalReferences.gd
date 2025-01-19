@@ -1,7 +1,7 @@
 extends Node
 
 var sceneRoot : Node2D; # This is a variable that contains the root of the world scene
-var player : KinematicBody2D;
+var player : CharacterBody2D;
 var playerPistol : Node;
 var playerExists : bool = false;
 var tween : Tween;
@@ -44,7 +44,7 @@ var lvl2EnemyPaths : Array = [
 #Colour-to-gun mapping
 enum GUNTYPES {Machinegun, HeavyCanon, SplitRifle, Shotgun, Pistol, Mixed} 
 enum COLOURS {Red, Blue, Yellow, Green, Grey, Orange}
-var colours : PoolColorArray = PoolColorArray([Color("f60c0c"), Color("174fe4"), Color("f6f918"), Color("03a327"), Color("666666"), Color("e87d00")])
+var colours : PackedColorArray = PackedColorArray([Color("f60c0c"), Color("174fe4"), Color("f6f918"), Color("03a327"), Color("666666"), Color("e87d00")])
 var colourToGunMap : Array = [
 	{"gun": GUNTYPES.Machinegun, "colour": COLOURS.Red}, 
 	{"gun": GUNTYPES.HeavyCanon, "colour": COLOURS.Blue}, 

@@ -1,28 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://drq003e2vmhqg"]
 
-[ext_resource path="res://ButtonMenu1.tres" type="StyleBox" id=1]
-[ext_resource path="res://ButtonMenu2.tres" type="StyleBox" id=2]
-[ext_resource path="res://Scenes&Scripts/UI/Menubutton.gd" type="Script" id=3]
-[ext_resource path="res://Music/SoundEffects/switch9.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Music/SoundEffects/switch22.ogg" type="AudioStream" id=5]
+[ext_resource type="StyleBox" path="res://ButtonMenu1.tres" id="1"]
+[ext_resource type="StyleBox" path="res://ButtonMenu2.tres" id="2"]
+[ext_resource type="Script" path="res://Scenes&Scripts/UI/Menubutton.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://cmb54v8i6qg71" path="res://Music/SoundEffects/switch9.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://b5es4ssk14hav" path="res://Music/SoundEffects/switch22.ogg" id="5"]
 
 [node name="Button" type="Button"]
-margin_right = 64.0
-margin_bottom = 24.0
-custom_styles/hover = ExtResource( 1 )
-custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 1 )
-custom_styles/normal = ExtResource( 2 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 64.0
+offset_bottom = 24.0
+theme_override_styles/normal = ExtResource("2")
+theme_override_styles/hover = ExtResource("1")
+theme_override_styles/pressed = ExtResource("2")
+theme_override_styles/focus = ExtResource("1")
+script = ExtResource("3")
 
 [node name="Switch" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 4 )
+process_mode = 3
+stream = ExtResource("4")
+volume_db = -21.55
 
 [node name="Press" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 5 )
+process_mode = 3
+stream = ExtResource("5")
 volume_db = 11.143

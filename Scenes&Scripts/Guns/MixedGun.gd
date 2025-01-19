@@ -29,7 +29,7 @@ func shoot(target):
 	
 	var gunAngle : float = (target - user.position).angle()
 	for angle in shootingAngles:
-		bullet = bulletScene.instance()
+		bullet = bulletScene.instantiate()
 		var shootingVector : Vector2 = Vector2(cos(angle+gunAngle),sin(angle+gunAngle)) * user.bulletSpawnDistance
 		bullet.position = user.position + shootingVector
 		bullet.rotation = gunAngle + angle

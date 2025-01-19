@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -438, -272, 0, 0, 0, 0, 442, -272, 0, 0, 0, 0, 442, 278, 0, 0, 0, 0, -438, 278, 0, 0, 0, 0, -438, -272 )
+"points": PackedVector2Array( 0, 0, 0, 0, -438, -272, 0, 0, 0, 0, 442, -272, 0, 0, 0, 0, 442, 278, 0, 0, 0, 0, -438, 278, 0, 0, 0, 0, -438, -272 )
 }
 
 [node name="EnemySpawner" type="Node2D"]

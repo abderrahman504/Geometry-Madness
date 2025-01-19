@@ -35,7 +35,9 @@ func handle_movement(delta):
 	if (destination - position).length() < enemySpeed * delta:
 		slowingDown = true
 	
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	
 
 

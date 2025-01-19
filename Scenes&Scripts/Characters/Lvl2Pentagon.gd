@@ -33,10 +33,12 @@ func handle_movement(delta):
 		return
 	
 	var tempVelocity : Vector2 = velocity
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 	
-	if get_slide_count() > 0:
-		for i in range(get_slide_count()):
+	if get_slide_collision_count() > 0:
+		for i in range(get_slide_collision_count()):
 			tempVelocity = handle_collision(get_slide_collision(i), tempVelocity)
 	
 	
@@ -44,8 +46,8 @@ func handle_movement(delta):
 
 func handle_collision(Collision : KinematicCollision2D, oldVelocity : Vector2):
 	var momentumLossFactor : float = 0.25
-	if Collision.collider is KinematicBody2D:
-		var body : KinematicBody2D = Collision.collider
+	if Collision.collider is CharacterBody2D:
+		var body : CharacterBody2D = Collision.collider
 		body.velocity += -Collision.normal * momentumLossFactor * oldVelocity.length()
 	
 	

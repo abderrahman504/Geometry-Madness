@@ -37,7 +37,9 @@ func handle_movement(delta):
 		if abs(dFromPlayer - rangeMidPoint) <= (maxRange-minRange)*0.1:
 			velocity = Vector2.ZERO
 	
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 
 func handle_shooting(delta):
@@ -46,7 +48,7 @@ func handle_shooting(delta):
 	
 	if (player.position - position).length() > maxRange:
 		return
-	.handle_shooting(delta)
+	super.handle_shooting(delta)
 
 
 

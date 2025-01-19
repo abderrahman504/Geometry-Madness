@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k4lyqej2h38u"
-path="res://.godot/imported/BarProgress.png-f24798cf706ca4d8c06187238194a4e5.ctex"
+uid="uid://hlikkhj5rve3"
+path="res://.godot/imported/BarOver.png-51e584964b51b929751b74ed8e275f7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/BarProgress.png"
-dest_files=["res://.godot/imported/BarProgress.png-f24798cf706ca4d8c06187238194a4e5.ctex"]
+source_file="res://Sprites/UI/BarOver.png"
+dest_files=["res://.godot/imported/BarOver.png-51e584964b51b929751b74ed8e275f7a.ctex"]
 
 [params]
 

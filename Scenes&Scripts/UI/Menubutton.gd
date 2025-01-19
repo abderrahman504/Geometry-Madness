@@ -1,14 +1,14 @@
 extends Button
 
-export var reference_path = ""
-export(bool) var start_focused = false
+@export var reference_path = ""
+@export var start_focused: bool = false
 
 func _ready():
 	if(start_focused):
 		grab_focus()
 		
-	connect("mouse_entered",self,"_on_Button_mouse_entered")
-	connect("pressed",self,"_on_Button_Pressed")
+	connect("mouse_entered", Callable(self, "_on_Button_mouse_entered"))
+	connect("pressed", Callable(self, "_on_Button_Pressed"))
 
 func _on_Button_mouse_entered():
 	$Switch.play()
@@ -19,6 +19,6 @@ func _on_Button_Pressed():
 	$Press.play()
 	
 	if(reference_path != ""):
-		get_tree().change_scene(reference_path)
+		get_tree().change_scene_to_file(reference_path)
 	else:
 		get_tree().quit()

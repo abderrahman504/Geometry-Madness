@@ -28,13 +28,15 @@ func handle_movement(delta):
 	look_at(player.position)
 	
 	
-	var moveVector = (player.position - position).tangent().normalized() *pow(-1, int(clockwiseMove)) + (player.position - position).normalized()*0.5
+	var moveVector = (player.position - position).orthogonal().normalized() *pow(-1, int(clockwiseMove)) + (player.position - position).normalized()*0.5
 	var dFromPlayer : float = (position - player.position).length()
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 	
 	velocity = velocity.move_toward(moveVector*enemySpeed, acceleration * delta)
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 
 

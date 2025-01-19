@@ -1,8 +1,8 @@
 extends "res://Scenes&Scripts/Characters/Square.gd"
 
-export (float) var dodgeCooldown : float = 5
+@export (float) var dodgeCooldown : float = 5
 var dodgeCooldownCounter : float = 0
-export (int) var dodgeDistance : float = 35
+@export (int) var dodgeDistance : float = 35
 var dodgeStartPoint : Vector2
 var dodgeAccel : float = 1000
 var dodgeSpeed : float = 1000
@@ -39,7 +39,9 @@ func handle_movement(delta):
 			if abs(dFromPlayer - rangeMidPoint) <= (maxRange-minRange)*0.1:
 				velocity = Vector2.ZERO
 	
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 func dodge(Bullet : Area2D):
 	var forward : Vector2 = Vector2(cos(rotation), sin(rotation))
