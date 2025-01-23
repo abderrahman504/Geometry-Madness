@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://drq003e2vmhqg"]
 
-[ext_resource type="StyleBox" path="res://ButtonMenu1.tres" id="1"]
+[ext_resource type="StyleBox" uid="uid://etcamhvs83jl" path="res://ButtonMenu1.tres" id="1"]
 [ext_resource type="StyleBox" path="res://ButtonMenu2.tres" id="2"]
-[ext_resource type="Script" path="res://Scenes&Scripts/UI/Menubutton.gd" id="3"]
+[ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/Menubutton.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://cmb54v8i6qg71" path="res://Music/SoundEffects/switch9.ogg" id="4"]
 [ext_resource type="AudioStream" uid="uid://b5es4ssk14hav" path="res://Music/SoundEffects/switch22.ogg" id="5"]
 

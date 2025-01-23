@@ -2,6 +2,7 @@ extends Node2D
 
 
 var enemiesInLevel : Array
+var score : int = 0
 
 @export var TLCorner : Vector2
 @export var BRCorner : Vector2
@@ -29,12 +30,9 @@ func _unhandled_input(event):
 		$UI/PauseMenu.show()
 
 
-
-
-
-
-
-
-
-
+func move_to_level2():
+	var transitionAnimation = load(GlobalReferences.Level2Transition).instantiate()
+	get_tree().paused = true
+	transitionAnimation.position = GlobalReferences.sceneRoot.get_node("Camera2D").position
+	GlobalReferences.sceneRoot.add_child(transitionAnimation)
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource path="res://Scenes&Scripts/Other/BasicWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes&Scripts/Other/TileMap.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes&Scripts/Characters/Square.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Fonts/AUTOMANI.TTF" type="FontFile" id=4]
-[ext_resource path="res://Sprites/FloorTileset.png" type="Texture2D" id=5]
+[ext_resource type="PackedScene" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes&Scripts/World/TileMap.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes&Scripts/Characters/Square.tscn" id="3"]
+[ext_resource type="FontFile" uid="uid://duu4rswdube02" path="res://Fonts/AUTOMANI.TTF" id="4"]
+[ext_resource type="Texture2D" uid="uid://bh6t4ai2s00hk" path="res://Sprites/FloorTileset.png" id="5"]
 
 [sub_resource type="TileSet" id=1]
 0/name = "FloorTileset.png 0"
