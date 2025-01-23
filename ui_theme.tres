@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dx6pkxpeig50p"]
+
+[ext_resource type="FontFile" uid="uid://8y5c0xnwdek6" path="res://Fonts/axaxax bd.ttf" id="1_4rbie"]
+
+[resource]
+default_font = ExtResource("1_4rbie")
