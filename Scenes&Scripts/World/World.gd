@@ -13,8 +13,6 @@ func _init():
 
 
 func _ready():
-	
-	randomize()
 	$BackgroundMusic.play()
 
 
