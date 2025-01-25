@@ -33,9 +33,7 @@ func handle_movement(delta):
 		return
 	
 	var tempVelocity : Vector2 = velocity
-	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity
 	
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
@@ -59,8 +57,8 @@ func handle_collision(Collision : KinematicCollision2D, oldVelocity : Vector2):
 
 func dash():
 	dashing = true
-	dashingTime = (destination - position).length() / enemySpeed
-	velocity = (destination - position).normalized() * enemySpeed
+	dashingTime = (destination - position).length() / speed
+	velocity = (destination - position).normalized() * speed
 
 
 

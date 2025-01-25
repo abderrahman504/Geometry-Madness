@@ -6,6 +6,7 @@ var slowingDown : bool = false
 
 
 func _ready():
+	super._ready()
 	gun = $HeavyCanon
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["heavy canon"];
@@ -17,12 +18,13 @@ func _ready():
 
 
 func handle_movement(delta):
+	# The pentagon doesn't move normally. When it is too far from the player it dashes to a position that's close to them.
 	if not (GlobalReferences.playerExists):
 		return
 	if not moving:
 		look_at(player.position)
 		return
-	var travelDirection : Vector2 = (destination - position).normalized() * enemySpeed
+	var travelDirection : Vector2 = (destination - position).normalized() * speed
 	look_at(position + travelDirection)
 	if slowingDown:
 		travelDirection = Vector2.ZERO
@@ -32,12 +34,10 @@ func handle_movement(delta):
 			attackIntervalCounter = attackInterval
 	
 	velocity = velocity.move_toward(travelDirection, acceleration * delta)
-	if (destination - position).length() < enemySpeed * delta:
+	if (destination - position).length() < speed:
 		slowingDown = true
 	
-	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity
 	
 
 
@@ -67,6 +67,8 @@ func _physics_process(delta):
 
 
 func find_destination():
+	# Honestly I'm not sure what the hell this is doing. Trying to find a position on a circle with radius r around the player??
+	# Whatever it is it's very badly written. Goddamn you younger me.
 	var playerPos : Vector2 = GlobalReferences.player.position
 	var r = 200
 	var x
@@ -76,23 +78,15 @@ func find_destination():
 	var yUpperBound
 	var yLowerBound
 	
-	xLowerBound = playerPos.x - r
-	xUpperBound = playerPos.x + r
-	if xLowerBound < GlobalReferences.sceneRoot.TLCorner.x:
-		xLowerBound = GlobalReferences.sceneRoot.TLCorner.x
-	elif xUpperBound > GlobalReferences.sceneRoot.BRCorner.x:
-		xUpperBound = GlobalReferences.sceneRoot.BRCorner.x
+	xLowerBound = max(playerPos.x - r, GlobalReferences.sceneRoot.TLCorner.x)
+	xUpperBound = min(playerPos.x + r, GlobalReferences.sceneRoot.BRCorner.x)
 	
 	x = GlobalReferences.randNoGen.randi_range(xLowerBound, xUpperBound)
 	
 	
-	var R = sqrt(pow(r, 2) - pow(x-playerPos.x, 2))
-	yUpperBound = playerPos.y + R
-	yLowerBound = playerPos.y - R
-	if yLowerBound < GlobalReferences.sceneRoot.TLCorner.y:
-		yLowerBound = GlobalReferences.sceneRoot.TLCorner.y
-	elif yUpperBound > GlobalReferences.sceneRoot.BRCorner.y:
-		yUpperBound = GlobalReferences.sceneRoot.BRCorner.y
+	var R = sqrt(r*r - (x-playerPos.x)*(x-playerPos.x))
+	yLowerBound = max(playerPos.y - R, GlobalReferences.sceneRoot.TLCorner.y)
+	yUpperBound = min(playerPos.y + R, GlobalReferences.sceneRoot.BRCorner.y)
 	
 	y = GlobalReferences.randNoGen.randi_range(yLowerBound, yUpperBound)
 	destination = Vector2(x,y)

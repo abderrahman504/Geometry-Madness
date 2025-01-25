@@ -6,6 +6,7 @@ var maxRange : float = 700
 var rangeMidPoint : float = (maxRange + minRange)/2
 
 func _ready():
+	super._ready()
 	gun = $Machinegun
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["machinegun"];
@@ -13,7 +14,6 @@ func _ready():
 
 
 func _process(delta):
-#	dodgeCooldownCounter -= delta
 	handle_shooting(delta)
 
 
@@ -21,7 +21,7 @@ func _physics_process(delta):
 	handle_movement(delta)
 
 
-func handle_movement(delta):
+func handle_movement(_delta):
 	if not GlobalReferences.playerExists:
 		return
 	
@@ -29,17 +29,15 @@ func handle_movement(delta):
 	
 	var dFromPlayer = (player.position - position).length()
 	if dFromPlayer > maxRange:
-		velocity = (player.position - position).normalized() * enemySpeed
+		velocity = (player.position - position).normalized() * speed
 	elif dFromPlayer < minRange:
-		velocity = (position - player.position).normalized() * enemySpeed
+		velocity = (position - player.position).normalized() * speed
 	else:
-		velocity = (player.position - position).normalized() * ((dFromPlayer - rangeMidPoint) / (0.5*(maxRange-minRange))) * enemySpeed
+		velocity = (player.position - position).normalized() * ((dFromPlayer - rangeMidPoint) / (0.5*(maxRange-minRange))) * speed
 		if abs(dFromPlayer - rangeMidPoint) <= (maxRange-minRange)*0.1:
 			velocity = Vector2.ZERO
 	
-	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity
 
 
 func handle_shooting(delta):

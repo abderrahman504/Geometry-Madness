@@ -5,11 +5,11 @@ extends CharacterBody2D
 @export var deceleration: float
 @export var maxHealth: int
 var health : int
+var healthbar_node : Node2D
 var myHealthBar : TextureProgressBar
 var gun : Node
 var gun1 : Node
 var gun2 : Node
-var velocity : Vector2
 var inputVector : Vector2
 var bulletSpawnDistance : float = 25 #How far the bullet will spawn away from the player
 
@@ -24,20 +24,18 @@ func _init():
 
 
 func _ready():
-	tween = GlobalReferences.tween
 	root = GlobalReferences.sceneRoot
 	ammoBars = root.get_node("UI/Control/AmmoBars")
 	GlobalReferences.playerExists = true
 	#Creating the player health bar
 	health = maxHealth
-	var healthbarNode : Node2D
-	healthbarNode = load(GlobalReferences.healthbarPath).instantiate()
-	healthbarNode.myOwner = self
-	myHealthBar = healthbarNode.get_node("TextureProgressBar")
-	healthbarNode.position = position
+	healthbar_node = load(GlobalReferences.healthbarPath).instantiate()
+	myHealthBar = healthbar_node.get_node("TextureProgressBar")
+	healthbar_node.myOwner = self
+	healthbar_node.position = position
 	myHealthBar.max_value = maxHealth
 	myHealthBar.value = health
-	add_child(healthbarNode)
+	GlobalReferences.sceneRoot.add_child(healthbar_node)
 	#spawning the pistol weapon for the player
 	var pistol : Node = load(GlobalReferences.GunPaths["pistol"]).instantiate()
 	GlobalReferences.playerPistol = pistol
@@ -74,6 +72,9 @@ func _physics_process(delta):
 
 func recieve_damage(damage):
 	health -= damage
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
 	tween.interpolate_property(myHealthBar, "value", myHealthBar.value, health, 0.2)
 	if not tween.is_active():
 		tween.start()

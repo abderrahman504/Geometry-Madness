@@ -7,6 +7,7 @@ var maxRange : float = 250
 
 
 func _ready():
+	super._ready()
 	gun = $SplitRifle
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["split rifle"];
@@ -26,17 +27,18 @@ func handle_movement(delta):
 	if not GlobalReferences.playerExists:
 		return
 	look_at(player.position)
-	
-	
-	var moveVector = (player.position - position).orthogonal().normalized() *pow(-1, int(clockwiseMove)) + (player.position - position).normalized()*0.5
+	# The hexagon orbits the player and slowly gets closer to them
+	# It will try to approach faster if the player is far away
+	var dir := -1 if clockwiseMove else 1
+	# moveVector moves the hexagon in a slightly tightening orbit around the player
+	var moveVector := (player.position - position).orthogonal().normalized()*dir + (player.position - position).normalized()*0.5
 	var dFromPlayer : float = (position - player.position).length()
+	# The orbit tightens faster if the player is too far
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 	
-	velocity = velocity.move_toward(moveVector*enemySpeed, acceleration * delta)
-	set_velocity(velocity)
+	velocity = velocity.move_toward(moveVector*speed, acceleration * delta)
 	move_and_slide()
-	velocity = velocity
 
 
 
