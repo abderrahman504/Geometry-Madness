@@ -12,11 +12,13 @@ var maxMinions : int = 6
 
 
 func _ready():
-	minionSpawnTime = (timeBetweenAttacks * 0.7) / minionSpawnNumber
+	super._ready()
+	minionSpawnTime = (breakTime * 0.7) / minionSpawnNumber
 	minionSpawnTimeCounter = minionSpawnTime
 
 
 func _process(delta):
+	super._process(delta)
 	if creatingMinions:
 		if minions.size() >= maxMinions:
 			creatingMinions = false
@@ -38,7 +40,7 @@ func handle_movement(delta):
 	look_at(player.position)
 	if creatingMinions:
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
-		set_velocity(velocity)
+		
 		move_and_slide()
 		velocity = velocity
 		return
@@ -48,22 +50,20 @@ func handle_movement(delta):
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 
-	velocity = velocity.move_toward(moveVector*enemySpeed, acceleration * delta)
-	set_velocity(velocity)
+	velocity = velocity.move_toward(moveVector*speed, acceleration * delta)
 	move_and_slide()
-	velocity = velocity
 
 
 func handle_shooting(delta):
 	if not GlobalReferences.playerExists:
 		return
 	
-	timeBetweenAttacksCounter -=delta
-	if timeBetweenAttacksCounter <= 0:
+	breakTimeCounter -=delta
+	if breakTimeCounter <= 0:
 		gun.shoot(player.position)
 		attackIntervalCounter -=delta
 		if attackIntervalCounter <= 0:
-			timeBetweenAttacksCounter = timeBetweenAttacks
+			breakTimeCounter = breakTime
 			attackIntervalCounter = attackInterval
 			clockwiseMove = not clockwiseMove
 			creatingMinions = true

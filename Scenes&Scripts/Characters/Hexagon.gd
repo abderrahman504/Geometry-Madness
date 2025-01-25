@@ -7,6 +7,7 @@ var maxRange : float = 250
 
 
 func _ready():
+	super._ready()
 	gun = $SplitRifle
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["split rifle"];
@@ -33,10 +34,8 @@ func handle_movement(delta):
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 	
-	velocity = velocity.move_toward(moveVector*enemySpeed, acceleration * delta)
-	set_velocity(velocity)
+	velocity = velocity.move_toward(moveVector*speed, acceleration * delta)
 	move_and_slide()
-	velocity = velocity
 
 
 

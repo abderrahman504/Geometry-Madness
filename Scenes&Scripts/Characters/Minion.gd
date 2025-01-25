@@ -6,7 +6,6 @@ var orbitMaxRange : float = 55
 var dFromParent : float
 var speed : float = 100
 var acceletation : float = 250
-var velocity : Vector2
 var touchDamage : int = 2
 var aggroTriggerRange : float = 220
 var aggroed : bool = false
@@ -52,7 +51,6 @@ func handle_movement(delta):
 		aggroed = false
 		velocity = velocity.move_toward(follow_parent(), acceletation * delta)
 	
-	set_velocity(velocity)
 	move_and_slide()
 	velocity = velocity
 
@@ -71,7 +69,7 @@ func chase_player():
 	return ((player.position - position).normalized() * speed)
 
 
-func recieve_damage(damage):
+func recieve_damage(_damage):
 	queue_free()
 	parent.minions.erase(self)
 

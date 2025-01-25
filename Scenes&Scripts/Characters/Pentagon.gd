@@ -6,6 +6,7 @@ var slowingDown : bool = false
 
 
 func _ready():
+	super._ready()
 	gun = $HeavyCanon
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["heavy canon"];
@@ -22,7 +23,7 @@ func handle_movement(delta):
 	if not moving:
 		look_at(player.position)
 		return
-	var travelDirection : Vector2 = (destination - position).normalized() * enemySpeed
+	var travelDirection : Vector2 = (destination - position).normalized() * speed
 	look_at(position + travelDirection)
 	if slowingDown:
 		travelDirection = Vector2.ZERO
@@ -32,12 +33,10 @@ func handle_movement(delta):
 			attackIntervalCounter = attackInterval
 	
 	velocity = velocity.move_toward(travelDirection, acceleration * delta)
-	if (destination - position).length() < enemySpeed * delta:
+	if (destination - position).length() < speed * delta:
 		slowingDown = true
 	
-	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity
 	
 
 
