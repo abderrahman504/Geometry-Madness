@@ -1,0 +1,6 @@
+Object			Layer
+Player			0			
+Enemy			1
+Wall			2			
+Player bullets	3
+Enemy bullets	4
