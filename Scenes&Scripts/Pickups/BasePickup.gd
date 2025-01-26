@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	if not GlobalReferences.playerExists:
 		return
-	position = position + velocity * delta
+	position += velocity * delta
 	velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	var distanceFromPlayer = (position - player.position).length()
 	if distanceFromPlayer <= pickUpRange and not beingPickedUp:
