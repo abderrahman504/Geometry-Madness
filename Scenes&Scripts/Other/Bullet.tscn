@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cue4dfr5mje1l" path="res://Sprites/BulletInner.png" id="4"]
 
 [sub_resource type="CircleShape2D" id="1"]
-radius = 4.94915
 
 [node name="Bullet" type="Area2D"]
 z_index = 1

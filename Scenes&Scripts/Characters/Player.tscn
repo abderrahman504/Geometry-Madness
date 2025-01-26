@@ -11,9 +11,10 @@ maxSpeed = 450.0
 acceleration = 1500.0
 deceleration = 1000.0
 maxHealth = 20
+metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-6.11841, -18.6735, 15.9315, 0.13379, -6.15444, 18.905)
+polygon = PackedVector2Array(-17, -30, 20, 0, -17, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0117647, 0.639216, 0.152941, 1)

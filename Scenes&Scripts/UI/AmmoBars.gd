@@ -15,6 +15,8 @@ enum BASETINTS {Blue, Red, Yellow}
 func _ready():
 	bar1 = $Bar1
 	bar2 = $Bar2
+	bar1.value = 0
+	bar2.value = 0
 
 
 func update_ammo_bar():
