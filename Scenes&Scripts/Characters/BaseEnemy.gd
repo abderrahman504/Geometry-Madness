@@ -65,7 +65,6 @@ func handle_shooting(delta):
 	
 	breakTimeCounter -= delta
 
-
 func recieve_damage(damage):
 	health -= damage
 	if tween != null:
