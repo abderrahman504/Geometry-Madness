@@ -1,48 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://brrm4o1pbxjgj"]
+[gd_scene load_steps=8 format=3 uid="uid://brrm4o1pbxjgj"]
 
-[ext_resource type="FontFile" uid="uid://duu4rswdube02" path="res://Fonts/AUTOMANI.TTF" id="1_gnomq"]
+[ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://ui_theme.tres" id="1_enxyr"]
+[ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/MainMenu.gd" id="1_u0eu6"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2_hedmk"]
-[ext_resource type="FontFile" uid="uid://bsjxc8rcqrbcg" path="res://Fonts/neon_pixel-7.ttf" id="3_yhaag"]
 
-[sub_resource type="Theme" id="Theme_7fxfe"]
-
-[sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("1_gnomq")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/26/0/ascent = 0.0
-cache/0/26/0/descent = 0.0
-cache/0/26/0/underline_position = 0.0
-cache/0/26/0/underline_thickness = 0.0
-cache/0/26/0/scale = 1.0
-cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/30/0 = Vector2(0, 0)
-cache/0/30/0/ascent = 0.0
-cache/0/30/0/descent = 0.0
-cache/0/30/0/underline_position = 0.0
-cache/0/30/0/underline_thickness = 0.0
-cache/0/30/0/scale = 1.0
-cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("3_yhaag")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0slv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4deh"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -55,7 +17,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7orop"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xbmi"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -68,7 +30,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hccwg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70to2"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -81,7 +43,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0cra"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsniv"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -97,7 +59,8 @@ corner_radius_bottom_left = 4
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-theme = SubResource("Theme_7fxfe")
+theme = ExtResource("1_enxyr")
+script = ExtResource("1_u0eu6")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -105,9 +68,8 @@ offset_left = 277.5
 offset_top = 64.0
 offset_right = 1011.5
 offset_bottom = 136.0
-theme_override_fonts/font = SubResource("1")
 theme_override_font_sizes/font_size = 30
-text = "Geometry Madness"
+text = "GEOMETRY MADNESS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -122,35 +84,34 @@ theme_override_constants/separation = 19
 [node name="Play" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = SubResource("2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_r0slv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_r0slv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a4deh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a4deh")
 text = "Play"
-reference_path = "res://Scenes&Scripts/Other/MainWorld.tscn"
+start_focused = true
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = SubResource("2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7orop")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7orop")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3xbmi")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3xbmi")
 text = "Tutorial"
-reference_path = "res://Scenes&Scripts/Other/Tutorial.tscn"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = SubResource("2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hccwg")
-theme_override_styles/focus = SubResource("StyleBoxFlat_hccwg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_70to2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_70to2")
 action_mode = 0
 text = "Credits"
-reference_path = "res://Scenes&Scripts/Other/Credits.tscn"
 
 [node name="Exit" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = SubResource("2")
-theme_override_styles/hover = SubResource("StyleBoxFlat_n0cra")
-theme_override_styles/focus = SubResource("StyleBoxFlat_n0cra")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hsniv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hsniv")
 text = "Exit Game"
+
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]
+[connection signal="button_up" from="VBoxContainer/Tutorial" to="." method="on_tutorial_pressed"]
+[connection signal="button_up" from="VBoxContainer/Credits" to="." method="on_credits_pressed"]
+[connection signal="button_up" from="VBoxContainer/Exit" to="." method="on_exit_pressed"]
