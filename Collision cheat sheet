@@ -1,6 +1,6 @@
 Object			Layer
-Player			0			
-Enemy			1
-Wall			2			
-Player bullets	3
-Enemy bullets	4
+Player			1			
+Enemy			2
+Wall			3			
+Player bullets	4
+Enemy bullets	5
