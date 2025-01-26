@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource path="res://Sprites/tileset2.png" type="Texture2D" id=1]
-[ext_resource path="res://Scenes&Scripts/UI/Menubutton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Fonts/neon_pixel-7.ttf" type="FontFile" id=3]
-[ext_resource path="res://Fonts/axaxax bd.ttf" type="FontFile" id=4]
+[ext_resource type="Texture2D" uid="uid://ogkdl32cevg4" path="res://Sprites/tileset2.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://bsjxc8rcqrbcg" path="res://Fonts/neon_pixel-7.ttf" id="3"]
+[ext_resource type="FontFile" uid="uid://8y5c0xnwdek6" path="res://Fonts/axaxax bd.ttf" id="4"]
 
 [sub_resource type="FontFile" id=1]
 size = 28

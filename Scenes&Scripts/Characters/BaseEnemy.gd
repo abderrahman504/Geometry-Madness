@@ -22,7 +22,7 @@ var breakTimeCounter : float
 var healthbarNode: Node2D
 var myHealthBar : TextureProgressBar
 var gun : Node
-@export var bulletSpawnDistance : float
+@export var bulletSpawnDistance : float = 25 # How far the bullet will spawn from the enemy
 var enemyType : int
 var gunDropPath : String;
 var tween : Tween

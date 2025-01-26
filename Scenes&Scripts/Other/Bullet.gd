@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed : float = 150
+@export var speed : float = 400
 var direction : Vector2
 var velocity : Vector2
 var bulletDespawnTime : float = 5

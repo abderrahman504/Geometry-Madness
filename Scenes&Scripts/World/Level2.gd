@@ -1,6 +1,3 @@
-extends "res://Scenes&Scripts/Other/World.gd"
+extends World
 
-
-func _ready():
-	$UI/Control/ScoreCounter.thisIsLevel2 = true
 

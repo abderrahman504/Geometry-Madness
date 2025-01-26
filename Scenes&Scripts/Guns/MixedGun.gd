@@ -36,7 +36,8 @@ func shoot(target):
 		bullet.direction = shootingVector.normalized()
 		#changing the bullet collision mask depending on who fired it
 		if user == GlobalReferences.player:
-			bullet.collision_mask = 16+2+32+64
+			bullet.collision_layer = 8
+			bullet.collision_mask += 2 # Detect enemy layer
 			var gunColours : Vector2
 			for record in GlobalReferences.colourToGunMap:
 				if record["gun"] == parent1.gunType:
@@ -47,7 +48,8 @@ func shoot(target):
 			
 			bullet.colour_bullet(gunColours.x, gunColours.y);
 		else:
-			bullet.collision_mask = 16+1
+			bullet.collision_layer = 16
+			bullet.collision_mask += 1 # Detect player layer
 		
 		bullet.splitting = splittingBullets
 		bullet.piercing = piercingBullets
