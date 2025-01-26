@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="3"]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 82
+collision_mask = 6
 script = ExtResource("2")
 maxSpeed = 450.0
 acceleration = 1500.0

@@ -35,14 +35,17 @@ func shoot(target : Vector2):
 		bullet.rotation = gunAngle + angle
 		bullet.direction = shootingVector.normalized()
 		#changing the bullet collision mask depending on who fired it
+		# All bullets already detect walls
 		if user == GlobalReferences.player:
-			bullet.collision_mask = 16+2+32+64 #32 is the layer for bullet detectors
+			bullet.collision_layer = 8
+			bullet.collision_mask += 2 # Detect enemy layer
 			for record in GlobalReferences.colourToGunMap:
 				if record["gun"] == gunType:
 					bullet.colour_bullet(record["colour"], record["colour"])
 					break
 		else:
-			bullet.collision_mask = 16+1
+			bullet.collision_layer = 16
+			bullet.collision_mask += 1 # Detect player layer
 			bullet.colour_bullet(GlobalReferences.COLOURS.Orange, GlobalReferences.COLOURS.Orange)
 			bullet.shatterTint = GlobalReferences.colours[GlobalReferences.COLOURS.Orange]
 		
