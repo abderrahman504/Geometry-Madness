@@ -7,5 +7,7 @@ var myOwner : CharacterBody2D
 
 
 func _process(_delta):
-	global_position = myOwner.position
-	global_rotation = 0
+	if not is_instance_valid(myOwner):
+		queue_free()
+		return
+	global_position = myOwner.global_position + myOwner.get_node("HealthbarPos").position

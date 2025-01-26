@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes&Scripts/Other/Camera2D.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://ddkou35812lc7" path="res://Scenes&Scripts/UI/UI.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dqks7hjmtwpxi" path="res://Scenes&Scripts/UI/pause menu.tscn" id="5_3q4hc"]
-[ext_resource type="PackedScene" path="res://Scenes&Scripts/Characters/Player.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c510g1is0el7b" path="res://Scenes&Scripts/Characters/Player.tscn" id="6"]
 
 [node name="BasicWorld" type="Node2D"]
 script = ExtResource("1")

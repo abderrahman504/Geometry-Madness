@@ -21,7 +21,7 @@ func _process(delta):
 	enemySpawningCounter -= delta
 	if enemySpawningCounter <= 0:
 		var enemy : CharacterBody2D = load(GlobalReferences.lvl2EnemyPaths[randi()%GlobalReferences.lvl2EnemyPaths.size()]).instantiate()
-		pathFollow.offset = randi()
+		pathFollow.progress_ratio = randf()
 		enemy.position = pathFollow.global_position
 		GlobalReferences.sceneRoot.get_node("Enemies").add_child(enemy)
 		#Adjusting enemy spawn time depending on how many enemies in the level there are

@@ -9,10 +9,8 @@
 script = ExtResource("5")
 acceleration = 182
 deceleration = 426
-bulletSpawnDistance = 68.0
 attackInterval = 4.0
-breakTime = 5.0
-enemySpeed = 128
+bulletSpawnDistance = 68.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2(-0.0191199, 0.334359)

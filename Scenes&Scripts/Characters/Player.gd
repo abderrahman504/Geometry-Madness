@@ -17,25 +17,20 @@ var bulletSpawnDistance : float = 25 #How far the bullet will spawn away from th
 var pistolGun : Node
 var tween : Tween
 
-var ammoBars : Container
-
-
 func _init():
 	GlobalReferences.player = self
 
 
 func _ready():
-	ammoBars = GlobalReferences.sceneRoot.get_node("UI/Control/AmmoBars")
 	GlobalReferences.playerExists = true
 	#Creating the player health bar
 	health = maxHealth
 	healthbar_node = load(GlobalReferences.healthbarPath).instantiate()
 	myHealthBar = healthbar_node.get_node("TextureProgressBar")
 	healthbar_node.myOwner = self
-	healthbar_node.position = position
 	myHealthBar.max_value = maxHealth
 	myHealthBar.value = health
-	GlobalReferences.sceneRoot.add_child(healthbar_node)
+	GlobalReferences.sceneRoot.add_child.call_deferred(healthbar_node)
 	#spawning the pistol weapon for the player
 	pistolGun = load(GlobalReferences.GunPaths["pistol"]).instantiate()
 	pistolGun.user = self
@@ -69,9 +64,7 @@ func recieve_damage(damage):
 	if tween != null:
 		tween.kill()
 	tween = create_tween()
-	tween.interpolate_property(myHealthBar, "value", myHealthBar.value, health, 0.2)
-	if not tween.is_active():
-		tween.start()
+	tween.tween_property(myHealthBar, "value", health, 0.2)
 	if health <= 0:
 		GlobalReferences.sceneRoot.get_node("DeathSound").play()
 		queue_free()
@@ -84,19 +77,19 @@ func get_new_gun(gunPickupType : int):
 	
 	if gun.gunType == gunPickupType:
 		gun.ammoCount = gun.maxAmmo
-		ammoBars.update_ammo_bar()
+		GlobalReferences.game_ui.ammo_bars.update_ammo_bar()
 		return
 	
 	if gun.gunType == GlobalReferences.GUNTYPES.Mixed:
 		
 		if gunPickupType == gun1.gunType:
 			gun1.ammoCount = gun1.maxAmmo
-			ammoBars.update_mixed_ammo_bar()
+			GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 			return
 		
 		elif gunPickupType == gun2.gunType:
 			gun2.ammoCount = gun2.maxAmmo
-			ammoBars.update_mixed_ammo_bar()
+			GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 			return
 		
 		gun2.queue_free() #Deletes the older of the two guns
@@ -118,8 +111,8 @@ func get_new_gun(gunPickupType : int):
 	if gun == pistolGun:
 		gun1 = newGun
 		gun = newGun
-		ammoBars.gun1 = gun1
-		ammoBars.update_ammo_bar()
+		GlobalReferences.game_ui.ammo_bars.gun1 = gun1
+		GlobalReferences.game_ui.ammo_bars.update_ammo_bar()
 		add_child(newGun)
 		return
 	
@@ -132,9 +125,9 @@ func get_new_gun(gunPickupType : int):
 	mixedGun.parent1 = gun1
 	mixedGun.parent2 = gun2
 	gun = mixedGun
-	ammoBars.gun1 = gun1
-	ammoBars.gun2 = gun2
-	ammoBars.update_mixed_ammo_bar()
+	GlobalReferences.game_ui.ammo_bars.gun1 = gun1
+	GlobalReferences.game_ui.ammo_bars.gun2 = gun2
+	GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 	add_child(gun)
 	
 

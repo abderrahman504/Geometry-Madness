@@ -6,7 +6,7 @@ var adjustedEnemySpawningTime : float = baseEnemySpawningTime
 var enemySpawningCounter : float = adjustedEnemySpawningTime
 @export var maxNumberOfEnemies: int
 @export var spawnDelayFactor: float #Positive values delay extend spawning time. negative values reduce it.
-@onready var pathFollow : PathFollow2D= $Path2D/PathFollow2D
+@onready var pathFollow : PathFollow2D = $Path2D/PathFollow2D
 
 func _process(delta):
 	timeBeforeLevelStart -= delta
@@ -21,7 +21,7 @@ func _process(delta):
 	enemySpawningCounter -= delta
 	if enemySpawningCounter <= 0:
 		var enemy : CharacterBody2D = load(GlobalReferences.enemyPaths[randi()%GlobalReferences.enemyPaths.size()]).instantiate()
-		pathFollow.offset = randi()
+		pathFollow.progress_ratio = randf()
 		enemy.position = pathFollow.global_position
 		GlobalReferences.sceneRoot.get_node("Enemies").add_child(enemy)
 		#Adjusting enemy spawn time depending on how many enemies in the level there are

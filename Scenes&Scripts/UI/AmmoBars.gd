@@ -1,4 +1,5 @@
 extends GridContainer
+class_name AmmoBars
 
 var bar1 : TextureProgressBar
 var bar2 : TextureProgressBar
@@ -21,8 +22,8 @@ func update_ammo_bar():
 	if tween.is_running():
 		tween.kill()
 	tween = create_tween()
-	tween.interpolate_property(bar1, "value", bar1.value, gun1.ammoCount, 0.2)
-	tween.interpolate_property(bar2, "value", bar2.value, 0, 0.2)
+	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
+	tween.tween_property(bar2, "value", 0, 0.2)
 
 
 func update_mixed_ammo_bar():
@@ -31,6 +32,6 @@ func update_mixed_ammo_bar():
 	if tween.is_running():
 		tween.kill()
 	tween = create_tween()	
-	tween.interpolate_property(bar1, "value", bar1.value, gun1.ammoCount, 0.2)
-	tween.interpolate_property(bar2, "value", bar2.value, gun2.ammoCount, 0.2)
+	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
+	tween.tween_property(bar2, "value", gun2.ammoCount, 0.2)
 

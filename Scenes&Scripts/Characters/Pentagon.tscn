@@ -7,8 +7,10 @@
 
 [node name="Pentagon" instance=ExtResource("1")]
 script = ExtResource("4")
+speed = 600
+acceleration = 800
+deceleration = 1000
 attackInterval = 5.0
-enemySpeed = 300.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 rotation = 1.5708

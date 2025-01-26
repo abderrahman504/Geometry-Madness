@@ -61,15 +61,14 @@ func shoot(target):
 		
 		
 		#Handling ammo consumption and deleting the gun when it runs out of ammo
-		var ammoBars = GlobalReferences.sceneRoot.get_node("UI/Control/AmmoBars")
 		parent1.ammoCount -= parent1.ammoConsumption
 		parent2.ammoCount -= parent2.ammoConsumption
-		ammoBars.update_mixed_ammo_bar()
+		GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 		
 		if parent1.ammoCount <= 0:
 			GlobalReferences.player.gun1 = parent2
 			GlobalReferences.player.gun = parent2
-			ammoBars.gun1 = parent2
+			GlobalReferences.game_ui.ammo_bars.gun1 = parent2
 			parent1.queue_free()
 			parent1 = null
 		

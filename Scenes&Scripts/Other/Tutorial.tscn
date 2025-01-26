@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://Scenes&Scripts/Other/BasicWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Fonts/justicegradout.ttf" type="FontFile" id=2]
-[ext_resource path="res://Scenes&Scripts/Other/TileMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/Tutorial/download.png" type="Texture2D" id=4]
-[ext_resource path="res://Sprites/Tutorial/wasd_is_how_i_move_2.jpg" type="Texture2D" id=5]
-[ext_resource path="res://Music/BackgroundMusic/F_Fact_-_Beautiful_(feat_Wildsilences_and_Karstenholymoly).wav" type="AudioStream" id=6]
+[ext_resource type="PackedScene" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
+[ext_resource type="FontFile" uid="uid://ccc17tlf17sd0" path="res://Fonts/justicegradout.ttf" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes&Scripts/World/TileMap.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://Sprites/Tutorial/download.png" id="4"]
+[ext_resource type="Texture2D" path="res://Sprites/Tutorial/wasd_is_how_i_move_2.jpg" id="5"]
+[ext_resource type="AudioStream" uid="uid://bqwptmgb127iw" path="res://Music/BackgroundMusic/F_Fact_-_Beautiful_(feat_Wildsilences_and_Karstenholymoly).wav" id="6"]
 
 [sub_resource type="FontFile" id=1]
 size = 28

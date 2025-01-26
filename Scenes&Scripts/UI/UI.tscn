@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddkou35812lc7"]
+[gd_scene load_steps=5 format=3 uid="uid://ddkou35812lc7"]
 
 [ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://ui_theme.tres" id="1_rdomt"]
 [ext_resource type="Script" path="res://Scenes&Scripts/UI/ScoreCounter.gd" id="2"]
+[ext_resource type="Script" path="res://Scenes&Scripts/UI/GameUI.gd" id="2_47uen"]
 [ext_resource type="PackedScene" uid="uid://xgljuucwiqb6" path="res://Scenes&Scripts/UI/AmmoBar.tscn" id="4"]
 
 [node name="GameUI" type="Control"]
@@ -16,6 +17,7 @@ offset_bottom = -0.887695
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rdomt")
+script = ExtResource("2_47uen")
 
 [node name="ScoreCounter" type="Label" parent="."]
 layout_mode = 1

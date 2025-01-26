@@ -41,10 +41,9 @@ func _ready():
 	healthbarNode = load(GlobalReferences.healthbarPath).instantiate()
 	myHealthBar = healthbarNode.get_node("TextureProgressBar")
 	healthbarNode.myOwner = self
-	healthbarNode.position = $HealthbarPos.position
 	myHealthBar.max_value = max_health
 	myHealthBar.value = health
-	GlobalReferences.sceneRoot.add_child(healthbarNode)
+	GlobalReferences.sceneRoot.add_child.call_deferred(healthbarNode)
 
 
 func handle_movement(_delta):
@@ -70,7 +69,7 @@ func recieve_damage(damage):
 	if tween != null:
 		tween.kill()
 	tween = create_tween()
-	tween.interpolate_property(myHealthBar, "value", myHealthBar.value, health, 0.2)
+	tween.tween_property(myHealthBar, "value", health, 0.2)
 	if health <= 0:
 		# the enemy_died signal calls a function that updates the score
 		EnemySignalBus.enemy_died.emit(self)
