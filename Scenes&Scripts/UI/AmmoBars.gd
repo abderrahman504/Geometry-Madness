@@ -19,7 +19,7 @@ func _ready():
 
 func update_ammo_bar():
 	bar1.tint_progress = GlobalReferences.colours[gun1.gunType]
-	if tween.is_running():
+	if tween != null:
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
@@ -29,7 +29,7 @@ func update_ammo_bar():
 func update_mixed_ammo_bar():
 	bar1.tint_progress = GlobalReferences.colours[gun1.gunType]
 	bar2.tint_progress = GlobalReferences.colours[gun2.gunType]
-	if tween.is_running():
+	if tween != null:
 		tween.kill()
 	tween = create_tween()	
 	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
