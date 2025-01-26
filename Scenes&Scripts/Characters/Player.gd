@@ -13,9 +13,10 @@ var gun2 : Node
 var inputVector : Vector2
 var bulletSpawnDistance : float = 25 #How far the bullet will spawn away from the player
 
+
+var pistolGun : Node
 var tween : Tween
 
-var root : Node2D
 var ammoBars : Container
 
 
@@ -24,8 +25,7 @@ func _init():
 
 
 func _ready():
-	root = GlobalReferences.sceneRoot
-	ammoBars = root.get_node("UI/Control/AmmoBars")
+	ammoBars = GlobalReferences.sceneRoot.get_node("UI/Control/AmmoBars")
 	GlobalReferences.playerExists = true
 	#Creating the player health bar
 	health = maxHealth
@@ -37,11 +37,10 @@ func _ready():
 	myHealthBar.value = health
 	GlobalReferences.sceneRoot.add_child(healthbar_node)
 	#spawning the pistol weapon for the player
-	var pistol : Node = load(GlobalReferences.GunPaths["pistol"]).instantiate()
-	GlobalReferences.playerPistol = pistol
-	pistol.user = self
-	gun = pistol
-	add_child(pistol)
+	pistolGun = load(GlobalReferences.GunPaths["pistol"]).instantiate()
+	pistolGun.user = self
+	gun = pistolGun
+	add_child(pistolGun)
 
 
 
@@ -49,8 +48,6 @@ func _process(_delta):
 	#If the lmb is pressed, the gun will try to shoot - if the gun cool down is 0 then it will shoot
 	if Input.is_action_pressed("LMB"):
 		gun.shoot(get_global_mouse_position())
-		
-
 
 
 func _physics_process(delta):
@@ -64,10 +61,7 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	
-	set_velocity(velocity)
 	move_and_slide()
-	velocity = velocity
-	
 
 
 func recieve_damage(damage):
@@ -84,8 +78,6 @@ func recieve_damage(damage):
 		GlobalReferences.playerExists = false
 		var deathMenu = load(GlobalReferences.DeathMenu).instantiate()
 		GlobalReferences.sceneRoot.get_node("UI").add_child(deathMenu)
-
-
 
 
 func get_new_gun(gunPickupType : int):
@@ -123,7 +115,7 @@ func get_new_gun(gunPickupType : int):
 	newGun.user = self
 	
 	
-	if gun == GlobalReferences.playerPistol:
+	if gun == pistolGun:
 		gun1 = newGun
 		gun = newGun
 		ammoBars.gun1 = gun1

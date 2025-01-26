@@ -68,7 +68,8 @@ func handle_shooting(delta):
 		
 
 func create_minion():
-	var spawnAngle : float = GlobalReferences.randNoGen.randf_range(0, 2*PI)
+	var randNoGen = RandomNumberGenerator.new()
+	var spawnAngle : float = randNoGen.randf_range(0, 2*PI)
 	var spawnVector : Vector2 = position + Vector2(cos(spawnAngle), sin(spawnAngle)) * minionSpawnRange
 	var minion : CharacterBody2D = minionScene.instantiate()
 	minion.position = spawnVector

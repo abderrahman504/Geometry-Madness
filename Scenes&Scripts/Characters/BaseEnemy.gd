@@ -87,17 +87,19 @@ func recieve_damage(damage):
 func drop_gun():
 	var newGunDrop : Node2D = load(gunDropPath).instantiate();
 	newGunDrop.position = position
-	var angle : float = GlobalReferences.randNoGen.randf_range(0, 2*PI)
+	var randNoGen = RandomNumberGenerator.new()
+	var angle : float = randNoGen.randf_range(0, 2*PI)
 	newGunDrop.directionVector = Vector2(cos(angle), sin(angle))
 	GlobalReferences.sceneRoot.call_deferred("add_child", newGunDrop)
 
 
 func try_drop_health():
-	var e = GlobalReferences.randNoGen.randf()
+	var randNoGen = RandomNumberGenerator.new()
+	var e = randNoGen.randf()
 	if e < healthDropChance:
 		var healthPickup : Node2D = load(GlobalReferences.healthPickupPath).instantiate()
 		healthPickup.position = position
-		var angle : float = GlobalReferences.randNoGen.randf_range(0, 2*PI)
+		var angle : float = randNoGen.randf_range(0, 2*PI)
 		healthPickup.directionVector = Vector2(cos(angle), sin(angle))
 		GlobalReferences.sceneRoot.call_deferred("add_child", healthPickup)
 

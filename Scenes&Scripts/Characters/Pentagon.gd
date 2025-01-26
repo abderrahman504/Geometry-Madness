@@ -80,15 +80,15 @@ func find_destination():
 	
 	xLowerBound = max(playerPos.x - r, GlobalReferences.sceneRoot.TLCorner.x)
 	xUpperBound = min(playerPos.x + r, GlobalReferences.sceneRoot.BRCorner.x)
-	
-	x = GlobalReferences.randNoGen.randi_range(xLowerBound, xUpperBound)
+	var randNoGen = RandomNumberGenerator.new()
+	x = randNoGen.randi_range(xLowerBound, xUpperBound)
 	
 	
 	var R = sqrt(r*r - (x-playerPos.x)*(x-playerPos.x))
 	yLowerBound = max(playerPos.y - R, GlobalReferences.sceneRoot.TLCorner.y)
 	yUpperBound = min(playerPos.y + R, GlobalReferences.sceneRoot.BRCorner.y)
 	
-	y = GlobalReferences.randNoGen.randi_range(yLowerBound, yUpperBound)
+	y = randNoGen.randi_range(yLowerBound, yUpperBound)
 	destination = Vector2(x,y)
 
 

@@ -2,11 +2,8 @@ extends Node
 
 var sceneRoot : Node2D; # This is a variable that contains the root of the world scene
 var player : CharacterBody2D;
-var playerPistol : Node;
 var playerExists : bool = false;
-var tween : Tween;
-var randNoGen : RandomNumberGenerator
-var MainMenu : String = "res://Scenes&Scripts/UI/Menu.tscn";
+var MainMenu : String = "res://Scenes&Scripts/MainMenu/MainMenu.tscn";
 var DeathMenu : String = "res://Scenes&Scripts/UI/you died.tscn";
 var Level2Transition : String = "res://Scenes&Scripts/UI/level2_ani.tscn";
 var bullet : String = "res://Scenes&Scripts/Other/Bullet.tscn";#The bullet scene path

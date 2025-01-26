@@ -63,7 +63,7 @@ func shoot(target : Vector2):
 			queue_free()
 			ammoBars.gun1 = null
 			GlobalReferences.player.gun1 = null
-			GlobalReferences.player.gun = GlobalReferences.playerPistol
+			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
 	
 	cooldown = 1/fireRate
 	bulletShot = true
