@@ -37,6 +37,7 @@ func _ready():
 	player = GlobalReferences.player
 	attackIntervalCounter = attackInterval
 	breakTimeCounter = 1
+	health = max_health
 	# Create a heathbar and add it to the world scene
 	healthbarNode = load(GlobalReferences.healthbarPath).instantiate()
 	myHealthBar = healthbarNode.get_node("TextureProgressBar")
