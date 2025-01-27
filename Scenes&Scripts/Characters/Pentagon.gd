@@ -1,4 +1,5 @@
-extends "res://Scenes&Scripts/Characters/BaseEnemy.gd"
+extends BaseEnemy
+class_name Pentagon
 
 var moving : bool = false
 var destination : Vector2 = Vector2(-1, -1)
@@ -18,7 +19,7 @@ func _ready():
 
 
 func handle_movement(delta):
-	# The pentagon doesn't move normally. When it is too far from the player it dashes to a position that's close to them.
+	# The pentagon picks a random point near the player, moves to it, then starts shooting. This cycle repeats.
 	if not (GlobalReferences.playerExists):
 		return
 	if not moving:

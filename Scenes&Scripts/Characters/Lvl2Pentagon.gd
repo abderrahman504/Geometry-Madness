@@ -1,4 +1,4 @@
-extends "res://Scenes&Scripts/Characters/Pentagon.gd"
+extends Pentagon
 
 var dashing : bool = false
 var dashingTime : float
@@ -8,6 +8,7 @@ var beforeDashTimeCounter : float = 0
 
 
 func handle_movement(delta):
+	# Level 2 pentagon dashes to a point near the player, then starts shooting.
 	if not GlobalReferences.playerExists:
 		return
 	if not moving:

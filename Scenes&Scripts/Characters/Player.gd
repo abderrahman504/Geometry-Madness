@@ -70,7 +70,7 @@ func recieve_damage(damage):
 		queue_free()
 		GlobalReferences.playerExists = false
 		var deathMenu = load(GlobalReferences.DeathMenu).instantiate()
-		GlobalReferences.sceneRoot.get_node("UI").add_child(deathMenu)
+		GlobalReferences.game_ui.add_child(deathMenu)
 
 
 func get_new_gun(gunPickupType : int):
