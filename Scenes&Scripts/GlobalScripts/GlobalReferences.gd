@@ -1,6 +1,6 @@
 extends Node
 
-var sceneRoot : Node2D; # This is a variable that contains the root of the world scene
+var sceneRoot : World; # This is a variable that contains the root of the world scene
 var game_ui : GameUI
 var player : CharacterBody2D;
 var playerExists : bool = false;

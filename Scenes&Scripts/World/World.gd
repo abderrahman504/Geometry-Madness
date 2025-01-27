@@ -6,6 +6,8 @@ const kill_points= preload("res://Scenes&Scripts/UI/Score.tscn")
 
 var enemiesInLevel : Array
 var score : int = 0
+var tweened_score : int = 0
+var tween : Tween
 
 @export var TLCorner : Vector2
 @export var BRCorner : Vector2
@@ -40,9 +42,9 @@ func move_to_level2():
 
 
 func on_enemy_died(enemy: BaseEnemy):
-	pass
-	# Update score
-	# Plays the score animation
-	#var kill_points_instance = kill_points.instantiate()
-	#kill_points_instance.global_position = enemy.global_position
-	#add_child(kill_points_instance)
+	# Update the score
+	score += 100
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "tweened_score", score, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
