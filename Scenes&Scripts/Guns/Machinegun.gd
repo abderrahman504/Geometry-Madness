@@ -9,8 +9,3 @@ func _init():
 func _ready():
 	shootingAngles = [0]
 
-func _process(delta):
-	counting += delta
-	if bulletShot:
-		bulletShot = false
-		counting = 0

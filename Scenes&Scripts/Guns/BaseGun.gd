@@ -1,5 +1,4 @@
 extends Node
-var bulletShot : bool = false
 
 @export var fireRate: float
 @export var bulletDamage: int
@@ -24,6 +23,7 @@ var bullet : Area2D
 
 
 func shoot(target : Vector2):
+	
 	if cooldown > 0:
 		return
 	
@@ -68,7 +68,6 @@ func shoot(target : Vector2):
 			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
 	
 	cooldown = 1/fireRate
-	bulletShot = true
 
 
 
