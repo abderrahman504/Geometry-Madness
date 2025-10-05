@@ -1,4 +1,9 @@
-extends "res://Scenes&Scripts/Characters/Hexagon.gd"
+extends Hexagon
+class_name Lvl2Hexagon
+
+## In addition to level 1 behaviour, the hexagon will stop to spawn minions, then resume its normal behaviour.[br]
+## The spawned minions will orbit it and start moving towards the player if it gets too close to the minions.
+## When the hexagon dies all its minions start following the player.
 
 var creatingMinions : bool = false
 var minionSpawnTime : float
@@ -48,7 +53,7 @@ func handle_movement(delta):
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 
-	velocity = velocity.move_toward(moveVector*speed, acceleration * delta)
+	velocity = velocity.move_toward(moveVector*max_speed, acceleration * delta)
 	move_and_slide()
 
 
@@ -84,9 +89,8 @@ func recieve_damage(damage):
 	super.recieve_damage(damage)
 	
 	if health <= 0:
-		var temp : Array = minions.duplicate()
-		for i in temp:
-			i.recieve_damage(1)
+		for m in minions:
+			m.parent = null
 		
 
 

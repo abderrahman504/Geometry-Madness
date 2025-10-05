@@ -1,5 +1,7 @@
-extends "res://Scenes&Scripts/Characters/BaseEnemy.gd"
+extends BaseEnemy
+class_name Hexagon
 
+## The hexagon will orbit the player, switching between CW and CCW as attack intervals pass.
 
 var clockwiseMove : bool = false
 var maxRange : float = 250
@@ -12,7 +14,6 @@ func _ready():
 	gun.user = self
 	gunDropPath = GlobalReferences.GunDropPaths["split rifle"];
 	enemyType = GlobalReferences.COLOURS.Yellow;
-
 
 
 func _process(delta):
@@ -37,7 +38,7 @@ func handle_movement(delta):
 	if dFromPlayer >= maxRange:
 		moveVector += (player.position - position).normalized()
 	
-	velocity = velocity.move_toward(moveVector*speed, acceleration * delta)
+	velocity = velocity.move_toward(moveVector*max_speed, acceleration * delta)
 	move_and_slide()
 
 

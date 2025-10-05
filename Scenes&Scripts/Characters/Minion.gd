@@ -43,7 +43,8 @@ func handle_movement(delta):
 	dFromPlayer = (player.position - position).length()
 	dFromParent = (parent.position - position).length()
 	
-	if aggroed and dFromPlayer <= aggroBreakerRange:
+
+	if parent == null or (aggroed and dFromPlayer <= aggroBreakerRange):
 		velocity = velocity.move_toward(chase_player(), acceletation * delta)
 	elif dFromPlayer <= aggroTriggerRange:
 		aggroed = true
@@ -71,7 +72,8 @@ func chase_player():
 
 func recieve_damage(_damage):
 	queue_free()
-	parent.minions.erase(self)
+	if parent != null:
+		parent.minions.erase(self)
 
 
 
