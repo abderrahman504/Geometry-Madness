@@ -44,14 +44,14 @@ func handle_movement(delta):
 			tempVelocity = handle_collision(get_slide_collision(i), tempVelocity)
 
 
-func handle_collision(Collision : KinematicCollision2D, oldVelocity : Vector2):
+func handle_collision(collision : KinematicCollision2D, oldVelocity : Vector2):
 	var momentumLossFactor : float = 0.25
-	if Collision.collider is CharacterBody2D:
-		var body : CharacterBody2D = Collision.collider
-		body.velocity += -Collision.normal * momentumLossFactor * oldVelocity.length()
+	if collision.get_collider() is CharacterBody2D:
+		var body : CharacterBody2D = collision.get_collider()
+		body.velocity += -collision.get_normal() * momentumLossFactor * oldVelocity.length()
 	
 	
-	var bounceVector : Vector2 = oldVelocity.bounce(Collision.normal).normalized()
+	var bounceVector : Vector2 = oldVelocity.bounce(collision.get_normal()).normalized()
 	velocity = bounceVector * oldVelocity.length() * (1-momentumLossFactor)
 	dashingTimeCounter = dashingTime
 	return velocity

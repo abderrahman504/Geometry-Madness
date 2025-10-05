@@ -8,12 +8,12 @@ class_name Lvl2Hexagon
 var creatingMinions : bool = false
 var minionSpawnTime : float
 var minionSpawnTimeCounter : float
-var minionSpawnNumber : int = 3
+var minionSpawnNumber : int = 4
 var minionsCreated : int = 0
-var minionSpawnRange : float = 50
+var minionSpawnRange : float = 85
 var minionScene : PackedScene = load(GlobalReferences.minionPath)
 var minions : Array = []
-var maxMinions : int = 6
+var maxMinions : int = 8
 
 
 func _ready():

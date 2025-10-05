@@ -7,7 +7,8 @@
 
 [node name="Square" instance=ExtResource("4")]
 script = ExtResource("5")
-acceleration = 182
+max_speed = 100
+acceleration = 200
 deceleration = 426
 attackInterval = 4.0
 bulletSpawnDistance = 68.0
