@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=7 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cyeeem8fajuux" path="res://Scenes&Scripts/World/Level2.tscn" id="2_oue0b"]
 [ext_resource type="PackedScene" uid="uid://bd1wi665ltel1" path="res://Scenes&Scripts/World/TileMap.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="5"]
 
@@ -12,6 +13,8 @@ _data = {
 point_count = 5
 
 [node name="MainWorld" instance=ExtResource("1")]
+transition_score = 100
+transition_scene = ExtResource("2_oue0b")
 TLCorner = Vector2(225, -60)
 BRCorner = Vector2(1630, 1025)
 
@@ -20,7 +23,6 @@ layer_0/tile_data = PackedInt32Array(983073, 0, 0, 917537, 65536, 1, 852001, 0, 
 
 [node name="Camera2D" parent="." index="1"]
 position = Vector2(829.77, 431.243)
-zoom = Vector2(1, 1)
 
 [node name="Player" parent="." index="2"]
 position = Vector2(838.723, 392.17)

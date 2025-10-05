@@ -1,11 +1,10 @@
 extends Node2D
 
+signal animation_finished
 
 func _ready():
 	$AnimationPlayer.play("Nuova Animazione")
 
 
-
 func _on_AnimationPlayer_animation_finished(anim_name):
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes&Scripts/Other/Level2.tscn")
+	animation_finished.emit()

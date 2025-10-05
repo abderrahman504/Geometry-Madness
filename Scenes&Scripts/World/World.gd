@@ -4,6 +4,9 @@ class_name World
 
 const kill_points= preload("res://Scenes&Scripts/UI/Score.tscn")
 
+@export var transition_score : int = 3000
+@export var transition_scene : PackedScene
+
 var enemiesInLevel : Array
 var score : int = 0
 var tweened_score : int = 0
@@ -34,17 +37,26 @@ func _unhandled_input(event):
 		$UI/PauseMenu.show()
 
 
-func move_to_level2():
+func transition():
+	if (transition_scene == null): return
 	var transitionAnimation = load(GlobalReferences.Level2Transition).instantiate()
+	transitionAnimation.animation_finished.connect(on_transition_animation_finished)
 	get_tree().paused = true
 	transitionAnimation.position = GlobalReferences.sceneRoot.get_node("Camera2D").position
 	GlobalReferences.sceneRoot.add_child(transitionAnimation)
 
 
-func on_enemy_died(enemy: BaseEnemy):
+func on_transition_animation_finished():
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(transition_scene)
+
+
+func on_enemy_died(_enemy: BaseEnemy):
 	# Update the score
 	score += 100
 	if tween != null:
 		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "tweened_score", score, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	if score >= transition_score:
+		transition()
