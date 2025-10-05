@@ -5,24 +5,24 @@ class_name BaseEnemy
 var player : CharacterBody2D
 
 # public stats
-@export var speed: int = 50
+@export var max_speed: int = 50
 @export var max_health: int = 8
 var health : int
 
 # private stats
 @export var acceleration: int = 50
 @export var deceleration: int = 80
-@export var attackInterval: float = 2 # The period of time this enemy attacks for before taking a break
+@export var attackInterval: float = 2 ## The period of time this enemy attacks for before taking a break
 var attackIntervalCounter : float
-@export var breakTime: float = 5 # The time this enemy takes between two attack intervals
+@export var breakTime: float = 5 ## The time this enemy takes between two attack intervals
 var breakTimeCounter : float
-@export var healthDropChance: float = 0.3
+@export var healthDropChance: float = 0.3 ## The chance of this enemy dropping a health drop
 
 
 var healthbarNode: Node2D
 var myHealthBar : TextureProgressBar
 var gun : Node
-@export var bulletSpawnDistance : float = 25 # How far the bullet will spawn from the enemy
+@export var bulletSpawnDistance : float = 25 ## How far the bullet will spawn from the enemy
 var enemyType : int
 var gunDropPath : String;
 var tween : Tween
@@ -65,6 +65,7 @@ func handle_shooting(delta):
 	
 	breakTimeCounter -= delta
 
+
 func recieve_damage(damage):
 	health -= damage
 	if tween != null:
@@ -89,7 +90,7 @@ func drop_gun():
 	newGunDrop.position = position
 	var randNoGen = RandomNumberGenerator.new()
 	var angle : float = randNoGen.randf_range(0, 2*PI)
-	newGunDrop.directionVector = Vector2(cos(angle), sin(angle))
+	newGunDrop.directionVector = Vector2.from_angle(angle)
 	GlobalReferences.sceneRoot.call_deferred("add_child", newGunDrop)
 
 
