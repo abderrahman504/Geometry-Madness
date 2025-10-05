@@ -23,7 +23,7 @@ var GunPaths : Dictionary = {
 
 var GunDropPaths : Dictionary = {
 	"shotgun" : "res://Scenes&Scripts/Pickups/ShotgunPickup.tscn",
-	"machinegun" : "res://Scenes&Scripts/Pickups/MachinegunPickup.tscn",
+	"machinegun" : "res://Scenes&Scripts/Pickups/MachineGunPickup.tscn",
 	"split rifle" : "res://Scenes&Scripts/Pickups/SplitRiflePickup.tscn",
 	"heavy canon" : "res://Scenes&Scripts/Pickups/HeavyCanonPickup.tscn"};
 

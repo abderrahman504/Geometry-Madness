@@ -32,7 +32,7 @@ func handle_movement(_delta):
 	
 	var d_to_player = (player.position - position).length()
 	if d_to_player > maxRange or d_to_player < minRange:
-		velocity = (player.positon - position).normalized() * max_speed * (1 if d_to_player > maxRange else -1)
+		velocity = (player.position - position).normalized() * max_speed * (1 if d_to_player > maxRange else -1)
 	else:
 		# The further the square is from the sweetspot, the faster it will move to reach it.
 		var speed : float = clampf(((d_to_player - rangeMidPoint) / (0.5*(maxRange - minRange))), 0, 1) * max_speed

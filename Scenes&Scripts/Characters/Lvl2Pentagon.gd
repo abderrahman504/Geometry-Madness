@@ -1,4 +1,8 @@
 extends Pentagon
+class_name Lvl2Pentagon
+
+## Instead of moving at normal speed, level 2 pentagon dashes to the point.
+
 
 var dashing : bool = false
 var dashingTime : float
@@ -17,7 +21,6 @@ func handle_movement(delta):
 	if beforeDashTimeCounter <= beforeDashTime:
 		beforeDashTimeCounter += delta
 		return
-	
 	
 	if dashing == false:
 		dash()
@@ -39,8 +42,6 @@ func handle_movement(delta):
 	if get_slide_collision_count() > 0:
 		for i in range(get_slide_collision_count()):
 			tempVelocity = handle_collision(get_slide_collision(i), tempVelocity)
-	
-	
 
 
 func handle_collision(Collision : KinematicCollision2D, oldVelocity : Vector2):
@@ -58,13 +59,6 @@ func handle_collision(Collision : KinematicCollision2D, oldVelocity : Vector2):
 
 func dash():
 	dashing = true
-	dashingTime = (destination - position).length() / speed
-	velocity = (destination - position).normalized() * speed
-
-
-
-
-
-
-
+	dashingTime = (destination - position).length() / max_speed
+	velocity = (destination - position).normalized() * max_speed
 
