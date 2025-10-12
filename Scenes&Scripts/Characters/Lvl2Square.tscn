@@ -10,12 +10,12 @@ radius = 251.718
 position = Vector2(1.41418, 0)
 script = ExtResource("2")
 dodgeCooldown = 5.0
-dodgeDistance = 35.0
+dodgeDistance = 100.0
 
 [node name="BulletDetector" type="Area2D" parent="." index="3"]
 visible = false
 collision_layer = 32
-collision_mask = 0
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetector" index="0"]
 shape = SubResource("1")

@@ -1,8 +1,8 @@
-extends "res://Scenes&Scripts/Guns/BaseGun.gd"
+extends BaseGun
+class_name MixedGun
 
-
-var parent1 : Node
-var parent2 : Node
+var parent1 : BaseGun
+var parent2 : BaseGun
 
 
 
@@ -15,30 +15,29 @@ func _ready():
 	shootingAngles = [0]
 	bulletDamage = (parent1.bulletDamage+parent2.bulletDamage)/2
 	fireRate = (parent1.fireRate+parent2.fireRate)/2
-	bulletLifeTime = parent1.bulletLifeTime*int(parent1.bulletLifeTime >= parent2.bulletLifeTime) + parent2.bulletLifeTime*int(parent1.bulletLifeTime < parent2.bulletLifeTime)
-	bulletSpeedFactor = parent1.bulletSpeedFactor*int(parent1.bulletSpeedFactor <= parent2.bulletSpeedFactor) + parent2.bulletSpeedFactor*int(parent1.bulletSpeedFactor > parent2.bulletSpeedFactor)
-	bulletScaleFactor = parent1.bulletScaleFactor*int(parent1.bulletScaleFactor >= parent2.bulletScaleFactor) + parent2.bulletScaleFactor*int(parent1.bulletScaleFactor < parent2.bulletScaleFactor)
+	bulletLifeTime = (parent1.bulletLifeTime + parent2.bulletLifeTime)/2
+	bulletSpeedFactor = (parent1.bulletSpeedFactor + parent2.bulletSpeedFactor)/2
+	bulletScaleFactor = (parent1.bulletScaleFactor + parent2.bulletScaleFactor)/2
 	piercingBullets = parent1.piercingBullets or parent2.piercingBullets
 	splittingBullets = parent1.splittingBullets or parent2.splittingBullets
-
 
 
 func shoot(target):
 	if cooldown > 0:
 		return
-	
+	var bullet : Area2D
 	var gunAngle : float = (target - user.position).angle()
 	for angle in shootingAngles:
 		bullet = bulletScene.instantiate()
-		var shootingVector : Vector2 = Vector2(cos(angle+gunAngle),sin(angle+gunAngle)) * user.bulletSpawnDistance
+		var shootingVector : Vector2 = Vector2.from_angle(angle+gunAngle) * user.bulletSpawnDistance
 		bullet.position = user.position + shootingVector
 		bullet.rotation = gunAngle + angle
 		bullet.direction = shootingVector.normalized()
 		#changing the bullet collision mask depending on who fired it
 		if user == GlobalReferences.player:
-			bullet.collision_layer = 8
-			bullet.collision_mask += 2 # Detect enemy layer
-			var gunColours : Vector2
+			bullet.collision_layer |= 128 # Place bullet in player bullets layer
+			bullet.collision_mask |= 2 # Detect enemy layer
+			var gunColours : Vector2 = Vector2.ZERO
 			for record in GlobalReferences.colourToGunMap:
 				if record["gun"] == parent1.gunType:
 					gunColours.x = record["colour"];
@@ -48,8 +47,8 @@ func shoot(target):
 			
 			bullet.colour_bullet(gunColours.x, gunColours.y);
 		else:
-			bullet.collision_layer = 16
-			bullet.collision_mask += 1 # Detect player layer
+			bullet.collision_layer |= 64 # Place bullet in enemy bullets layer
+			bullet.collision_mask |= 1 # Detect player layer
 		
 		bullet.splitting = splittingBullets
 		bullet.piercing = piercingBullets

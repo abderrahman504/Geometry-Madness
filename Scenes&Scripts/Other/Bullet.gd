@@ -1,4 +1,6 @@
 extends Area2D
+class_name Bullet
+
 
 @export var speed : float = 400
 var direction : Vector2

@@ -1,4 +1,5 @@
 extends Node
+class_name BaseGun
 
 @export var fireRate: float
 @export var bulletDamage: int
@@ -16,36 +17,36 @@ var gunType : int
 var user : CharacterBody2D
 var cooldown : float;
 var bulletScene : PackedScene = load(GlobalReferences.bullet)
-var bullet : Area2D
+
 
 
 
 
 
 func shoot(target : Vector2):
-	
 	if cooldown > 0:
 		return
 	
+	var bullet : Area2D
 	var gunAngle : float = (target - user.position).angle()
 	for angle in shootingAngles:
 		bullet = bulletScene.instantiate()
-		var shootingVector : Vector2 = Vector2(cos(angle+gunAngle),sin(angle+gunAngle)) * user.bulletSpawnDistance
+		var shootingVector : Vector2 = Vector2.from_angle(angle + gunAngle) * user.bulletSpawnDistance
 		bullet.position = user.position + shootingVector
 		bullet.rotation = gunAngle + angle
 		bullet.direction = shootingVector.normalized()
 		#changing the bullet collision mask depending on who fired it
 		# All bullets already detect walls
 		if user == GlobalReferences.player:
-			bullet.collision_layer = 8
-			bullet.collision_mask += 2 # Detect enemy layer
+			bullet.collision_layer |= 128 # Place bullet in player bullets layer
+			bullet.collision_mask |= 2 # Detect enemy layer
 			for record in GlobalReferences.colourToGunMap:
 				if record["gun"] == gunType:
 					bullet.colour_bullet(record["colour"], record["colour"])
 					break
 		else:
-			bullet.collision_layer = 16
-			bullet.collision_mask += 1 # Detect player layer
+			bullet.collision_layer |= 64 # Place bullet in enemy bullets layer
+			bullet.collision_mask |= 1 # Detect player layer
 			bullet.colour_bullet(GlobalReferences.COLOURS.Orange, GlobalReferences.COLOURS.Orange)
 			bullet.shatterTint = GlobalReferences.colours[GlobalReferences.COLOURS.Orange]
 		
