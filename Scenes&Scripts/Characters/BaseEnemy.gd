@@ -10,8 +10,6 @@ var player : CharacterBody2D
 var health : int
 
 # private stats
-@export var acceleration: int = 50
-@export var deceleration: int = 80
 @export var attackInterval: float = 2 ## The period of time this enemy attacks for before taking a break
 var attackIntervalCounter : float
 @export var breakTime: float = 5 ## The time this enemy takes between two attack intervals

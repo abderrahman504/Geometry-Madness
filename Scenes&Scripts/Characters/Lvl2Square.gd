@@ -4,11 +4,11 @@ class_name Lvl2Square
 ## Level 2 of the Square dodges player bullets when they get close enough.
 
 @export  var dodgeCooldown : float = 5 ## Cooldown duration after using dodge.
-var dodgeCooldownCounter : float = 0
 @export var dodgeDistance : float = 35
+@export var dodgeAccel : float = 1000
+@export var dodge_max_speed : float = 1000
+var dodgeCooldownCounter : float = 0
 var dodgeStartPoint : Vector2
-var dodgeAccel : float = 1000
-var dodge_max_speed : float = 1000
 var dodging : bool = false
 var dodgeVector : Vector2
 

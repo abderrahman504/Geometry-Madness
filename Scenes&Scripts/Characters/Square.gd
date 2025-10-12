@@ -4,9 +4,11 @@ class_name Square
 ## A square enemy tries to position itself somewhere between the minimum and maximum ranges from the player.
 
 
-var minRange : float = 400
-var maxRange : float = 700
-var rangeMidPoint : float = (maxRange + minRange)/2 ## This is the sweetspot. A distance to the player the square would like to stay at.
+@export var minRange : float = 400
+@export var maxRange : float = 700
+## This is the sweetspot. A distance to the player the square would like to stay at.
+var rangeMidPoint : float:
+	get: return (maxRange + minRange)/2 
 
 func _ready():
 	super._ready()

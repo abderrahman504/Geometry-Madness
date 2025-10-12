@@ -7,9 +7,11 @@
 
 [node name="Hexagon" instance=ExtResource("1")]
 script = ExtResource("3")
-max_speed = 100
+maxRange = 250.0
 acceleration = 150
 deceleration = 200
+max_speed = 100
+attackInterval = 4.0
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 rotation = 0.0137139

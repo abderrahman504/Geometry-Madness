@@ -4,8 +4,11 @@ class_name Pentagon
 ## The pentagon moves to a random point around the player, then once it arrives it starts shooting.
 ## Once the shooting interval ends it moves again.
 
-@export var min_range_to_player : float = 150
-@export var max_range_to_player : float = 300
+
+@export var acceleration: int = 50
+@export var deceleration: int = 80
+@export var min_range_to_player : float = 150 ## The minimum distance between the player and a point the pentagon chooses to travel to.
+@export var max_range_to_player : float = 300 ## The maximum distance between the player and a point the pentagon chooses to travel to.
 
 var moving : bool = false
 var destination : Vector2 = Vector2(-1, -1)

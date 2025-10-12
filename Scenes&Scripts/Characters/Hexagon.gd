@@ -4,8 +4,10 @@ class_name Hexagon
 ## The hexagon will orbit the player, switching between CW and CCW as attack intervals pass.
 
 var clockwiseMove : bool = false
-var maxRange : float = 250
-
+## If the player is outside this range then the hexagon will move towards him.
+@export var maxRange : float = 250
+@export var acceleration: int = 50
+@export var deceleration: int = 80
 
 
 func _ready():

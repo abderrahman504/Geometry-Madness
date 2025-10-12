@@ -8,12 +8,12 @@ class_name Lvl2Hexagon
 var creatingMinions : bool = false
 var minionSpawnTime : float
 var minionSpawnTimeCounter : float
-var minionSpawnNumber : int = 4
+@export var minionSpawnNumber : int = 4 ## The number of minions this enemy spawns each time it takes a break.
+@export var minionSpawnRange : float = 85
+@export var maxMinions : int = 8 ## The max number of minions this enemy can maintain.
 var minionsCreated : int = 0
-var minionSpawnRange : float = 85
 var minionScene : PackedScene = load(GlobalReferences.minionPath)
 var minions : Array = []
-var maxMinions : int = 8
 
 
 func _ready():

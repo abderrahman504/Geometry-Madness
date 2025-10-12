@@ -5,3 +5,6 @@
 
 [node name="Lvl2Hexagon" instance=ExtResource("1")]
 script = ExtResource("2")
+minionSpawnNumber = 4
+minionSpawnRange = 90.0
+maxMinions = 8
