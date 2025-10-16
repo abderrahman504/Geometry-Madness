@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://c04y8w4vvybtc"]
 
-[ext_resource path="res://Scenes&Scripts/Guns/BaseGun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes&Scripts/Guns/SplitRifle.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
 
-[node name="SplitRifle" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="SplitRifle" instance=ExtResource("1")]
+gunType = 2
 fireRate = 1.5
-bulletDamage = 2
 ammoConsumption = 10
+bulletDamage = 2
+bulletLifeTime = 3.0
+bulletScaleFactor = 1.5
+splittingBullets = true

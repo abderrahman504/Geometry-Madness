@@ -4,3 +4,5 @@
 
 [node name="BaseGun" type="Node"]
 script = ExtResource("1")
+fireRate = 1.0
+bulletDamage = 1

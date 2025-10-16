@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/MainMenu.gd" id="1_u0eu6"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2_hedmk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4deh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2645m"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -17,7 +17,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xbmi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5fr4"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -30,7 +30,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70to2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et4km"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -43,7 +43,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsniv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgenj"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -58,15 +58,22 @@ corner_radius_bottom_left = 4
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_enxyr")
 script = ExtResource("1_u0eu6")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 277.5
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_right = 0.504
+offset_left = -367.62
 offset_top = 64.0
-offset_right = 1011.5
+offset_right = 366.38
 offset_bottom = 136.0
 theme_override_font_sizes/font_size = 30
 text = "GEOMETRY MADNESS"
@@ -74,41 +81,48 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 438.887
-offset_top = 202.19
-offset_right = 838.886
-offset_bottom = 587.189
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -192.5
+offset_right = 200.0
+offset_bottom = 192.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 19
 
 [node name="Play" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_a4deh")
-theme_override_styles/focus = SubResource("StyleBoxFlat_a4deh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2645m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2645m")
 text = "Play"
 start_focused = true
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_3xbmi")
-theme_override_styles/focus = SubResource("StyleBoxFlat_3xbmi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p5fr4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p5fr4")
 text = "Tutorial"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_70to2")
-theme_override_styles/focus = SubResource("StyleBoxFlat_70to2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_et4km")
+theme_override_styles/focus = SubResource("StyleBoxFlat_et4km")
 action_mode = 0
 text = "Credits"
 
 [node name="Exit" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_hsniv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_hsniv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jgenj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jgenj")
 text = "Exit Game"
 
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]

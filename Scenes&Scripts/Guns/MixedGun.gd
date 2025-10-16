@@ -12,12 +12,14 @@ func _init():
 
 
 func _ready():
-	shootingAngles = [0]
+	fireRate = (parent1.fireRate+parent2.fireRate) / 2
+	spread = (parent1.spread + parent2.spread) / 2
+	pellet_count = max(parent1.pellet_count, parent2.pellet_count)
+
 	bulletDamage = (parent1.bulletDamage+parent2.bulletDamage)/2
-	fireRate = (parent1.fireRate+parent2.fireRate)/2
 	bulletLifeTime = (parent1.bulletLifeTime + parent2.bulletLifeTime)/2
-	bulletSpeedFactor = (parent1.bulletSpeedFactor + parent2.bulletSpeedFactor)/2
 	bulletScaleFactor = (parent1.bulletScaleFactor + parent2.bulletScaleFactor)/2
+	bulletSpeedFactor = (parent1.bulletSpeedFactor + parent2.bulletSpeedFactor)/2
 	piercingBullets = parent1.piercingBullets or parent2.piercingBullets
 	splittingBullets = parent1.splittingBullets or parent2.splittingBullets
 
@@ -27,11 +29,12 @@ func shoot(target):
 		return
 	var bullet : Area2D
 	var gunAngle : float = (target - user.position).angle()
-	for angle in shootingAngles:
+	for i in range(pellet_count):
 		bullet = bulletScene.instantiate()
-		var shootingVector : Vector2 = Vector2.from_angle(angle+gunAngle) * user.bulletSpawnDistance
+		var shoot_angle := gunAngle + randf_range(-1 * spread, spread) * (PI / 180.0)
+		var shootingVector: Vector2 = Vector2.from_angle(shoot_angle) * user.bulletSpawnDistance
 		bullet.position = user.position + shootingVector
-		bullet.rotation = gunAngle + angle
+		bullet.rotation = shoot_angle
 		bullet.direction = shootingVector.normalized()
 		#changing the bullet collision mask depending on who fired it
 		if user == GlobalReferences.player:

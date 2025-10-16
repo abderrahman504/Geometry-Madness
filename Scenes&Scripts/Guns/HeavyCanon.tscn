@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cadusu6b6lpxg"]
+[gd_scene load_steps=2 format=3 uid="uid://cadusu6b6lpxg"]
 
-[ext_resource type="PackedScene" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes&Scripts/Guns/HeavyCanon.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
 
 [node name="HeavyCanon" instance=ExtResource("1")]
-script = ExtResource("2")
-fireRate = 1.0
-bulletDamage = 3
+gunType = 1
 ammoConsumption = 12
+bulletDamage = 3
+bulletScaleFactor = 3.0
+bulletSpeedFactor = 0.75
+piercingBullets = true

@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dca315afep0ag"]
+[gd_scene load_steps=2 format=3 uid="uid://dca315afep0ag"]
 
 [ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes&Scripts/Guns/Shotgun.gd" id="2"]
 
 [node name="Shotgun" instance=ExtResource("1")]
-script = ExtResource("2")
-fireRate = 1.0
-bulletDamage = 1
-ammoConsumption = 3
+spread = 20.0
+pellet_count = 5
+ammoConsumption = 9
+bulletDamage = 2

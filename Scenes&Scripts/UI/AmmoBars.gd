@@ -13,7 +13,7 @@ func _ready():
 	_bar2.value = 0
 
 
-func _process(delta):
+func _process(_delta):
 	if not GlobalReferences.playerExists:
 		return
 	
