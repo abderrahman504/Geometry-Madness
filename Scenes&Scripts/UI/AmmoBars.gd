@@ -1,39 +1,73 @@
 extends GridContainer
 class_name AmmoBars
 
-var bar1 : TextureProgressBar
-var bar2 : TextureProgressBar
-var gun1 : Node = null
-var gun2 : Node = null
-var tween : Tween
+@onready var _bar1 : TextureProgressBar = $Bar1
+@onready var _bar2 : TextureProgressBar = $Bar2
 
 var baseTints : PackedColorArray = [Color("00258b"), Color("c00000"), Color("ffef00")]
 enum BASETINTS {Blue, Red, Yellow}
 
 
-
 func _ready():
-	bar1 = $Bar1
-	bar2 = $Bar2
-	bar1.value = 0
-	bar2.value = 0
+	_bar1.value = 0
+	_bar2.value = 0
 
 
-func update_ammo_bar():
-	bar1.tint_progress = GlobalReferences.colours[gun1.gunType]
-	if tween != null:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
-	tween.tween_property(bar2, "value", 0, 0.2)
+func _process(delta):
+	if not GlobalReferences.playerExists:
+		return
+	
+	var player : Player = GlobalReferences.player
+	
+	var ammo1 : float = 0
+	var ammo2 : float = 0
+	var max1 : float = _bar1.max_value
+	var max2 : float = _bar2.max_value
+	var color1 : Color = _bar1.tint_progress
+	var color2 : Color = _bar2.tint_progress
+	# If a normal gun is used then only one ammo bar is updated while the other is empty
+	if player.gun.gunType != GlobalReferences.GUNTYPES.Mixed:
+		# If the gun is the pistol then the main bar is also empty
+		if player.gun.gunType != GlobalReferences.GUNTYPES.Pistol:
+			ammo1 = player.gun.ammoCount
+			max1 = player.gun.maxAmmo
+			color1 = GlobalReferences.colours[player.gun.gunType]
+	# Otherwise both ammo bars are updated
+	else:
+		ammo1 = player.gun1.ammoCount
+		ammo2 = player.gun2.ammoCount
+		max1 = player.gun1.maxAmmo
+		max2 = player.gun2.maxAmmo
+		color1 = GlobalReferences.colours[player.gun1.gunType]
+		color2 = GlobalReferences.colours[player.gun2.gunType]
+	
+	_bar1.tint_progress = color1
+	_bar2.tint_progress = color2
+	_bar1.max_value = max1
+	_bar2.max_value = max2
+	_animate_ammo_bars(ammo1, ammo2)
 
 
-func update_mixed_ammo_bar():
-	bar1.tint_progress = GlobalReferences.colours[gun1.gunType]
-	bar2.tint_progress = GlobalReferences.colours[gun2.gunType]
-	if tween != null:
-		tween.kill()
-	tween = create_tween()	
-	tween.tween_property(bar1, "value", gun1.ammoCount, 0.2)
-	tween.tween_property(bar2, "value", gun2.ammoCount, 0.2)
+# Bar animation targets
+var _bar1_target : float = 0
+var _bar2_target : float = 0
+var _tween1 : Tween
+var _tween2 : Tween
+
+func _animate_ammo_bars(bar1_tgt : float, bar2_tgt : float) -> void:
+	if _bar1_target != bar1_tgt:
+		# Animate bar 1
+		if _tween1 != null:
+			_tween1.kill()
+		_tween1 = create_tween()
+		_tween1.tween_property(_bar1, "value", bar1_tgt, 0.2)
+		_bar1_target = bar1_tgt
+
+	if _bar2_target != bar2_tgt:
+		# Animate bar 2
+		if _tween2 != null:
+			_tween2.kill()
+		_tween2 = create_tween()
+		_tween2.tween_property(_bar2, "value", bar2_tgt, 0.2)
+		_bar2_target = bar2_tgt
 

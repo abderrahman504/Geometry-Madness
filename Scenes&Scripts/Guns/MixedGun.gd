@@ -64,12 +64,13 @@ func shoot(target):
 		#Handling ammo consumption and deleting the gun when it runs out of ammo
 		parent1.ammoCount -= parent1.ammoConsumption
 		parent2.ammoCount -= parent2.ammoConsumption
-		GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
+		print("gun1 max ammo = {0} | current ammo = {1}".format([parent1.maxAmmo, parent1.ammoCount]))
+		print("gun2 max ammo = {0} | current ammo = {1}".format([parent2.maxAmmo, parent2.ammoCount]))
+
 		
 		if parent1.ammoCount <= 0:
 			GlobalReferences.player.gun1 = parent2
 			GlobalReferences.player.gun = parent2
-			GlobalReferences.game_ui.ammo_bars.gun1 = parent2
 			parent1.queue_free()
 			parent1 = null
 		

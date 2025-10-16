@@ -13,7 +13,7 @@ _data = {
 point_count = 5
 
 [node name="MainWorld" instance=ExtResource("1")]
-transition_score = 100
+transition_score = 1000
 transition_scene = ExtResource("2_oue0b")
 TLCorner = Vector2(225, -60)
 BRCorner = Vector2(1630, 1025)

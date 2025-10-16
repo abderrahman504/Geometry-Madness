@@ -60,11 +60,8 @@ func shoot(target : Vector2):
 		GlobalReferences.sceneRoot.add_child(bullet)
 	if user == GlobalReferences.player:
 		ammoCount -= ammoConsumption
-		if gunType != GlobalReferences.GUNTYPES.Pistol:
-			GlobalReferences.game_ui.ammo_bars.update_ammo_bar()
 		if ammoCount <= 0:
 			queue_free()
-			GlobalReferences.game_ui.ammo_bars.gun1 = null
 			GlobalReferences.player.gun1 = null
 			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
 	

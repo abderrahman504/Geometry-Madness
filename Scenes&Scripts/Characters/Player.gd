@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var maxSpeed: float
 @export var acceleration: float
@@ -7,9 +8,13 @@ extends CharacterBody2D
 var health : int
 var healthbar_node : Node2D
 var myHealthBar : TextureProgressBar
-var gun : Node
-var gun1 : Node
-var gun2 : Node
+## The main gun used by the player.
+var gun : BaseGun
+## In case the mixed gun is the current gun, then this is one of the guns being mixed.
+var gun1 : BaseGun
+## In case the mixed gun is the current gun, then this is one of the guns being mixed.
+var gun2 : BaseGun
+
 var inputVector : Vector2
 var bulletSpawnDistance : float = 25 #How far the bullet will spawn away from the player
 
@@ -77,19 +82,16 @@ func get_new_gun(gunPickupType : int):
 	
 	if gun.gunType == gunPickupType:
 		gun.ammoCount = gun.maxAmmo
-		GlobalReferences.game_ui.ammo_bars.update_ammo_bar()
 		return
 	
 	if gun.gunType == GlobalReferences.GUNTYPES.Mixed:
 		
 		if gunPickupType == gun1.gunType:
 			gun1.ammoCount = gun1.maxAmmo
-			GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 			return
 		
 		elif gunPickupType == gun2.gunType:
 			gun2.ammoCount = gun2.maxAmmo
-			GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 			return
 		
 		gun2.queue_free() #Deletes the older of the two guns
@@ -111,8 +113,6 @@ func get_new_gun(gunPickupType : int):
 	if gun == pistolGun:
 		gun1 = newGun
 		gun = newGun
-		GlobalReferences.game_ui.ammo_bars.gun1 = gun1
-		GlobalReferences.game_ui.ammo_bars.update_ammo_bar()
 		add_child(newGun)
 		return
 	
@@ -125,12 +125,6 @@ func get_new_gun(gunPickupType : int):
 	mixedGun.parent1 = gun1
 	mixedGun.parent2 = gun2
 	gun = mixedGun
-	GlobalReferences.game_ui.ammo_bars.gun1 = gun1
-	GlobalReferences.game_ui.ammo_bars.gun2 = gun2
-	GlobalReferences.game_ui.ammo_bars.update_mixed_ammo_bar()
 	add_child(gun)
 	
-
-
-
 
