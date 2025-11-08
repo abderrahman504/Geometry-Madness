@@ -16,7 +16,9 @@ var gun1 : BaseGun
 var gun2 : BaseGun
 
 var inputVector : Vector2
-var bulletSpawnDistance : float = 25 #How far the bullet will spawn away from the player
+var bulletSpawnDistance : float:
+	get:
+		return $BulletSpawnPos.position.length()
 
 
 var pistolGun : Node

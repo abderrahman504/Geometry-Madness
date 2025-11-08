@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
 
 [node name="Shotgun" instance=ExtResource("1")]
+gunType = 3
 spread = 20.0
 pellet_count = 5
 ammoConsumption = 9

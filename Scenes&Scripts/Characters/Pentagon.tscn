@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cadusu6b6lpxg" path="res://Scenes&Scripts/Guns/HeavyCanon.tscn" id="3"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Pentagon.gd" id="4"]
 
-[node name="Pentagon" instance=ExtResource("1")]
+[node name="Pentagon" node_paths=PackedStringArray("gun") instance=ExtResource("1")]
 script = ExtResource("4")
 acceleration = 400
 deceleration = 500
@@ -13,6 +13,7 @@ min_range_to_player = 150.0
 max_range_to_player = 300.0
 max_speed = 300
 attackInterval = 5.0
+gun = NodePath("HeavyCanon")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 rotation = 1.5708
@@ -29,3 +30,6 @@ texture = ExtResource("2")
 
 [node name="HealthbarPos" parent="." index="4"]
 position = Vector2(0, -65)
+
+[node name="BulletSpawnPos" parent="." index="5"]
+position = Vector2(55, 0)

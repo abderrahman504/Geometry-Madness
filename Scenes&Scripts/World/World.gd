@@ -51,7 +51,8 @@ func on_transition_animation_finished():
 	get_tree().change_scene_to_packed(transition_scene)
 
 
-func on_enemy_died(_enemy: BaseEnemy):
+func on_enemy_died(enemy: BaseEnemy):
+	enemiesInLevel.erase(enemy)
 	# Update the score
 	score += 100
 	if tween != null:

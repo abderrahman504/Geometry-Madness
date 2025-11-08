@@ -19,18 +19,17 @@ var breakTimeCounter : float
 
 var healthbarNode: Node2D
 var myHealthBar : TextureProgressBar
-var gun : Node
-@export var bulletSpawnDistance : float = 25 ## How far the bullet will spawn from the enemy
+@export var gun : Node
+var bulletSpawnDistance : float: 
+	get: 
+		return $BulletSpawnPos.position.length() 
 var enemyType : int
 var gunDropPath : String;
 var tween : Tween
 
 
 
-
-
 func _ready():
-	#tween = GlobalReferences.tween
 	GlobalReferences.sceneRoot.enemiesInLevel.append(self)
 	player = GlobalReferences.player
 	attackIntervalCounter = attackInterval
@@ -43,6 +42,14 @@ func _ready():
 	myHealthBar.max_value = max_health
 	myHealthBar.value = health
 	GlobalReferences.sceneRoot.add_child.call_deferred(healthbarNode)
+
+
+func _process(delta):
+	handle_shooting(delta)
+
+
+func _physics_process(delta):
+	handle_movement(delta)
 
 
 func handle_movement(_delta):
@@ -71,16 +78,20 @@ func recieve_damage(damage):
 	tween = create_tween()
 	tween.tween_property(myHealthBar, "value", health, 0.2)
 	if health <= 0:
-		# the enemy_died signal calls a function that updates the score
-		EnemySignalBus.enemy_died.emit(self)
-		queue_free()
-		# I don't think the sound will play if this node is freed.
-		$DeathSound.play()
-		# Dropping the enemy gun and possible health drop
-		drop_gun()
-		try_drop_health()
-		# Need to erase this enemy from the list of active enemies.
-		GlobalReferences.sceneRoot.enemiesInLevel.erase(self)
+		die()
+		
+
+
+## Runs logic related to enemy death
+func die():
+	# the enemy_died signal calls a function that updates the score
+	EnemySignalBus.enemy_died.emit(self)
+	queue_free()
+	# I don't think the sound will play if this node is freed.
+	$DeathSound.play()
+	# Dropping the enemy gun and possible health drop
+	drop_gun()
+	try_drop_health()
 
 
 func drop_gun():

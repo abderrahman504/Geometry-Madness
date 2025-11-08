@@ -67,8 +67,6 @@ func shoot(target):
 		#Handling ammo consumption and deleting the gun when it runs out of ammo
 		parent1.ammoCount -= parent1.ammoConsumption
 		parent2.ammoCount -= parent2.ammoConsumption
-		print("gun1 max ammo = {0} | current ammo = {1}".format([parent1.maxAmmo, parent1.ammoCount]))
-		print("gun2 max ammo = {0} | current ammo = {1}".format([parent2.maxAmmo, parent2.ammoCount]))
 
 		
 		if parent1.ammoCount <= 0:

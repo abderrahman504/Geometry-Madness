@@ -27,3 +27,6 @@ stream = ExtResource("3")
 
 [node name="HealthbarPos" type="Marker2D" parent="."]
 position = Vector2(0, -65)
+
+[node name="BulletSpawnPos" type="Marker2D" parent="."]
+position = Vector2(45, 0)
