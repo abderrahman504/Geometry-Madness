@@ -24,7 +24,7 @@ var bulletSpawnDistance : float:
 	get: 
 		return $BulletSpawnPos.position.length() 
 var enemyType : int
-var gunDropPath : String;
+@export var gunDropScene : PackedScene;
 var tween : Tween
 
 
@@ -95,7 +95,7 @@ func die():
 
 
 func drop_gun():
-	var newGunDrop : Node2D = load(gunDropPath).instantiate();
+	var newGunDrop : Node2D = gunDropScene.instantiate();
 	newGunDrop.position = position
 	var randNoGen = RandomNumberGenerator.new()
 	var angle : float = randNoGen.randf_range(0, 2*PI)

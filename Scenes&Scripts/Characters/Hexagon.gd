@@ -14,7 +14,6 @@ func _ready():
 	super._ready()
 	gun = $SplitRifle
 	gun.user = self
-	gunDropPath = GlobalReferences.GunDropPaths["split rifle"];
 	enemyType = GlobalReferences.COLOURS.Yellow;
 
 

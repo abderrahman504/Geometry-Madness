@@ -14,7 +14,6 @@ func _ready():
 	super._ready()
 	gun = $Machinegun
 	gun.user = self
-	gunDropPath = GlobalReferences.GunDropPaths["machinegun"];
 	enemyType = GlobalReferences.COLOURS.Red;
 
 

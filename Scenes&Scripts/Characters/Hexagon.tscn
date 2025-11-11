@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://m6i6cdcnre43"]
+[gd_scene load_steps=6 format=3 uid="uid://m6i6cdcnre43"]
 
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://c8lcdtv5wa046" path="res://Sprites/Shapes/Hexagon.png" id="2"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Hexagon.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bqqfm31sqx0jc" path="res://Scenes&Scripts/Pickups/SplitRiflePickup.tscn" id="3_dpybk"]
 [ext_resource type="PackedScene" uid="uid://c04y8w4vvybtc" path="res://Scenes&Scripts/Guns/SplitRifle.tscn" id="4"]
 
 [node name="Hexagon" node_paths=PackedStringArray("gun") instance=ExtResource("1")]
@@ -13,6 +14,7 @@ deceleration = 200
 max_speed = 100
 attackInterval = 4.0
 gun = NodePath("SplitRifle")
+gunDropScene = ExtResource("3_dpybk")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 rotation = 0.0137139

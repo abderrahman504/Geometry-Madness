@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://celvxrlgko2b2"]
+[gd_scene load_steps=6 format=3 uid="uid://celvxrlgko2b2"]
 
 [ext_resource type="PackedScene" uid="uid://be0epg74fm1dd" path="res://Scenes&Scripts/Guns/Machinegun.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://7rg145w7wfoh" path="res://Sprites/Shapes/Square.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://pqs0864so60h" path="res://Scenes&Scripts/Pickups/MachineGunPickup.tscn" id="3_8f25b"]
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="4"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Square.gd" id="5"]
 
@@ -12,6 +13,7 @@ maxRange = 700.0
 max_speed = 100
 attackInterval = 4.0
 gun = NodePath("Machinegun")
+gunDropScene = ExtResource("3_8f25b")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 position = Vector2(-0.0191199, 0.334359)
