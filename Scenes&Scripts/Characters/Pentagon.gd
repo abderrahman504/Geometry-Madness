@@ -17,8 +17,6 @@ var slowingDown : bool = false
 
 func _ready():
 	super._ready()
-	gun = $HeavyCanon
-	gun.user = self
 	enemyType = GlobalReferences.COLOURS.Blue;
 	
 	find_destination()

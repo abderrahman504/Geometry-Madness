@@ -38,6 +38,7 @@ func _ready():
 	# Create a heathbar and add it to the world scene
 	healthbarNode = load(GlobalReferences.healthbarPath).instantiate()
 	myHealthBar = healthbarNode.get_node("TextureProgressBar")
+	gun.user = self
 	healthbarNode.myOwner = self
 	myHealthBar.max_value = max_health
 	myHealthBar.value = health

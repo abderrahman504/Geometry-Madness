@@ -12,8 +12,6 @@ var clockwiseMove : bool = false
 
 func _ready():
 	super._ready()
-	gun = $SplitRifle
-	gun.user = self
 	enemyType = GlobalReferences.COLOURS.Yellow;
 
 

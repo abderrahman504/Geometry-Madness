@@ -12,8 +12,6 @@ var rangeMidPoint : float:
 
 func _ready():
 	super._ready()
-	gun = $Machinegun
-	gun.user = self
 	enemyType = GlobalReferences.COLOURS.Red;
 
 
