@@ -1,7 +1,7 @@
 extends "res://Scenes&Scripts/Pickups/BasePickup.gd"
 
 
-var gunType: int;
+@export var gunType: GlobalReferences.GUNTYPES
 
 
 func run_pickup_effect():
