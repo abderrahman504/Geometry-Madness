@@ -64,31 +64,32 @@ func shoot(target):
 		GlobalReferences.sceneRoot.add_child(bullet)
 		
 		
-		#Handling ammo consumption and deleting the gun when it runs out of ammo
-		parent1.ammoCount -= parent1.ammoConsumption
-		parent2.ammoCount -= parent2.ammoConsumption
+	#Handling ammo consumption and deleting the gun when it runs out of ammo
+	parent1.ammoCount -= parent1.ammoConsumption
+	parent2.ammoCount -= parent2.ammoConsumption
 
+	
+	if parent1.ammoCount <= 0:
+		print("Gun 1 ran out of ammo")
+		GlobalReferences.player.gun1 = parent2
+		GlobalReferences.player.gun = parent2
+		parent1.queue_free()
+		parent1 = null
+	
+	if parent2.ammoCount <= 0:
+		print("Gun 2 ran out of ammo")
+		GlobalReferences.player.gun = parent1
+		parent2.queue_free()
+		parent2 = null
+	
+	if parent1 == null or parent2 == null:
+		print("Mixed gun ran out of ammo")
+		GlobalReferences.player.gun2 = null
+		queue_free()
+		if parent1 == null and parent2 == null:
+			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
 		
-		if parent1.ammoCount <= 0:
-			GlobalReferences.player.gun1 = parent2
-			GlobalReferences.player.gun = parent2
-			parent1.queue_free()
-			parent1 = null
-		
-		if parent2.ammoCount <= 0:
-			GlobalReferences.player.gun = parent1
-			parent2.queue_free()
-			parent2 = null
-		
-		if parent1 == null or parent2 == null:
-			GlobalReferences.player.gun2 = null
-			queue_free()
-			if parent1 == null and parent2 == null:
-				GlobalReferences.player.gun = GlobalReferences.player.pistolGun
-		
-		
-		
-		cooldown = 1/fireRate
+	cooldown = 1/fireRate
 
 
 
