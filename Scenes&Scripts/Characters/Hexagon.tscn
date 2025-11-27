@@ -27,8 +27,8 @@ texture = ExtResource("2")
 
 [node name="SplitRifle" parent="." index="2" instance=ExtResource("4")]
 
-[node name="HealthbarPos" parent="." index="4"]
-position = Vector2(0, -64)
-
-[node name="BulletSpawnPos" parent="." index="5"]
+[node name="BulletSpawnPos" parent="." index="4"]
 position = Vector2(52.845, 0)
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -54)

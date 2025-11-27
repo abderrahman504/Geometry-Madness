@@ -30,8 +30,8 @@ texture = ExtResource("2")
 
 [node name="HeavyCanon" parent="." index="2" instance=ExtResource("3")]
 
-[node name="HealthbarPos" parent="." index="4"]
-position = Vector2(0, -65)
-
-[node name="BulletSpawnPos" parent="." index="5"]
+[node name="BulletSpawnPos" parent="." index="4"]
 position = Vector2(55, 0)
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -60)
