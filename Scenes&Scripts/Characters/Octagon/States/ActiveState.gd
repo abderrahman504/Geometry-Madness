@@ -21,12 +21,13 @@ var minion_spawn_time : float:
 	get: return 1.0 / minion_spawn_rate
 
 
-func enter() -> void:
+func _enter() -> void:
 	print("Active entered")
 	minion_spawn_timer = 0
 
 
-func update(delta : float) -> void:
+func _update(delta : float) -> void:
+	super._update(delta)
 	character.handle_shooting(delta)
 	if minion_spawn_timer >= minion_spawn_time:
 		_spawn_minion()

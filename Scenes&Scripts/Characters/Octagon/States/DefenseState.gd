@@ -22,7 +22,7 @@ var charge_timer : float
 
 
 
-func enter() -> void:
+func _enter() -> void:
 	print("Defense entered")
 	charge_timer = 0
 	charge_bar.show()
@@ -30,12 +30,13 @@ func enter() -> void:
 	charge_bar.value = 0
 
 
-func exit() -> void:
+func _exit() -> void:
 	charge_bar.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func update(delta : float) -> void:
+func _update(delta : float) -> void:
+	super._update(delta)
 	print("Defense update")
 	if charge_timer >= teleport_charge_time:
 		teleport()
@@ -43,6 +44,7 @@ func update(delta : float) -> void:
 	charge_bar.value = 100 * (teleport_charge_time - charge_timer) / teleport_charge_time
 
 
+## Teleports the character to a position approp
 func teleport() -> void:
 	## Locate possible destinations
 	var floors: PackedVector2Array = GlobalReferences.level_tilemap.get_floor_tiles()
@@ -57,6 +59,9 @@ func teleport() -> void:
 			valid_positions.append(pos)
 
 	## Pick a random destination
+	if valid_positions.is_empty():
+		printerr("teleport() could not find any valid positions!")
+		return
 	var rand := randi_range(0, valid_positions.size() - 1)
 	var dest := valid_positions[rand]
 

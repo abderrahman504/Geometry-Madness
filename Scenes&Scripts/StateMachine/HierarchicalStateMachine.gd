@@ -9,10 +9,10 @@ var current : State:
 		return current
 	set(state):
 		if current != null:
-			current.exit()
+			current._exit()
 		current = state
 		if state != null:
-			state.enter()
+			state._enter()
 
 
 func start() -> void:
@@ -25,9 +25,9 @@ func stop() -> void:
 
 func _process(delta) -> void:
 	if current != null:
-		current.update(delta)
+		current._update(delta)
 
 
 func _physics_process(delta) -> void:
 	if current != null:
-		current.physics_update(delta)
+		current._physics_update(delta)
