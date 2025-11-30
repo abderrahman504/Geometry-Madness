@@ -54,8 +54,8 @@ func handle_movement(delta):
 	move_and_slide()
 	queue_redraw()
 
-func _draw():
-	_draw_vector(velocity, Vector2.ZERO)
+#func _draw():
+#	_draw_vector(velocity, Vector2.ZERO)
 
 
 func follow_parent():
@@ -64,7 +64,7 @@ func follow_parent():
 	var moveVector : Vector2 = vectorToParent.orthogonal()
 	if d_to_parent > orbitMaxRange or d_to_parent < orbitMinRange:
 		var s = 1 if d_to_parent < orbitMinRange else -1
-		moveVector = moveVector + vectorToParent * s
+		moveVector = moveVector - vectorToParent * s
 		
 	return (moveVector*speed)
 
