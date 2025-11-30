@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://b77rrjxl7avcx"]
+
+[ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1_mv2pc"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/Octagon.gd" id="2_3cxjm"]
+[ext_resource type="PackedScene" uid="uid://bpui13dsb6gju" path="res://Scenes&Scripts/Characters/shooting_minion.tscn" id="3_drwin"]
+[ext_resource type="Texture2D" uid="uid://b4crtdavddb0s" path="res://Sprites/Shapes/Octagon.png" id="3_kvf8w"]
+[ext_resource type="PackedScene" uid="uid://d21ysl3tkhca6" path="res://Scenes&Scripts/Pickups/shotgun_pickup.tscn" id="3_qtv2k"]
+[ext_resource type="PackedScene" uid="uid://dca315afep0ag" path="res://Scenes&Scripts/Guns/Shotgun.tscn" id="4_7mds0"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/OctagonFSM.gd" id="5_e5pb4"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/ActiveState.gd" id="6_33v7m"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/DefenseState.gd" id="7_8qglv"]
+[ext_resource type="Texture2D" uid="uid://cnig81cfpd4jv" path="res://Sprites/Bar64x64.png" id="10_0wsi3"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/ChargeBar.gd" id="11_n1kk8"]
+[ext_resource type="Script" path="res://KeepOnScreen.gd" id="11_w2bpj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s32aq"]
+radius = 53.0094
+
+[node name="Octagon" node_paths=PackedStringArray("gun") instance=ExtResource("1_mv2pc")]
+script = ExtResource("2_3cxjm")
+breakTime = 3.0
+gun = NodePath("Shotgun")
+gunDropScene = ExtResource("3_qtv2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_s32aq")
+
+[node name="Sprite2D" parent="." index="2"]
+modulate = Color(0, 0.682353, 0.647059, 1)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_kvf8w")
+
+[node name="BulletSpawnPos" parent="." index="4"]
+position = Vector2(68, 0)
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -60)
+
+[node name="Shotgun" parent="." index="6" instance=ExtResource("4_7mds0")]
+
+[node name="HierarchicalStateMachine" type="Node" parent="." index="7" node_paths=PackedStringArray("character", "entry")]
+script = ExtResource("5_e5pb4")
+character = NodePath("..")
+entry = NodePath("Active")
+
+[node name="Active" type="Node" parent="HierarchicalStateMachine" index="0" node_paths=PackedStringArray("minion_spawn_marker")]
+script = ExtResource("6_33v7m")
+minion_spawn_rate = 0.5
+minion_scene = ExtResource("3_drwin")
+minion_spawn_marker = NodePath("../../MinionSpawn")
+
+[node name="Defense" type="Node" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("charge_bar")]
+script = ExtResource("7_8qglv")
+charge_bar = NodePath("../../ChargeBar")
+teleport_charge_time = 5.0
+
+[node name="MinionSpawn" type="Marker2D" parent="." index="8"]
+position = Vector2(65, 71)
+
+[node name="ChargeBar" type="TextureProgressBar" parent="." index="9"]
+visible = false
+offset_left = -34.0
+offset_top = -113.0
+offset_right = 30.0
+offset_bottom = -49.0
+mouse_filter = 2
+value = 59.0
+texture_under = ExtResource("10_0wsi3")
+texture_progress = ExtResource("10_0wsi3")
+tint_under = Color(0.333333, 0.329412, 0.329412, 1)
+tint_progress = Color(0.392157, 0.509804, 0.87451, 1)
+script = ExtResource("11_n1kk8")
+
+[node name="KeepOnScreen" type="Control" parent="ChargeBar" index="0"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_w2bpj")
+_active = false
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="10"]
+position = Vector2(-1, 0.499997)
+scale = Vector2(4.2, 4.55)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="ChargeBar" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="ChargeBar" method="_on_visible_on_screen_notifier_2d_screen_exited"]
