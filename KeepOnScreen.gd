@@ -1,6 +1,6 @@
 @tool
-class_name KeepOnScreen
 extends Control
+class_name KeepOnScreen
 
 
 ## This node helps maintain its parent control on screen while keeping it as close as possible to its original position.
@@ -21,10 +21,11 @@ var _adjusted_positon : Vector2:
 
 
 func _ready() -> void:
-	var parent = get_parent()
-	if parent is Control:
-		_original_position = parent.position
-		_adjusted_positon = _original_position
+	if not Engine.is_editor_hint():
+		var parent = get_parent()
+		if parent is Control:
+			_original_position = parent.position
+			_adjusted_positon = _original_position
 
 
 func _process(delta : float) -> void:
@@ -64,6 +65,7 @@ func _update() -> void:
 
 
 func set_active(value : bool) -> void:
+	_active = value
 	if value == false:
 
 		get_parent().position = _original_position
