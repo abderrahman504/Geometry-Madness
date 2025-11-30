@@ -34,7 +34,7 @@ func _unhandled_input(event):
 			return
 		
 		get_tree().paused = true
-		$UI/PauseMenu.show()
+		$CanvasLayer/PauseMenu.show()
 
 
 func transition():

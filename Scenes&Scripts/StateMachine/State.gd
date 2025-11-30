@@ -12,17 +12,18 @@ var current : State:
 		if current != null:
 			current._exit()
 		current = state
-		state._enter()
+		if state != null:
+			state._enter()
 
 
 ## Called by the managing [code]StateMachine[/code] or [code]State[/code] to indicate that this state has been entered.
 func _enter() -> void:
-	pass
+	current = entry
 
 
 ## Called by the managing [code]StateMachine[/code] or [code]State[/code] to indicate that this state has been exited.
 func _exit() -> void:
-	pass
+	current = null
 
 
 ## Called by the managing [code]StateMachine[/code] or [code]State[/code] once every idle frame while the state is entered.

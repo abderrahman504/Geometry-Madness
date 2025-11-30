@@ -2,11 +2,8 @@ extends HierarchicalStateMachine
 class_name OctagonFSM
 
 
-@export var character : BaseEnemy:
-	set(val):
-		character = val
-		$Active.character = val
-		$Defense.character = val
+@export var character : BaseEnemy
+		
 
 ## The distance the octagon wants to be from the player before entering defense mode.
 @export var player_dist_threshold : float = 350
@@ -16,6 +13,8 @@ class_name OctagonFSM
 func _ready():
 	start()
 	$Defense.teleported.connect(_on_teleported)
+	$Defense.character = character
+	$Active.character = character
 
 
 func _process(delta):

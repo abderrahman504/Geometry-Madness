@@ -53,8 +53,8 @@ minion_spawn_marker = NodePath("../../MinionSpawn")
 
 [node name="Defense" type="Node" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("charge_bar")]
 script = ExtResource("9_5cd7u")
-min_teleport_distance = 500.0
-min_distance_to_player = 800.0
+min_teleport_distance = 700.0
+min_distance_to_player = 1000.0
 charge_bar = NodePath("../../ChargeBar")
 teleport_effect = ExtResource("13_0g2mv")
 teleport_charge_time = 5.0

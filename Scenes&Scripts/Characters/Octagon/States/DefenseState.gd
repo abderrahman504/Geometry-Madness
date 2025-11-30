@@ -5,6 +5,7 @@ signal teleported
 
 var character : BaseEnemy
 
+
 ## Teleportation will try to move the character at least this distance.
 @export var min_teleport_distance : float = 100
 ## Teleportation will try to keep at least this distance between the character and the player.
@@ -23,7 +24,7 @@ var charge_timer : float
 
 
 func _enter() -> void:
-	print("Defense entered")
+	super._enter()
 	charge_timer = 0
 	charge_bar.show()
 	charge_bar.max_value = 100
@@ -31,17 +32,17 @@ func _enter() -> void:
 
 
 func _exit() -> void:
+	super._exit()
 	charge_bar.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _update(delta : float) -> void:
 	super._update(delta)
-	print("Defense update")
 	if charge_timer >= teleport_charge_time:
 		teleport()
 	charge_timer += delta
-	charge_bar.value = 100 * (teleport_charge_time - charge_timer) / teleport_charge_time
+	charge_bar.value = 100 * charge_timer / teleport_charge_time
 
 
 ## Teleports the character to a position approp

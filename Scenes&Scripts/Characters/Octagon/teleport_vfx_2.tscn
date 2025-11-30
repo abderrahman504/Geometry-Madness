@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2o10jdd11x7v"]
+[gd_scene load_steps=8 format=3 uid="uid://fqgjrj7b7tbq"]
 
-[ext_resource type="Texture2D" uid="uid://dqw07iv6cwqgk" path="res://Sprites/Effects/particle 32x32.png" id="1_m6x0y"]
-[ext_resource type="Shader" path="res://shaders/pulse_line.gdshader" id="2_4f137"]
+[ext_resource type="Texture2D" uid="uid://dqw07iv6cwqgk" path="res://Sprites/Effects/particle 32x32.png" id="1_kwwev"]
+[ext_resource type="Shader" path="res://shaders/pulse_line.gdshader" id="2_6qvhf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tl62r"]
-shader = ExtResource("2_4f137")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlyia"]
+shader = ExtResource("2_6qvhf")
 shader_parameter/pulse_w = 0.1
 shader_parameter/pulse_duration = 7.0
-shader_parameter/default_color = Color(0.356863, 0.384314, 0.780392, 0.513726)
-shader_parameter/pulse_color = Color(0.713726, 0.364706, 1, 0.839216)
+shader_parameter/default_color = Color(0.917647, 0.0862745, 0.419608, 0.352941)
+shader_parameter/pulse_color = Color(1, 0.2, 0.415686, 0.486275)
 shader_parameter/transparency_length = 0.595
 
 [sub_resource type="Curve" id="Curve_whgpk"]
@@ -78,71 +78,40 @@ metadata/_edit_group_ = true
 [node name="CPUParticle2D" type="CPUParticles2D" parent="Stream"]
 position = Vector2(0, 20)
 rotation = -0.0698132
-amount = 10
-lifetime = 7.0
+amount = 6
+lifetime = 8.0
 preprocess = 10.0
 randomness = 0.5
-texture = ExtResource("1_m6x0y")
+texture = ExtResource("1_kwwev")
 spread = 8.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 20.0
 initial_velocity_max = 30.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
-color = Color(0.352941, 0.745098, 1, 0.584314)
+color = Color(0.921569, 0.254902, 0.615686, 0.584314)
 
 [node name="CPUParticle2D2" type="CPUParticles2D" parent="Stream"]
 position = Vector2(0, -20)
 rotation = 0.0698132
-amount = 10
-lifetime = 7.0
+amount = 6
+lifetime = 8.0
 preprocess = 10.0
 randomness = 0.5
-texture = ExtResource("1_m6x0y")
+texture = ExtResource("1_kwwev")
 spread = 8.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 20.0
 initial_velocity_max = 30.0
 scale_amount_min = 0.5
 scale_amount_max = 0.5
-color = Color(0.352941, 0.745098, 1, 0.584314)
-
-[node name="CPUParticle2D3" type="CPUParticles2D" parent="Stream"]
-position = Vector2(150, 20)
-rotation = -0.0698132
-amount = 10
-lifetime = 7.0
-preprocess = 10.0
-randomness = 0.5
-texture = ExtResource("1_m6x0y")
-spread = 8.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 20.0
-initial_velocity_max = 30.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
-color = Color(0.352941, 0.745098, 1, 0.584314)
-
-[node name="CPUParticle2D4" type="CPUParticles2D" parent="Stream"]
-position = Vector2(150, -20)
-rotation = 0.0698132
-amount = 10
-lifetime = 7.0
-preprocess = 10.0
-randomness = 0.5
-texture = ExtResource("1_m6x0y")
-spread = 8.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 20.0
-initial_velocity_max = 30.0
-scale_amount_min = 0.5
-scale_amount_max = 0.5
-color = Color(0.352941, 0.745098, 1, 0.584314)
+color = Color(0.921569, 0.254902, 0.615686, 0.584314)
 
 [node name="Line2D" type="Line2D" parent="."]
-material = SubResource("ShaderMaterial_tl62r")
+material = SubResource("ShaderMaterial_rlyia")
 position = Vector2(-50, -50)
-points = PackedVector2Array(0, 0, 300, 0)
+points = PackedVector2Array(0, 0, 200, 0)
+width = 5.0
 width_curve = SubResource("Curve_whgpk")
 texture_mode = 2
 joint_mode = 2
@@ -150,9 +119,10 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D2" type="Line2D" parent="."]
-material = SubResource("ShaderMaterial_tl62r")
+material = SubResource("ShaderMaterial_rlyia")
 position = Vector2(-50, 50)
-points = PackedVector2Array(0, 0, 105.407, 0, 300, 0)
+points = PackedVector2Array(0, 0, 200, 0)
+width = 5.0
 width_curve = SubResource("Curve_whgpk")
 texture_mode = 2
 joint_mode = 2

@@ -22,7 +22,7 @@ var minion_spawn_time : float:
 
 
 func _enter() -> void:
-	print("Active entered")
+	super._enter()
 	minion_spawn_timer = 0
 
 

@@ -32,7 +32,9 @@ var enemyPaths : Array = [
 var lvl2EnemyPaths : Array = [
 	"res://Scenes&Scripts/Characters/Lvl2Square.tscn",
 	"res://Scenes&Scripts/Characters/Lvl2Hexagon.tscn",
-	"res://Scenes&Scripts/Characters/Lvl2Pentagon.tscn"];
+	"res://Scenes&Scripts/Characters/Lvl2Pentagon.tscn",
+	"res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn",
+	];
 
 
 
