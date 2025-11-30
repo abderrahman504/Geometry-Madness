@@ -2,6 +2,7 @@ extends Node
 
 var sceneRoot : World; # This is a variable that contains the root of the world scene
 var game_ui : GameUI
+var level_tilemap : LevelTileMap
 var player : CharacterBody2D;
 var playerExists : bool = false;
 var MainMenu : String = "res://Scenes&Scripts/MainMenu/MainMenu.tscn";
@@ -21,16 +22,12 @@ var GunPaths : Dictionary = {
 	"heavy canon": "res://Scenes&Scripts/Guns/HeavyCanon.tscn",
 	"mixed gun"  : "res://Scenes&Scripts/Guns/MixedGun.tscn"};
 
-var GunDropPaths : Dictionary = {
-	"shotgun" : "res://Scenes&Scripts/Pickups/ShotgunPickup.tscn",
-	"machinegun" : "res://Scenes&Scripts/Pickups/MachineGunPickup.tscn",
-	"split rifle" : "res://Scenes&Scripts/Pickups/SplitRiflePickup.tscn",
-	"heavy canon" : "res://Scenes&Scripts/Pickups/HeavyCanonPickup.tscn"};
-
 var enemyPaths : Array = [
 	"res://Scenes&Scripts/Characters/Square.tscn", 
 	"res://Scenes&Scripts/Characters/Hexagon.tscn", 
-	"res://Scenes&Scripts/Characters/Pentagon.tscn"];
+	"res://Scenes&Scripts/Characters/Pentagon.tscn",
+	"res://Scenes&Scripts/Characters/Octagon/octagon.tscn",
+	];
 
 var lvl2EnemyPaths : Array = [
 	"res://Scenes&Scripts/Characters/Lvl2Square.tscn",
@@ -42,7 +39,7 @@ var lvl2EnemyPaths : Array = [
 #Colour-to-gun mapping
 enum GUNTYPES {Machinegun, HeavyCanon, SplitRifle, Shotgun, Pistol, Mixed} 
 enum COLOURS {Red, Blue, Yellow, Green, Grey, Orange}
-var colours : PackedColorArray = PackedColorArray([Color("f60c0c"), Color("174fe4"), Color("f6f918"), Color("03a327"), Color("666666"), Color("e87d00")])
+var colours : PackedColorArray = PackedColorArray([Color("f60c0c"), Color("174fe4"), Color("f6f918"), Color("00aea5"), Color("666666"), Color("e87d00")])
 var colourToGunMap : Array = [
 	{"gun": GUNTYPES.Machinegun, "colour": COLOURS.Red}, 
 	{"gun": GUNTYPES.HeavyCanon, "colour": COLOURS.Blue}, 

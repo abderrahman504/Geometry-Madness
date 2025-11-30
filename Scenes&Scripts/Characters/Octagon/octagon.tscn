@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b77rrjxl7avcx"]
+[gd_scene load_steps=15 format=3 uid="uid://b77rrjxl7avcx"]
 
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1_mv2pc"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/Octagon.gd" id="2_3cxjm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cnig81cfpd4jv" path="res://Sprites/Bar64x64.png" id="10_0wsi3"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/ChargeBar.gd" id="11_n1kk8"]
 [ext_resource type="Script" path="res://KeepOnScreen.gd" id="11_w2bpj"]
+[ext_resource type="PackedScene" uid="uid://b2o10jdd11x7v" path="res://Scenes&Scripts/Characters/Octagon/teleport_vfx.tscn" id="13_0g2mv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s32aq"]
 radius = 53.0094
@@ -41,6 +42,7 @@ position = Vector2(0, -60)
 [node name="HierarchicalStateMachine" type="Node" parent="." index="7" node_paths=PackedStringArray("character", "entry")]
 script = ExtResource("5_e5pb4")
 character = NodePath("..")
+player_dist_threshold = 500.0
 entry = NodePath("Active")
 
 [node name="Active" type="Node" parent="HierarchicalStateMachine" index="0" node_paths=PackedStringArray("minion_spawn_marker")]
@@ -51,7 +53,10 @@ minion_spawn_marker = NodePath("../../MinionSpawn")
 
 [node name="Defense" type="Node" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("charge_bar")]
 script = ExtResource("7_8qglv")
+min_teleport_distance = 500.0
+min_distance_to_player = 800.0
 charge_bar = NodePath("../../ChargeBar")
+teleport_effect = ExtResource("13_0g2mv")
 teleport_charge_time = 5.0
 
 [node name="MinionSpawn" type="Marker2D" parent="." index="8"]
