@@ -4,7 +4,13 @@ class_name BaseEnemy
 
 var player : CharacterBody2D
 
+
+@export var gun : Node
+var enemyType : int
+var tween : Tween
+
 # public stats
+@export_group("Stats")
 @export var max_speed: int = 50
 @export var max_health: int = 8
 var health : int
@@ -14,18 +20,21 @@ var health : int
 var attackIntervalCounter : float
 @export var breakTime: float = 5 ## The time this enemy takes between two attack intervals
 var breakTimeCounter : float
-@export var healthDropChance: float = 0.3 ## The chance of this enemy dropping a health drop
 
 
 var healthbarNode: Node2D
 var myHealthBar : TextureProgressBar
-@export var gun : Node
 var bulletSpawnDistance : float: 
 	get: 
 		return $BulletSpawnPos.position.length() 
-var enemyType : int
+
+@export_group("Drops")
 @export var gunDropScene : PackedScene;
-var tween : Tween
+@export var healthDropChance: float = 0.3 ## The chance of this enemy dropping a health drop
+
+@export_group("Death VFX")
+@export var particle_texture : Texture2D
+@export var death_vfx_scene : PackedScene
 
 
 
@@ -88,8 +97,16 @@ func die():
 	# the enemy_died signal calls a function that updates the score
 	EnemySignalBus.enemy_died.emit(self)
 	queue_free()
-	# I don't think the sound will play if this node is freed.
 	$DeathSound.play()
+	# Create death effect
+	if death_vfx_scene != null:
+		var death_effect = death_vfx_scene.instantiate()
+		var particles : GPUParticles2D = death_effect.get_node("GPUParticles2D")
+		particles.texture = particle_texture
+		particles.modulate = $Sprite2D.modulate
+		death_effect.position = position
+		GlobalReferences.sceneRoot.add_child(death_effect)
+		particles.emitting = true
 	# Dropping the enemy gun and possible health drop
 	drop_gun()
 	try_drop_health()

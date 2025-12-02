@@ -9,6 +9,9 @@ extends BaseEnemy
 ## Once it teleports at the end of the defense state it switches back to default.
 
 
+func _ready():
+	super._ready()
+	enemyType = GlobalReferences.COLOURS.Green
 
 
 func _process(delta):

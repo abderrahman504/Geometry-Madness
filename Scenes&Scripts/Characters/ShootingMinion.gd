@@ -11,7 +11,6 @@ var desired_player_range : float = 50
 func _ready() -> void:
 	super._ready()
 	enemyType = -1
-	gun.user = self
 
 
 func handle_movement(delta):

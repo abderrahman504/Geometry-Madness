@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://f8lrhqu4dsi6"]
+[gd_scene load_steps=4 format=3 uid="uid://f8lrhqu4dsi6"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/BaseEnemy.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://d31t818n51ron" path="res://Music/SoundEffects/impactPlank_medium_001.ogg" id="2"]
+[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://Scenes&Scripts/Other/death_effect.tscn" id="2_ovr8r"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1")
+death_vfx_scene = ExtResource("2_ovr8r")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

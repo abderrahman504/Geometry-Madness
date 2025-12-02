@@ -74,9 +74,14 @@ func chase_player():
 
 
 func recieve_damage(_damage):
+	die()
+
+
+func die() -> void:
 	queue_free()
 	if parent != null:
 		parent.minions.erase(self)
+
 
 
 var arrow_mode : String = "none"

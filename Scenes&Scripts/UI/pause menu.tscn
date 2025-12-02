@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes&Scripts/UI/PauseMenu.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts48v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rsas"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -19,7 +19,7 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="Shortcut" id="6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h88b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex33k"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -32,7 +32,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3cvn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvmhk"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -95,8 +95,8 @@ vertical_alignment = 1
 [node name="Resume" parent="Panel/VBoxContainer" instance=ExtResource("3")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_ts48v")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ts48v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rsas")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7rsas")
 shortcut = SubResource("6")
 text = "Resume"
 script = null
@@ -105,16 +105,16 @@ script = null
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_1h88b")
-theme_override_styles/focus = SubResource("StyleBoxFlat_1h88b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ex33k")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ex33k")
 text = "debug"
 script = null
 
 [node name="Exit" parent="Panel/VBoxContainer" instance=ExtResource("3")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_n3cvn")
-theme_override_styles/focus = SubResource("StyleBoxFlat_n3cvn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mvmhk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mvmhk")
 text = "Exit"
 script = null
 

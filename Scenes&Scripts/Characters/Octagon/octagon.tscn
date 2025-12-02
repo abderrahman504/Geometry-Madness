@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b77rrjxl7avcx"]
+[gd_scene load_steps=16 format=3 uid="uid://b77rrjxl7avcx"]
 
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1_mv2pc"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/Octagon.gd" id="2_3cxjm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4crtdavddb0s" path="res://Sprites/Shapes/Octagon.png" id="3_kvf8w"]
 [ext_resource type="PackedScene" uid="uid://d21ysl3tkhca6" path="res://Scenes&Scripts/Pickups/shotgun_pickup.tscn" id="3_qtv2k"]
 [ext_resource type="PackedScene" uid="uid://dca315afep0ag" path="res://Scenes&Scripts/Guns/Shotgun.tscn" id="4_7mds0"]
+[ext_resource type="Texture2D" uid="uid://b05fwjsgvn1ed" path="res://Sprites/Effects/octagon particle 32x32.png" id="4_oe46c"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/States/OctagonFSM.gd" id="6_cx7w3"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/States/ActiveState.gd" id="7_fi8m6"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Octagon/States/DefenseState.gd" id="9_5cd7u"]
@@ -22,6 +23,7 @@ script = ExtResource("2_3cxjm")
 breakTime = 3.0
 gun = NodePath("Shotgun")
 gunDropScene = ExtResource("3_qtv2k")
+particle_texture = ExtResource("4_oe46c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_s32aq")

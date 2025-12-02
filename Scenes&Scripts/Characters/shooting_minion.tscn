@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpui13dsb6gju"]
+[gd_scene load_steps=7 format=3 uid="uid://bpui13dsb6gju"]
 
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1_ot6xd"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/ShootingMinion.gd" id="2_i3dk1"]
 [ext_resource type="Texture2D" uid="uid://cq6sns5hh4fqo" path="res://Sprites/Shapes/minion2.png" id="3_7tv58"]
+[ext_resource type="Texture2D" uid="uid://068bkm6dbkgq" path="res://Sprites/Effects/star particle 32x32.png" id="3_bdld5"]
 [ext_resource type="PackedScene" uid="uid://b7bl27i5rj743" path="res://Scenes&Scripts/Guns/Pistol.tscn" id="3_q8r71"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4xvw"]
@@ -11,12 +12,13 @@ height = 82.0
 
 [node name="ShootingMinion" node_paths=PackedStringArray("gun") instance=ExtResource("1_ot6xd")]
 script = ExtResource("2_i3dk1")
+gun = NodePath("Pistol")
 max_speed = 100
 max_health = 2
 attackInterval = 1.0
 breakTime = 0.0
 healthDropChance = 0.0
-gun = NodePath("Pistol")
+particle_texture = ExtResource("3_bdld5")
 
 [node name="Sprite2D" parent="." index="1"]
 modulate = Color(0.635294, 0.0627451, 0.133333, 1)

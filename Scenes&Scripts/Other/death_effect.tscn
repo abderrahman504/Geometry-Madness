@@ -26,7 +26,7 @@ _data = {
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_txilj"]
-lifetime_randomness = 0.5
+lifetime_randomness = 0.7
 particle_flag_disable_z = true
 spread = 180.0
 gravity = Vector3(0, 0, 0)
@@ -40,6 +40,8 @@ linear_accel_min = -300.0
 linear_accel_max = -300.0
 radial_accel_min = -100.0
 angle_max = 180.0
+scale_min = 0.5
+scale_max = 0.5
 
 [node name="DeathEffect" type="Node2D"]
 
@@ -55,5 +57,6 @@ emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_txilj")
 texture = ExtResource("2_7cijg")
+lifetime = 0.8
 one_shot = true
 explosiveness = 1.0

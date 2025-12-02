@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3iinl8s7slmm"]
+[gd_scene load_steps=7 format=3 uid="uid://3iinl8s7slmm"]
 
 [ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://Scenes&Scripts/Characters/BaseEnemy.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d1bh7b5u7q4r0" path="res://Sprites/Shapes/Pentagon.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://cadusu6b6lpxg" path="res://Scenes&Scripts/Guns/HeavyCanon.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://ce2tsoia8xsqw" path="res://Scenes&Scripts/Pickups/HeavyCanonPickup.tscn" id="3_37ul2"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Pentagon.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://clh4w8nyggxhr" path="res://Sprites/Effects/pentagon particle 32x32.png" id="4_pvlic"]
 
 [node name="Pentagon" node_paths=PackedStringArray("gun") instance=ExtResource("1")]
 script = ExtResource("4")
@@ -12,10 +13,11 @@ acceleration = 400
 deceleration = 500
 min_range_to_player = 150.0
 max_range_to_player = 300.0
+gun = NodePath("HeavyCanon")
 max_speed = 300
 attackInterval = 5.0
-gun = NodePath("HeavyCanon")
 gunDropScene = ExtResource("3_37ul2")
+particle_texture = ExtResource("4_pvlic")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 rotation = 1.5708

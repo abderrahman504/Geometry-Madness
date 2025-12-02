@@ -5,7 +5,8 @@ extends Node2D
 var adjustedEnemySpawningTime : float = baseEnemySpawningTime
 var enemySpawningCounter : float = adjustedEnemySpawningTime
 @export var maxNumberOfEnemies: int
-@export var spawnDelayFactor: float #Positive values delay extend spawning time. negative values reduce it.
+## Positive values extend spawning time. negative values reduce it.
+@export var spawnDelayFactor: float 
 @onready var pathFollow : PathFollow2D = $Path2D/PathFollow2D
 
 func _process(delta):
