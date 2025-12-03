@@ -25,18 +25,6 @@ func _ready():
 	$BackgroundMusic.play()
 
 
-var doNotPause : bool = false
-
-func _unhandled_input(event):
-	if event.is_action_pressed("Escape"):
-		if doNotPause:
-			doNotPause = false
-			return
-		
-		get_tree().paused = true
-		$CanvasLayer/PauseMenu.show()
-
-
 func transition():
 	if (transition_scene == null): return
 	var transitionAnimation = load(GlobalReferences.Level2Transition).instantiate()

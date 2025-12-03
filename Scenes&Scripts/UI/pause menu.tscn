@@ -1,49 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqks7hjmtwpxi"]
+[gd_scene load_steps=4 format=3 uid="uid://dqks7hjmtwpxi"]
 
-[ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://ui_theme.tres" id="1_o00co"]
+[ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_hssxd"]
 [ext_resource type="Script" path="res://Scenes&Scripts/UI/PauseMenu.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rsas"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="Shortcut" id="6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ex33k"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvmhk"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="3_7kj2v"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -53,10 +12,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_o00co")
+theme = ExtResource("1_hssxd")
 script = ExtResource("2")
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,6 +29,24 @@ offset_right = 159.0
 offset_bottom = 146.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_7kj2v")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 19.0
+offset_right = 85.0
+offset_bottom = 57.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.45
+theme_override_font_sizes/font_size = 25
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -81,43 +59,17 @@ offset_right = -71.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hssxd")
 theme_override_constants/separation = 23
+alignment = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 1
-size_flags_stretch_ratio = 0.45
-theme_override_font_sizes/font_size = 25
-text = "Pause"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Resume" parent="Panel/VBoxContainer" instance=ExtResource("3")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_7rsas")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7rsas")
-shortcut = SubResource("6")
 text = "Resume"
-script = null
 
-[node name="Debug" parent="Panel/VBoxContainer" instance=ExtResource("3")]
-visible = false
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_ex33k")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ex33k")
-text = "debug"
-script = null
+text = "Quit"
 
-[node name="Exit" parent="Panel/VBoxContainer" instance=ExtResource("3")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-theme_override_styles/hover = SubResource("StyleBoxFlat_mvmhk")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mvmhk")
-text = "Exit"
-script = null
-
-[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="resume"]
-[connection signal="pressed" from="Panel/VBoxContainer/Debug" to="." method="open_debug"]
-[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="exit"]
+[connection signal="button_up" from="Panel/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="button_up" from="Panel/VBoxContainer/Exit" to="." method="exit"]

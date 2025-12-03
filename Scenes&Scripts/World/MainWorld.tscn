@@ -44,4 +44,7 @@ curve = SubResource("3")
 [node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
 position = Vector2(-384, -594)
 
+[node name="GameUI" parent="CanvasLayer" index="1"]
+mouse_filter = 2
+
 [editable path="EnemySpawner"]
