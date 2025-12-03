@@ -20,8 +20,10 @@ radius = 53.0094
 
 [node name="Octagon" node_paths=PackedStringArray("gun") instance=ExtResource("1_mv2pc")]
 script = ExtResource("2_3cxjm")
-breakTime = 3.0
 gun = NodePath("Shotgun")
+enemyType = 3
+max_health = 12
+breakTime = 3.0
 gunDropScene = ExtResource("3_qtv2k")
 particle_texture = ExtResource("4_oe46c")
 
@@ -40,6 +42,7 @@ position = Vector2(68, 0)
 position = Vector2(0, -60)
 
 [node name="Shotgun" parent="." index="6" instance=ExtResource("4_7mds0")]
+bulletDamage = 0.0
 
 [node name="HierarchicalStateMachine" type="Node" parent="." index="7" node_paths=PackedStringArray("character", "entry")]
 script = ExtResource("6_cx7w3")

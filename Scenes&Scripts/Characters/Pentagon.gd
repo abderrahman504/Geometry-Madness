@@ -17,7 +17,6 @@ var slowingDown : bool = false
 
 func _ready():
 	super._ready()
-	enemyType = GlobalReferences.COLOURS.Blue;
 	
 	find_destination()
 	moving = true

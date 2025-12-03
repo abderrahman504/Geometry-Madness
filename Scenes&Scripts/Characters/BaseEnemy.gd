@@ -6,7 +6,7 @@ var player : CharacterBody2D
 
 
 @export var gun : Node
-var enemyType : int
+@export var enemyType : GlobalReferences.COLOURS
 var tween : Tween
 
 # public stats

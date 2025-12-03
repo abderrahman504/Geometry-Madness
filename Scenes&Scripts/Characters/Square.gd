@@ -10,9 +10,6 @@ class_name Square
 var rangeMidPoint : float:
 	get: return (maxRange + minRange)/2 
 
-func _ready():
-	super._ready()
-	enemyType = GlobalReferences.COLOURS.Red;
 
 
 func _process(delta):

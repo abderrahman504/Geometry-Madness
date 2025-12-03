@@ -40,7 +40,7 @@ var lvl2EnemyPaths : Array = [
 
 #Colour-to-gun mapping
 enum GUNTYPES {Machinegun, HeavyCanon, SplitRifle, Shotgun, Pistol, Mixed} 
-enum COLOURS {Red, Blue, Yellow, Green, Grey, Orange}
+enum COLOURS {None = -1, Red, Blue, Yellow, Green, Grey, Orange}
 var colours : PackedColorArray = PackedColorArray([Color("f60c0c"), Color("174fe4"), Color("f6f918"), Color("00aea5"), Color("666666"), Color("e87d00")])
 var colourToGunMap : Array = [
 	{"gun": GUNTYPES.Machinegun, "colour": COLOURS.Red}, 

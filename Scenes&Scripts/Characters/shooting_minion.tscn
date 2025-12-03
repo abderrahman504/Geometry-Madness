@@ -13,6 +13,7 @@ height = 82.0
 [node name="ShootingMinion" node_paths=PackedStringArray("gun") instance=ExtResource("1_ot6xd")]
 script = ExtResource("2_i3dk1")
 gun = NodePath("Pistol")
+enemyType = -1
 max_speed = 100
 max_health = 2
 attackInterval = 1.0

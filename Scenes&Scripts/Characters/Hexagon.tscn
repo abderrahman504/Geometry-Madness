@@ -12,9 +12,10 @@ script = ExtResource("3")
 maxRange = 250.0
 acceleration = 150
 deceleration = 200
+gun = NodePath("SplitRifle")
+enemyType = 2
 max_speed = 100
 attackInterval = 4.0
-gun = NodePath("SplitRifle")
 gunDropScene = ExtResource("3_dpybk")
 particle_texture = ExtResource("4_5nq1s")
 

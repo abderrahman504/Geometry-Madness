@@ -10,10 +10,6 @@ var clockwiseMove : bool = false
 @export var deceleration: int = 80
 
 
-func _ready():
-	super._ready()
-	enemyType = GlobalReferences.COLOURS.Yellow;
-
 
 func _process(delta):
 	handle_shooting(delta)
