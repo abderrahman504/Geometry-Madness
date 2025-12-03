@@ -1,48 +1,60 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://yhu1j3xvstrr"]
 
 [ext_resource type="FontFile" uid="uid://8y5c0xnwdek6" path="res://Fonts/axaxax bd.ttf" id="1"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2"]
 
-[sub_resource type="FontFile" id=1]
-size = 30
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/glyphs/0/advance = Vector2(0, 0)
+cache/0/16/0/glyphs/0/offset = Vector2(0, 0)
+cache/0/16/0/glyphs/0/size = Vector2(0, 0)
+cache/0/16/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/0/glyphs/0/texture_idx = -1
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Credits" type="Node2D"]
+[node name="Credits" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_right = 1291.0
-offset_bottom = 687.0
-scale = Vector2( 0.991853, 1.04912 )
-theme_override_fonts/font = SubResource( 1 )
-text = "    Game Design: 
-	Sebastiano Zezza
-		
-	Code: 
-	Abdelrahman Khayri (Twitter @abdelrahman_kh5)
-	
-	BackGround music from that site 
-																								
-	 lv1                 Kraftamt     sturdust  ccMixter
-	 lv 2                artist            song       ccMixter  
-																								
-	sfx :
-	
-	kenney.nl
-																								
-	Art:
-	Sebastiano zezza
-	Abdelrahman Khayri
-	MedicineStorm( dungeon crawl 32x32 tiles on opengameart.org)
-	bongbonggun(bubble explosion on opengameart.org)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" parent="." instance=ExtResource( 2 )]
+[node name="Button" parent="." instance=ExtResource("2")]
 offset_left = 1022.84
 offset_top = 16.7039
 offset_right = 1091.84
 offset_bottom = 79.7039
-theme_override_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource("1")
 text = "X"
-reference_path = "res://Scenes&Scripts/UI/Menu.tscn"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Design
+Sebastiano Zezza
+		
+Code
+Abdelrahman Khayri
+	
+Music 																				
+ lv1                 Kraftamt     sturdust  ccMixter
+ lv 2                artist            song       ccMixter  
+																								
+sfx
+kenney.nl
+																								
+Art
+Sebastiano zezza
+Abdelrahman Khayri
+MedicineStorm ( dungeon crawl 32x32 tiles on opengameart.org )
+bongbonggun ( bubble explosion on opengameart.org )"
+horizontal_alignment = 1
