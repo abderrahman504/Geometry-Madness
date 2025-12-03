@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name BaseEnemy
 
 
+signal died
+
 var player : CharacterBody2D
 
 
@@ -98,6 +100,7 @@ func recieve_damage(damage):
 func die():
 	# the enemy_died signal calls a function that updates the score
 	EnemySignalBus.enemy_died.emit(self)
+	died.emit()
 	queue_free()
 	$DeathSound.play()
 	# Create death effect
