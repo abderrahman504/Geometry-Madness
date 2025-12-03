@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var enemyType : int = -1
+var enemyType : GlobalReferences.COLOURS = GlobalReferences.COLOURS.None
 
 @export var orbitMinRange : float = 150
 @export var orbitMaxRange : float = 160
