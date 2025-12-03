@@ -20,6 +20,7 @@ func _ready():
 	bulletLifeTime = (parent1.bulletLifeTime + parent2.bulletLifeTime)/2
 	bulletScaleFactor = (parent1.bulletScaleFactor + parent2.bulletScaleFactor)/2
 	bulletSpeedFactor = (parent1.bulletSpeedFactor + parent2.bulletSpeedFactor)/2
+	speed_variance = (parent1.speed_variance + parent2.speed_variance) / 2
 	piercingBullets = parent1.piercingBullets or parent2.piercingBullets
 	splittingBullets = parent1.splittingBullets or parent2.splittingBullets
 
@@ -27,20 +28,13 @@ func _ready():
 func shoot(target):
 	if cooldown > 0:
 		return
-	var bullet : Area2D
 	var gunAngle : float = (target - user.position).angle()
 	for i in range(pellet_count):
-		bullet = bulletScene.instantiate()
-		var shoot_angle := gunAngle + randf_range(-1 * spread, spread) * (PI / 180.0)
-		var shootingVector: Vector2 = Vector2.from_angle(shoot_angle) * user.bulletSpawnDistance
-		bullet.position = user.position + shootingVector
-		bullet.rotation = shoot_angle
-		bullet.direction = shootingVector.normalized()
-		#changing the bullet collision mask depending on who fired it
+		var bullet : Bullet = _create_bullet(gunAngle)
 		if user == GlobalReferences.player:
 			bullet.collision_layer |= 128 # Place bullet in player bullets layer
 			bullet.collision_mask |= 2 # Detect enemy layer
-			var gunColours : Vector2 = Vector2.ZERO
+			var gunColours : Vector2i = Vector2i.ZERO
 			for record in GlobalReferences.colourToGunMap:
 				if record["gun"] == parent1.gunType:
 					gunColours.x = record["colour"];
@@ -53,15 +47,8 @@ func shoot(target):
 			bullet.collision_layer |= 64 # Place bullet in enemy bullets layer
 			bullet.collision_mask |= 1 # Detect player layer
 		
-		bullet.splitting = splittingBullets
-		bullet.piercing = piercingBullets
-		bullet.scale *= bulletScaleFactor
-		bullet.scaleFactor = bulletScaleFactor
-		bullet.speed *= bulletSpeedFactor
-		bullet.bulletDespawnTime = bulletLifeTime
-		bullet.damage = bulletDamage
+		
 		bullet.mixed = true
-		GlobalReferences.sceneRoot.add_child(bullet)
 		
 		
 	#Handling ammo consumption and deleting the gun when it runs out of ammo

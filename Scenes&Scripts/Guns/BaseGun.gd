@@ -15,7 +15,9 @@ var ammoCount : int = maxAmmo
 
 @export_category("Bullet Properties")
 
-@export var bulletDamage: int
+## A variance applied to the bullet velocity when spawned.
+@export_range(0, 0.5) var speed_variance : float = 0
+@export var bulletDamage: float
 @export var bulletLifeTime : float = 5
 @export var bulletScaleFactor : float = 1
 @export var bulletSpeedFactor : float = 1
@@ -34,16 +36,10 @@ func shoot(target : Vector2):
 	if cooldown > 0:
 		return
 	
-	var bullet : Area2D
 	var gunAngle := (target - user.position).angle()
 	for i in range(pellet_count):
-		bullet = bulletScene.instantiate()
-		var shoot_angle :=  gunAngle + randf_range(-1 * spread, spread) * (PI / 180.0)
-		var shootingVector : Vector2 = Vector2.from_angle(shoot_angle) * user.bulletSpawnDistance
-		bullet.position = user.position + shootingVector
-		bullet.rotation = shoot_angle
-		bullet.direction = shootingVector.normalized()
-		#changing the bullet collision mask depending on who fired it
+		var bullet := _create_bullet(gunAngle)
+		# Set bullet color and collision layers/masks
 		# All bullets already detect walls
 		if user == GlobalReferences.player:
 			bullet.collision_layer |= 128 # Place bullet in player bullets layer
@@ -57,15 +53,6 @@ func shoot(target : Vector2):
 			bullet.collision_mask |= 1 # Detect player layer
 			bullet.colour_bullet(GlobalReferences.COLOURS.Orange, GlobalReferences.COLOURS.Orange)
 			bullet.shatterTint = GlobalReferences.colours[GlobalReferences.COLOURS.Orange]
-			
-		bullet.splitting = splittingBullets
-		bullet.piercing = piercingBullets
-		bullet.scale *= bulletScaleFactor
-		bullet.scaleFactor = bulletScaleFactor
-		bullet.speed *= bulletSpeedFactor
-		bullet.bulletDespawnTime = bulletLifeTime
-		bullet.damage = bulletDamage
-		GlobalReferences.sceneRoot.add_child(bullet)
 	
 	
 	if user == GlobalReferences.player:
@@ -77,6 +64,26 @@ func shoot(target : Vector2):
 	
 	cooldown = 1/fireRate
 
+
+
+func _create_bullet(gun_angle : float) -> Bullet:
+	var bullet : Bullet = bulletScene.instantiate()
+	var shoot_angle :=  gun_angle + randf_range(-1 * spread, spread) * (PI / 180.0)
+	var shootingVector : Vector2 = Vector2.from_angle(shoot_angle) * user.bulletSpawnDistance
+	bullet.position = user.position + shootingVector
+	bullet.rotation = shoot_angle
+	bullet.direction = shootingVector.normalized()
+	bullet.speed = bullet.speed * (1 + randf_range(-1 * speed_variance, speed_variance))
+		
+	bullet.splitting = splittingBullets
+	bullet.piercing = piercingBullets
+	bullet.scale *= bulletScaleFactor
+	bullet.scaleFactor = bulletScaleFactor
+	bullet.speed *= bulletSpeedFactor
+	bullet.bulletDespawnTime = bulletLifeTime
+	bullet.damage = bulletDamage
+	GlobalReferences.sceneRoot.add_child(bullet)
+	return bullet
 
 
 func _process(delta):
