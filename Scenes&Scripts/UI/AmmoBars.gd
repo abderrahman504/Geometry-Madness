@@ -4,9 +4,6 @@ class_name AmmoBars
 @onready var _bar1 : TextureProgressBar = $Bar1
 @onready var _bar2 : TextureProgressBar = $Bar2
 
-var baseTints : PackedColorArray = [Color("00258b"), Color("c00000"), Color("ffef00")]
-enum BASETINTS {Blue, Red, Yellow}
-
 
 func _ready():
 	_bar1.value = 0

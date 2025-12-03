@@ -15,11 +15,8 @@ var splitting : bool = false
 var piercing : bool = false
 var scaleFactor : float = 1
 
-enum TINTS{Blue, Red, Yellow, Orange, Grey} #The orange tint will be used by enemy bullets, the grey one will be used by the pistol bullets
-var tints : PackedColorArray = [Color("00258b"), Color("c00000"), Color("ffef00"),Color("e87d00"), Color("666666")]
-
-var innerTint : int = TINTS.Grey
-var outerTint : int = TINTS.Grey
+var innerTint : int = GlobalReferences.COLOURS.Grey
+var outerTint : int = GlobalReferences.COLOURS.Grey
 var shatterTint : Color = Color("666666")
 
 
