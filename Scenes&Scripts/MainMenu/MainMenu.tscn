@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://brrm4o1pbxjgj"]
 
-[ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://ui_theme.tres" id="1_enxyr"]
+[ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_7isr3"]
 [ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/MainMenu.gd" id="1_u0eu6"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2_hedmk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2645m"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26qhk"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -17,7 +17,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5fr4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkhul"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -30,7 +30,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_et4km"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e168b"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -43,7 +43,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgenj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uimj5"]
 resource_local_to_scene = true
 bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
 border_width_left = 2
@@ -63,7 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_enxyr")
+theme = ExtResource("1_7isr3")
 script = ExtResource("1_u0eu6")
 
 [node name="Label" type="Label" parent="."]
@@ -98,31 +98,31 @@ theme_override_constants/separation = 19
 [node name="Play" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_2645m")
-theme_override_styles/focus = SubResource("StyleBoxFlat_2645m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_26qhk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_26qhk")
 text = "Play"
 start_focused = true
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_p5fr4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_p5fr4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kkhul")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kkhul")
 text = "Tutorial"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_et4km")
-theme_override_styles/focus = SubResource("StyleBoxFlat_et4km")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e168b")
+theme_override_styles/focus = SubResource("StyleBoxFlat_e168b")
 action_mode = 0
 text = "Credits"
 
 [node name="Exit" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_jgenj")
-theme_override_styles/focus = SubResource("StyleBoxFlat_jgenj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uimj5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_uimj5")
 text = "Exit Game"
 
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]
