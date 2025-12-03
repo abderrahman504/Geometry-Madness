@@ -4,8 +4,8 @@
 
 [node name="HeavyCanon" instance=ExtResource("1")]
 gunType = 1
-ammoConsumption = 12
-bulletDamage = 3
+maxAmmo = 7
+bulletDamage = 3.0
 bulletScaleFactor = 3.0
 bulletSpeedFactor = 0.75
 piercingBullets = true

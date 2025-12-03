@@ -52,8 +52,10 @@ func shoot(target):
 		
 		
 	#Handling ammo consumption and deleting the gun when it runs out of ammo
-	parent1.ammoCount -= parent1.ammoConsumption
-	parent2.ammoCount -= parent2.ammoConsumption
+	if not parent1.infinite_ammo:
+		parent1.ammoCount -= 1
+	if not parent2.infinite_ammo:
+		parent2.ammoCount -= 1
 
 	
 	if parent1.ammoCount <= 0:

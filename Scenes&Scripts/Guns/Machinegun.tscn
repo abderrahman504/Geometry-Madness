@@ -4,5 +4,7 @@
 
 [node name="Machinegun" instance=ExtResource("1")]
 fireRate = 4.0
-ammoConsumption = 9
-bulletDamage = 2
+spread = 3.0
+maxAmmo = 20
+speed_variance = 0.1
+bulletDamage = 2.0

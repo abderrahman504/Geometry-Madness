@@ -6,5 +6,5 @@
 gunType = 3
 spread = 20.0
 pellet_count = 5
-ammoConsumption = 9
-bulletDamage = 2
+speed_variance = 0.2
+bulletDamage = 0.5

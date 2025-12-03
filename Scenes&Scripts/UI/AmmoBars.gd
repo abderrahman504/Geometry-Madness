@@ -6,6 +6,8 @@ class_name AmmoBars
 
 
 func _ready():
+	_bar1.max_value = 100
+	_bar2.max_value = 100
 	_bar1.value = 0
 	_bar2.value = 0
 
@@ -18,30 +20,23 @@ func _process(_delta):
 	
 	var ammo1 : float = 0
 	var ammo2 : float = 0
-	var max1 : float = _bar1.max_value
-	var max2 : float = _bar2.max_value
 	var color1 : Color = _bar1.tint_progress
 	var color2 : Color = _bar2.tint_progress
 	# If a normal gun is used then only one ammo bar is updated while the other is empty
 	if player.gun.gunType != GlobalReferences.GUNTYPES.Mixed:
 		# If the gun is the pistol then the main bar is also empty
 		if player.gun.gunType != GlobalReferences.GUNTYPES.Pistol:
-			ammo1 = player.gun.ammoCount
-			max1 = player.gun.maxAmmo
+			ammo1 = 100 * player.gun.ammoCount / player.gun.maxAmmo
 			color1 = GlobalReferences.colours[player.gun.gunType]
 	# Otherwise both ammo bars are updated
 	else:
-		ammo1 = player.gun1.ammoCount
-		ammo2 = player.gun2.ammoCount
-		max1 = player.gun1.maxAmmo
-		max2 = player.gun2.maxAmmo
+		ammo1 = 100 * player.gun1.ammoCount / player.gun1.maxAmmo
+		ammo2 = 100 * player.gun2.ammoCount / player.gun2.maxAmmo
 		color1 = GlobalReferences.colours[player.gun1.gunType]
 		color2 = GlobalReferences.colours[player.gun2.gunType]
 	
 	_bar1.tint_progress = color1
 	_bar2.tint_progress = color2
-	_bar1.max_value = max1
-	_bar2.max_value = max2
 	_animate_ammo_bars(ammo1, ammo2)
 
 

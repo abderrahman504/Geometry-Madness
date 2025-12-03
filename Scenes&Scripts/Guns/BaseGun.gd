@@ -9,9 +9,10 @@ class_name BaseGun
 @export var spread : float = 0
 ## How many bullets are shot.
 @export var pellet_count : int = 1
-var maxAmmo : int = 180
-var ammoCount : int = maxAmmo
-@export var ammoConsumption: int
+@export var maxAmmo : int = 10
+@export var infinite_ammo : bool = false
+@onready var ammoCount : int = maxAmmo
+#@export var ammoConsumption: int
 
 @export_category("Bullet Properties")
 
@@ -56,7 +57,8 @@ func shoot(target : Vector2):
 	
 	
 	if user == GlobalReferences.player:
-		ammoCount -= ammoConsumption
+		if not infinite_ammo:
+			ammoCount -= 1
 		if ammoCount <= 0:
 			queue_free()
 			GlobalReferences.player.gun1 = null
