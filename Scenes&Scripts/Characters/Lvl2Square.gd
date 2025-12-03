@@ -5,8 +5,8 @@ class_name Lvl2Square
 
 @export  var dodgeCooldown : float = 5 ## Cooldown duration after using dodge.
 @export var dodgeDistance : float = 35
-@export var dodgeAccel : float = 1000
-@export var dodge_max_speed : float = 1000
+@export var dodgeAccel : float = 600
+@export var dodge_max_speed : float = 500
 var dodgeCooldownCounter : float = 0
 var dodgeStartPoint : Vector2
 var dodging : bool = false
@@ -29,7 +29,8 @@ func handle_movement(delta):
 			if velocity.length() <= max_speed:
 				dodging = false
 		else:
-			velocity = velocity.move_toward(dodgeVector*dodge_max_speed, dodgeAccel*delta)
+			#velocity = velocity.move_toward(dodgeVector*dodge_max_speed, dodgeAccel*delta)
+			velocity = dodgeVector * dodge_max_speed
 	else:
 		var d_to_player = (player.position - position).length()
 		if d_to_player > maxRange or d_to_player < minRange:
