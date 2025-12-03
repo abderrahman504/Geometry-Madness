@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddkou35812lc7"]
 
-[ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://ui_theme.tres" id="1_rdomt"]
+[ext_resource type="Theme" uid="uid://dx6pkxpeig50p" path="res://assets/ui theme/kenneyUI-green.tres" id="1_rdomt"]
 [ext_resource type="Script" path="res://Scenes&Scripts/UI/ScoreCounter.gd" id="2"]
 [ext_resource type="Script" path="res://Scenes&Scripts/UI/GameUI.gd" id="2_47uen"]
 [ext_resource type="PackedScene" uid="uid://xgljuucwiqb6" path="res://Scenes&Scripts/UI/AmmoBar.tscn" id="4"]

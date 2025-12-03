@@ -1,60 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://brrm4o1pbxjgj"]
+[gd_scene load_steps=4 format=3 uid="uid://brrm4o1pbxjgj"]
 
 [ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_7isr3"]
 [ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/MainMenu.gd" id="1_u0eu6"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2_hedmk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26qhk"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkhul"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e168b"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uimj5"]
-resource_local_to_scene = true
-bg_color = Color(0.121569, 0.831373, 0.0823529, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.623529, 0.0156863, 0.705882, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -98,31 +46,23 @@ theme_override_constants/separation = 19
 [node name="Play" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_26qhk")
-theme_override_styles/focus = SubResource("StyleBoxFlat_26qhk")
 text = "Play"
 start_focused = true
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_kkhul")
-theme_override_styles/focus = SubResource("StyleBoxFlat_kkhul")
 text = "Tutorial"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_e168b")
-theme_override_styles/focus = SubResource("StyleBoxFlat_e168b")
 action_mode = 0
 text = "Credits"
 
 [node name="Exit" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_uimj5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_uimj5")
 text = "Exit Game"
 
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]

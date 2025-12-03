@@ -1,8 +1,7 @@
-[gd_resource type="Theme" load_steps=35 format=3 uid="uid://boe7op2ax2trp"]
+[gd_resource type="Theme" load_steps=34 format=3 uid="uid://boe7op2ax2trp"]
 
 [ext_resource type="Texture2D" uid="uid://d00ws7wljnit4" path="res://assets/ui theme/UIpack_vector.svg" id="1"]
 [ext_resource type="FontFile" uid="uid://ja7i36shm83e" path="res://assets/ui theme/kenvector_future.ttf" id="2"]
-[ext_resource type="FontFile" uid="uid://8y5c0xnwdek6" path="res://Fonts/axaxax bd.ttf" id="3_pj7kx"]
 
 [sub_resource type="StyleBoxTexture" id="1"]
 texture = ExtResource("1")
@@ -184,7 +183,6 @@ texture_margin_bottom = 1.0
 region_rect = Rect2(1051, 317, 4, 100)
 
 [resource]
-default_font = ExtResource("3_pj7kx")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.9, 0.9, 0.9, 0.2)
 Button/colors/font_hover_color = Color(0.34902, 0.34902, 0.34902, 1)
