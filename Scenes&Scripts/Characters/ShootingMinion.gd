@@ -8,10 +8,6 @@ class_name ShootingPursuer
 var desired_player_range : float = 50
 
 
-func _ready() -> void:
-	super._ready()
-	enemyType = -1
-
 
 func handle_movement(delta):
 	if not GlobalReferences.playerExists:

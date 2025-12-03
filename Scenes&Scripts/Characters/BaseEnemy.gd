@@ -7,6 +7,8 @@ var player : CharacterBody2D
 
 @export var gun : Node
 @export var enemyType : GlobalReferences.COLOURS
+## The score gained by killing this enemy
+@export var score_value : int = 100;
 var tween : Tween
 
 # public stats

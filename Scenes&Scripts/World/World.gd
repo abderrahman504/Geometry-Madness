@@ -42,7 +42,7 @@ func on_transition_animation_finished():
 func on_enemy_died(enemy: BaseEnemy):
 	enemiesInLevel.erase(enemy)
 	# Update the score
-	score += 100
+	score += enemy.score_value
 	if tween != null:
 		tween.kill()
 	tween = create_tween()
