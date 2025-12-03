@@ -7,6 +7,8 @@ class_name BaseGun
 @export var fireRate: float
 ## The maximum angle(degrees) away from the gun center that a bullet may be shot at.
 @export var spread : float = 0
+## A curve describing the probability distribution for the spread of pellets. If this is null then a uniform distribution is used
+@export var spread_distribution : Curve
 ## How many bullets are shot.
 @export var pellet_count : int = 1
 @export var maxAmmo : int = 10
@@ -18,7 +20,7 @@ class_name BaseGun
 
 ## A variance applied to the bullet velocity when spawned.
 @export_range(0, 0.5) var speed_variance : float = 0
-@export var bulletDamage: float
+@export var bulletDamage: float = 1
 @export var bulletLifeTime : float = 5
 @export var bulletScaleFactor : float = 1
 @export var bulletSpeedFactor : float = 1
@@ -70,7 +72,12 @@ func shoot(target : Vector2):
 
 func _create_bullet(gun_angle : float) -> Bullet:
 	var bullet : Bullet = bulletScene.instantiate()
-	var shoot_angle :=  gun_angle + randf_range(-1 * spread, spread) * (PI / 180.0)
+	var shoot_angle : float
+	if spread_distribution == null:
+		shoot_angle = gun_angle + randf_range(-1 * spread, spread) * (PI / 180.0)
+	else:
+		var rand := randf_range(-1, 1)
+		shoot_angle = gun_angle + sign(rand) * spread_distribution.sample_baked(abs(rand)) * (PI/180.0)
 	var shootingVector : Vector2 = Vector2.from_angle(shoot_angle) * user.bulletSpawnDistance
 	bullet.position = user.position + shootingVector
 	bullet.rotation = shoot_angle

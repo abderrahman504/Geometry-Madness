@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dca315afep0ag"]
+[gd_scene load_steps=3 format=3 uid="uid://dca315afep0ag"]
 
 [ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://Scenes&Scripts/Guns/BaseGun.tscn" id="1"]
+
+[sub_resource type="Curve" id="Curve_fmprd"]
+max_value = 20.0
+_data = [Vector2(0, 20), 0.0, -55.7321, 0, 0, Vector2(1, 0), -34.8326, 0.0, 0, 0]
+point_count = 2
 
 [node name="Shotgun" instance=ExtResource("1")]
 gunType = 3
 spread = 20.0
+spread_distribution = SubResource("Curve_fmprd")
 pellet_count = 5
 speed_variance = 0.2
 bulletDamage = 0.5
