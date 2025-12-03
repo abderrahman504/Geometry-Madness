@@ -7,7 +7,6 @@ var speed : float = 350;
 var deceleration : float = 500;
 
 
-var player : CharacterBody2D
 @export var pickUpRange : float = 75;
 @export var lifeSpan : float = 8;
 @export var fadeTime : float = 5;
@@ -18,13 +17,13 @@ var beingPickedUp : bool = false;
 
 
 func _ready():
-	player = GlobalReferences.player
 	velocity = directionVector * speed
 
 
 func _process(delta):
 	if not GlobalReferences.playerExists:
 		return
+	var player = GlobalReferences.player
 	position += velocity * delta
 	velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	var distanceFromPlayer = (position - player.position).length()
@@ -54,7 +53,7 @@ func run_fade_effect(delta):
 func get_picked_up():
 	beingPickedUp = true
 	var tween : Tween = create_tween()
-	tween.tween_property(self, "position", player.position, 0.1) # Tween nodes are useful for animating properties in code, here we animate the position of the pick up to the player position
+	tween.tween_property(self, "position", GlobalReferences.player.position, 0.1) # Tween nodes are useful for animating properties in code, here we animate the position of the pick up to the player position
 	tween.finished.connect(move_to_player_finished)
 	
 	

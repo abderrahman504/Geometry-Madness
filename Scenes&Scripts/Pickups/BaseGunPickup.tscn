@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://c3kaf4s5a1uaw"]
 
-[ext_resource path="res://Sprites/Shapes/Circle.png" type="Texture2D" id=1]
-[ext_resource path="res://Scenes&Scripts/Pickups/BasePickup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes&Scripts/Pickups/BaseGunPickup.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://c3ww86xf6nq03" path="res://Sprites/Shapes/Circle.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://dwn6a0smtjimd" path="res://Scenes&Scripts/Pickups/BasePickup.tscn" id="2"]
+[ext_resource type="Script" path="res://Scenes&Scripts/Pickups/BaseGunPickup.gd" id="3"]
 
-[node name="BaseGunPickup" instance=ExtResource( 2 )]
-script = ExtResource( 3 )
+[node name="BaseGunPickup" instance=ExtResource("2")]
+script = ExtResource("3")
+gunType = 0
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 1 )
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1")

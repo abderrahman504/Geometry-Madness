@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=7 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cyeeem8fajuux" path="res://Scenes&Scripts/World/Level2.tscn" id="2_oue0b"]
 [ext_resource type="PackedScene" uid="uid://bd1wi665ltel1" path="res://Scenes&Scripts/World/TileMap.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="5"]
-[ext_resource type="PackedScene" uid="uid://m6i6cdcnre43" path="res://Scenes&Scripts/Characters/Hexagon.tscn" id="6_mo0y6"]
 
 [sub_resource type="Curve2D" id="3"]
 _data = {
@@ -44,8 +43,5 @@ curve = SubResource("3")
 
 [node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
 position = Vector2(-384, -594)
-
-[node name="Hexagon" parent="." index="8" instance=ExtResource("6_mo0y6")]
-position = Vector2(628, 529)
 
 [editable path="EnemySpawner"]

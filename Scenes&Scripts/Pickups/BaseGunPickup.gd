@@ -5,5 +5,5 @@ extends "res://Scenes&Scripts/Pickups/BasePickup.gd"
 
 
 func run_pickup_effect():
-	player.get_new_gun(gunType)
+	GlobalReferences.player.get_new_gun(gunType)
 

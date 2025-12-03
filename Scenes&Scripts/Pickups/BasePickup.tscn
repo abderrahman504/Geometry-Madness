@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dwn6a0smtjimd"]
 
-[ext_resource path="res://Scenes&Scripts/Pickups/BasePickup.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://Scenes&Scripts/Pickups/BasePickup.gd" id="2"]
 
 [node name="BasePickup" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 lifeSpan = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
