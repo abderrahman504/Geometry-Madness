@@ -1,20 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=15 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://cyeeem8fajuux" path="res://Scenes&Scripts/World/Level2.tscn" id="2_oue0b"]
 [ext_resource type="PackedScene" uid="uid://bd1wi665ltel1" path="res://Scenes&Scripts/World/TileMap.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="5"]
-
-[sub_resource type="Curve2D" id="3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -384, -594, 0, 0, 0, 0, 1729, -594, 0, 0, 0, 0, 1732, 786, 0, 0, 0, 0, -386, 784, 0, 0, 0, 0, -384, -592)
-}
-point_count = 5
+[ext_resource type="PackedScene" uid="uid://bu6ngkdrp1l2p" path="res://Scenes&Scripts/Characters/Lvl2Square.tscn" id="6_bo27v"]
+[ext_resource type="PackedScene" uid="uid://m6i6cdcnre43" path="res://Scenes&Scripts/Characters/Hexagon.tscn" id="6_r5i17"]
+[ext_resource type="PackedScene" uid="uid://3iinl8s7slmm" path="res://Scenes&Scripts/Characters/Pentagon.tscn" id="7_6ocxm"]
+[ext_resource type="PackedScene" uid="uid://celvxrlgko2b2" path="res://Scenes&Scripts/Characters/Square.tscn" id="8_3wdg8"]
+[ext_resource type="PackedScene" uid="uid://b77rrjxl7avcx" path="res://Scenes&Scripts/Characters/Octagon/octagon.tscn" id="9_ju4pd"]
+[ext_resource type="PackedScene" uid="uid://sjvhpyf6da0q" path="res://Scenes&Scripts/Characters/Lvl2Pentagon.tscn" id="11_b2k5h"]
+[ext_resource type="PackedScene" uid="uid://bdb0wo8qvgt7f" path="res://Scenes&Scripts/Characters/Lvl2Hexagon.tscn" id="12_187ll"]
+[ext_resource type="PackedScene" uid="uid://c8hyxdxnynsbd" path="res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn" id="13_xpe4i"]
+[ext_resource type="PackedScene" uid="uid://dnvg8bgt3otoc" path="res://Scenes&Scripts/World/music_player.tscn" id="14_olkut"]
+[ext_resource type="PackedScene" uid="uid://d21ysl3tkhca6" path="res://Scenes&Scripts/Pickups/shotgun_pickup.tscn" id="14_xsicu"]
 
 [node name="MainWorld" instance=ExtResource("1")]
 transition_score = 2000
-transition_scene = ExtResource("2_oue0b")
 TLCorner = Vector2(225, -60)
 BRCorner = Vector2(1630, 1025)
 
@@ -33,18 +35,18 @@ deceleration = 1000.0
 [node name="DeathSound" parent="." index="4"]
 stream = ExtResource("5")
 
-[node name="EnemySpawner" parent="." index="6" instance=ExtResource("2")]
-position = Vector2(288, 112)
-timeBeforeLevelStart = 5
-spawnDelayFactor = 1.0
-
-[node name="Path2D" parent="EnemySpawner" index="0"]
-curve = SubResource("3")
-
-[node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
-position = Vector2(-384, -594)
-
 [node name="GameUI" parent="CanvasLayer" index="1"]
 mouse_filter = 2
 
-[editable path="EnemySpawner"]
+[node name="EnemySpawner" parent="." index="6" instance=ExtResource("2")]
+position = Vector2(288, 112)
+lvl1_enemies = Array[PackedScene]([ExtResource("6_r5i17"), ExtResource("7_6ocxm"), ExtResource("8_3wdg8"), ExtResource("9_ju4pd")])
+lvl2_enemies = Array[PackedScene]([ExtResource("6_bo27v"), ExtResource("11_b2k5h"), ExtResource("12_187ll"), ExtResource("13_xpe4i")])
+start_break_time = 2.0
+base_enemy_spawn_time = 3.0
+maxNumberOfEnemies = 12
+
+[node name="ShotgunPickup" parent="." index="7" instance=ExtResource("14_xsicu")]
+position = Vector2(651, 395)
+
+[node name="MusicPlayer" parent="." index="8" instance=ExtResource("14_olkut")]

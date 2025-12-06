@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal died
+
 @export var maxSpeed: float
 @export var acceleration: float
 @export var deceleration: float
@@ -73,11 +75,9 @@ func recieve_damage(damage):
 	tween = create_tween()
 	tween.tween_property(myHealthBar, "value", health, 0.2)
 	if health <= 0:
-		GlobalReferences.sceneRoot.get_node("DeathSound").play()
 		queue_free()
 		GlobalReferences.playerExists = false
-		var deathMenu = load(GlobalReferences.DeathMenu).instantiate()
-		GlobalReferences.game_ui.add_child(deathMenu)
+		died.emit()
 
 
 func get_new_gun(gunPickupType : int):

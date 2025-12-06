@@ -43,7 +43,6 @@ var bulletSpawnDistance : float:
 
 
 func _ready():
-	GlobalReferences.sceneRoot.enemiesInLevel.append(self)
 	player = GlobalReferences.player
 	attackIntervalCounter = attackInterval
 	breakTimeCounter = 1

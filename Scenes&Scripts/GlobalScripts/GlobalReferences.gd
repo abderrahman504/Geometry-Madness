@@ -22,21 +22,6 @@ var GunPaths : Dictionary = {
 	"heavy canon": "res://Scenes&Scripts/Guns/HeavyCanon.tscn",
 	"mixed gun"  : "res://Scenes&Scripts/Guns/MixedGun.tscn"};
 
-var enemyPaths : Array = [
-	"res://Scenes&Scripts/Characters/Square.tscn", 
-	"res://Scenes&Scripts/Characters/Hexagon.tscn", 
-	"res://Scenes&Scripts/Characters/Pentagon.tscn",
-	"res://Scenes&Scripts/Characters/Octagon/octagon.tscn",
-	];
-
-var lvl2EnemyPaths : Array = [
-	"res://Scenes&Scripts/Characters/Lvl2Square.tscn",
-	"res://Scenes&Scripts/Characters/Lvl2Hexagon.tscn",
-	"res://Scenes&Scripts/Characters/Lvl2Pentagon.tscn",
-	"res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn",
-	];
-
-
 
 #Colour-to-gun mapping
 enum GUNTYPES {Machinegun, HeavyCanon, SplitRifle, Shotgun, Pistol, Mixed} 
