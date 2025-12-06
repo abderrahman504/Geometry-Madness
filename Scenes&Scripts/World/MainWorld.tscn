@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=16 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://1670xiuyjea6" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bd1wi665ltel1" path="res://Scenes&Scripts/World/TileMap.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="5"]
 [ext_resource type="PackedScene" uid="uid://bu6ngkdrp1l2p" path="res://Scenes&Scripts/Characters/Lvl2Square.tscn" id="6_bo27v"]
@@ -14,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://c8hyxdxnynsbd" path="res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn" id="13_xpe4i"]
 [ext_resource type="PackedScene" uid="uid://dnvg8bgt3otoc" path="res://Scenes&Scripts/World/music_player.tscn" id="14_olkut"]
 [ext_resource type="PackedScene" uid="uid://d21ysl3tkhca6" path="res://Scenes&Scripts/Pickups/shotgun_pickup.tscn" id="14_xsicu"]
+
+[sub_resource type="Curve2D" id="Curve2D_wgd75"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -423, -619, 0, 0, 0, 0, 1752, -617, 0, 0, 0, 0, 1751, 847, 0, 0, 0, 0, -409, 850, 0, 0, 0, 0, -423, -606)
+}
+point_count = 5
 
 [node name="MainWorld" instance=ExtResource("1")]
 transition_score = 2000
@@ -46,7 +52,17 @@ start_break_time = 2.0
 base_enemy_spawn_time = 3.0
 maxNumberOfEnemies = 12
 
+[node name="Path2D" parent="EnemySpawner" index="0"]
+curve = SubResource("Curve2D_wgd75")
+
+[node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
+position = Vector2(5.51261, 849.424)
+rotation = 3.1402
+progress = 5384.52
+
 [node name="ShotgunPickup" parent="." index="7" instance=ExtResource("14_xsicu")]
 position = Vector2(651, 395)
 
 [node name="MusicPlayer" parent="." index="8" instance=ExtResource("14_olkut")]
+
+[editable path="EnemySpawner"]

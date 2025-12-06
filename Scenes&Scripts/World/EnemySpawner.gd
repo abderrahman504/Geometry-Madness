@@ -38,7 +38,7 @@ func _process(delta):
 	if _spawned_enemies_count >= maxNumberOfEnemies:
 		return
 	
-
+	print("Spawn timer = ", enemy_spawn_timer)
 	#Counting down until the next enemy spawn
 	enemy_spawn_timer -= delta
 	if enemy_spawn_timer <= 0:

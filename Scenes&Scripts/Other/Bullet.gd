@@ -9,7 +9,7 @@ var bulletDespawnTime : float = 5
 var timeToEnableCollision : float = 0.1
 var damage : float
 var damageBoostFactor : float = 2
-var mixedDamageBoostFactor : float = 1.5
+var mixedDamageBoostFactor : float = 2
 var mixed : bool = false
 var splitting : bool = false
 var piercing : bool = false
