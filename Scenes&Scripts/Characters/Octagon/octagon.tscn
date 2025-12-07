@@ -50,19 +50,19 @@ character = NodePath("..")
 player_dist_threshold = 500.0
 entry = NodePath("Active")
 
-[node name="Active" type="Node" parent="HierarchicalStateMachine" index="0" node_paths=PackedStringArray("minion_spawn_marker")]
+[node name="Active" type="Node" parent="HierarchicalStateMachine" index="0"]
 script = ExtResource("7_fi8m6")
-minion_spawn_rate = 0.3
-minion_scene = ExtResource("3_drwin")
-minion_spawn_marker = NodePath("../../MinionSpawn")
 
-[node name="Defense" type="Node" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("charge_bar")]
+[node name="Defense" type="Node" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("charge_bar", "minion_spawn_marker")]
 script = ExtResource("9_5cd7u")
 min_teleport_distance = 700.0
 min_distance_to_player = 1000.0
 charge_bar = NodePath("../../ChargeBar")
 teleport_effect = ExtResource("13_0g2mv")
 teleport_charge_time = 5.0
+minion_spawn_rate = 0.5
+minion_scene = ExtResource("3_drwin")
+minion_spawn_marker = NodePath("../../MinionSpawn")
 
 [node name="MinionSpawn" type="Marker2D" parent="." index="8"]
 position = Vector2(65, 71)
