@@ -85,12 +85,12 @@ func create_minion():
 	
 
 
-func recieve_damage(damage):
-	super.recieve_damage(damage)
+func recieve_damage(damage : float, impact_pos : Vector2):
+	super.recieve_damage(damage, impact_pos)
 	
 	if health <= 0:
 		for m in minions:
 			m.parent = null
-		
+
 
 

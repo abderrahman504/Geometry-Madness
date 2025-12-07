@@ -17,7 +17,7 @@ var tween : Tween
 @export_group("Stats")
 @export var max_speed: int = 50
 @export var max_health: int = 8
-var health : int
+var health : float
 
 # private stats
 @export var attackInterval: float = 2 ## The period of time this enemy attacks for before taking a break
@@ -36,9 +36,10 @@ var bulletSpawnDistance : float:
 @export var gunDropScene : PackedScene;
 @export var healthDropChance: float = 0.3 ## The chance of this enemy dropping a health drop
 
-@export_group("Death VFX")
+@export_group("VFX")
 @export var particle_texture : Texture2D
 @export var death_vfx_scene : PackedScene
+@export var hit_vfx_scene : PackedScene
 
 
 
@@ -84,7 +85,7 @@ func handle_shooting(delta):
 	breakTimeCounter -= delta
 
 
-func recieve_damage(damage):
+func recieve_damage(damage : float, impact_pos : Vector2):
 	health -= damage
 	if tween != null:
 		tween.kill()
@@ -92,6 +93,18 @@ func recieve_damage(damage):
 	tween.tween_property(myHealthBar, "value", health, 0.2)
 	if health <= 0:
 		die()
+	else:
+		# Create hit effect
+		var hit_effect = hit_vfx_scene.instantiate()
+		var particles : GPUParticles2D = hit_effect.get_node("GPUParticles2D")
+		particles.texture = particle_texture
+		particles.modulate = $Sprite2D.modulate
+		particles.amount = 2 * damage
+		var explosion_dir := (impact_pos - position).normalized()
+
+		hit_effect.position = impact_pos
+		hit_effect.rotation = explosion_dir.angle()
+		GlobalReferences.sceneRoot.add_child(hit_effect)
 		
 
 
@@ -110,7 +123,6 @@ func die():
 		particles.modulate = $Sprite2D.modulate
 		death_effect.position = position
 		GlobalReferences.sceneRoot.add_child(death_effect)
-		particles.emitting = true
 	# Dropping the enemy gun and possible health drop
 	drop_gun()
 	try_drop_health()

@@ -53,7 +53,7 @@ func _on_Bullet_body_entered(body):
 			if body.enemyType == innerTint or body.enemyType == outerTint: #If the enemy colour is the same as either of the bullet's colours
 				appliedDamage = (damage * mixedDamageBoostFactor) if mixed else (damage * damageBoostFactor)
 		
-		body.recieve_damage(appliedDamage)
+		body.recieve_damage(appliedDamage, position)
 		destroyEffect = load(GlobalReferences.hitEffect).instantiate()
 	else:
 		destroyEffect = load(GlobalReferences.shatterEffect).instantiate()

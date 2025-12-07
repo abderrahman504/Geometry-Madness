@@ -26,8 +26,8 @@ func _physics_process(delta):
 		for i in range(get_slide_collision_count()-1):
 			var collision : KinematicCollision2D = get_slide_collision(i)
 			if collision.get_collider() == player:
-				player.recieve_damage(touchDamage)
-				recieve_damage(1)
+				player.recieve_damage(touchDamage, position)
+				recieve_damage(1, Vector2.ZERO)
 				break
 				
 
@@ -73,7 +73,7 @@ func chase_player():
 	return ((player.position - position).normalized() * speed)
 
 
-func recieve_damage(_damage):
+func recieve_damage(_damage : float, _impact_pos : Vector2):
 	die()
 
 

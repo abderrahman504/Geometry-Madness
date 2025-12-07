@@ -7,7 +7,7 @@ signal died
 @export var acceleration: float
 @export var deceleration: float
 @export var maxHealth: int
-var health : int
+var health : float
 var healthbar_node : Node2D
 var myHealthBar : TextureProgressBar
 ## The main gun used by the player.
@@ -68,7 +68,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func recieve_damage(damage):
+func recieve_damage(damage: float, impact_pos : Vector2):
 	health -= damage
 	if tween != null:
 		tween.kill()
@@ -78,6 +78,14 @@ func recieve_damage(damage):
 		queue_free()
 		GlobalReferences.playerExists = false
 		died.emit()
+
+
+func heal(amount : float) -> void:
+	health = min(maxHealth, health + amount)
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(myHealthBar, "value", health, 0.2)
 
 
 func get_new_gun(gunPickupType : int):
