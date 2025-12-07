@@ -15,13 +15,6 @@ var destination : Vector2 = Vector2(-1, -1)
 var slowingDown : bool = false
 
 
-func _ready():
-	super._ready()
-	
-	find_destination()
-	moving = true
-	attackIntervalCounter = attackInterval
-
 
 func handle_movement(delta):
 	# The pentagon picks a random point near the player, moves to it, then starts shooting. This cycle repeats.
@@ -88,34 +81,3 @@ func find_destination():
 		point.y = -1* point.y
 
 	destination = point + playerPos
-
-	## I guess this is less computationly intensive than picking a random angle and using sin,cos to get the x,y of a point? BUT AT WHAT COST!!!! :'(
-	## The min,max lines are to insure the x bounds aren't outside the walls of the square arena.
-	#var r : float = max_range_to_player
-	#var x : float
-	#var xUpperBound : float
-	#var xLowerBound : float
-	#var y : float
-	#var yUpperBound : float
-	#var yLowerBound : float
-	
-	## This code picks a random position within a circle around the player as the destination.
-	## Essentially it picks a random point within a certain distance of the player.
-	#xLowerBound = max(playerPos.x - r, GlobalReferences.sceneRoot.TLCorner.x)
-	#xUpperBound = min(playerPos.x + r, GlobalReferences.sceneRoot.BRCorner.x)
-	#var randNoGen = RandomNumberGenerator.new()
-	#x = randNoGen.randi_range(xLowerBound, xUpperBound)
-	
-	
-	#var R = sqrt(r*r - (x-playerPos.x)*(x-playerPos.x))
-	#yLowerBound = max(playerPos.y - R, GlobalReferences.sceneRoot.TLCorner.y)
-	#yUpperBound = min(playerPos.y + R, GlobalReferences.sceneRoot.BRCorner.y)
-	
-	#y = randNoGen.randi_range(yLowerBound, yUpperBound)
-	#destination = Vector2(x,y)
-
-
-
-
-
-
