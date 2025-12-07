@@ -1,75 +1,84 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://c71fmotcasw23"]
 
-[ext_resource type="Texture2D" uid="uid://ogkdl32cevg4" path="res://Sprites/tileset2.png" id="1"]
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="1_d7oln"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://Scenes&Scripts/MainMenu/Menubutton.tscn" id="2"]
 [ext_resource type="FontFile" uid="uid://bsjxc8rcqrbcg" path="res://Fonts/neon_pixel-7.ttf" id="3"]
 [ext_resource type="FontFile" uid="uid://8y5c0xnwdek6" path="res://Fonts/axaxax bd.ttf" id="4"]
+[ext_resource type="Theme" uid="uid://ccq1qhp3whpta" path="res://assets/ui theme/kenneyUI-red.tres" id="4_jy6k8"]
 
-[sub_resource type="FontFile" id=1]
-size = 28
-outline_color = Color( 0.933333, 0.0627451, 0.0627451, 1 )
-font_data = ExtResource( 4 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="FontFile" id=2]
-size = 28
-outline_size = 2
-outline_color = Color( 0.258824, 0.278431, 0.815686, 1 )
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="you died" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.54755
 offset_top = -1.54755
 offset_right = 1.54761
 offset_bottom = -1.54755
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d7oln")
 
-[node name="tileset2" type="NinePatchRect" parent="."]
+[node name="tileset2" type="Panel" parent="."]
+self_modulate = Color(0.592157, 0.592157, 0.592157, 1)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 425.0
 offset_top = 170.0
 offset_right = -426.0
 offset_bottom = -307.0
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="tileset2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = -122.0
-theme_override_fonts/font = SubResource( 1 )
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("1")
 text = "you died!"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Retry" parent="tileset2" instance=ExtResource( 2 )]
+[node name="Retry" parent="tileset2" instance=ExtResource("2")]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 237.0
 offset_top = 164.0
 offset_right = -51.0
 offset_bottom = -35.7895
-theme_override_fonts/font = SubResource( 2 )
+theme = ExtResource("4_jy6k8")
+theme_override_fonts/font = SubResource("2")
 text = "Retry"
-reference_path = "res://Scenes&Scripts/Other/MainWorld.tscn"
 
-[node name="Exit" parent="tileset2" instance=ExtResource( 2 )]
+[node name="Exit" parent="tileset2" instance=ExtResource("2")]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 51.2106
 offset_top = 164.0
 offset_right = -237.789
 offset_bottom = -35.0
-theme_override_fonts/font = SubResource( 2 )
+theme = ExtResource("4_jy6k8")
+theme_override_fonts/font = SubResource("2")
 text = "Exit"
-reference_path = "res://Scenes&Scripts/UI/Menu.tscn"

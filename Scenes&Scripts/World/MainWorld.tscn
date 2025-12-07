@@ -56,7 +56,7 @@ maxNumberOfEnemies = 12
 curve = SubResource("Curve2D_wgd75")
 
 [node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
-position = Vector2(5.51261, 849.424)
+position = Vector2(5.50919, 849.424)
 rotation = 3.1402
 progress = 5384.52
 
