@@ -22,8 +22,8 @@ var bulletSpawnDistance : float:
 	get:
 		return $BulletSpawnPos.position.length()
 
-
-var pistolGun : Node
+## The gun the player goes back to when he runs out of ammo.
+@export var base_gun : BaseGun
 var tween : Tween
 
 func _init():
@@ -40,11 +40,8 @@ func _ready():
 	myHealthBar.max_value = maxHealth
 	myHealthBar.value = health
 	GlobalReferences.sceneRoot.add_child.call_deferred(healthbar_node)
-	#spawning the pistol weapon for the player
-	pistolGun = load(GlobalReferences.GunPaths["pistol"]).instantiate()
-	pistolGun.user = self
-	gun = pistolGun
-	add_child(pistolGun)
+	gun = base_gun
+	base_gun.user = self
 
 
 
@@ -120,7 +117,7 @@ func get_new_gun(gunPickupType : int):
 	newGun.user = self
 	
 	
-	if gun == pistolGun:
+	if gun == base_gun:
 		gun1 = newGun
 		gun = newGun
 		add_child(newGun)

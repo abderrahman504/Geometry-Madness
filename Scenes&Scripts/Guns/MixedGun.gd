@@ -76,7 +76,7 @@ func shoot(target):
 		GlobalReferences.player.gun2 = null
 		queue_free()
 		if parent1 == null and parent2 == null:
-			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
+			GlobalReferences.player.gun = GlobalReferences.player.base_gun
 		
 	cooldown = 1/fireRate
 

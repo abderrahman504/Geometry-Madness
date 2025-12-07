@@ -64,7 +64,7 @@ func shoot(target : Vector2):
 		if ammoCount <= 0:
 			queue_free()
 			GlobalReferences.player.gun1 = null
-			GlobalReferences.player.gun = GlobalReferences.player.pistolGun
+			GlobalReferences.player.gun = GlobalReferences.player.base_gun
 	
 	cooldown = 1/fireRate
 
