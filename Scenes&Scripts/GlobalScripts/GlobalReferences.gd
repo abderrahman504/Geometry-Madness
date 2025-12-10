@@ -7,20 +7,19 @@ var player : CharacterBody2D;
 var playerExists : bool = false;
 var MainMenu : String = "res://Scenes&Scripts/MainMenu/MainMenu.tscn";
 var DeathMenu : String = "res://Scenes&Scripts/UI/you died.tscn";
-var Level2Transition : String = "res://Scenes&Scripts/UI/level2_ani.tscn";
 var bullet : String = "res://Scenes&Scripts/Other/Bullet.tscn";#The bullet scene path
 var healthbarPath : String = "res://Scenes&Scripts/Other/HealthBar.tscn";
 var hitEffect : String = "res://Scenes&Scripts/Other/HitEffect.tscn";
 var shatterEffect : String = "res://Scenes&Scripts/Other/ShatterEffect.tscn";
-var minionPath : String = "res://Scenes&Scripts/Characters/Minion.tscn";
 var healthPickupPath : String = "res://Scenes&Scripts/Pickups/HealthPickup.tscn";
 var GunPaths : Dictionary = {
-	"shotgun"    : "res://Scenes&Scripts/Guns/Shotgun.tscn",
-	"machinegun" : "res://Scenes&Scripts/Guns/Machinegun.tscn",
-	"pistol"     : "res://Scenes&Scripts/Guns/Pistol.tscn",
-	"split rifle": "res://Scenes&Scripts/Guns/SplitRifle.tscn",
-	"heavy canon": "res://Scenes&Scripts/Guns/HeavyCanon.tscn",
-	"mixed gun"  : "res://Scenes&Scripts/Guns/MixedGun.tscn"};
+	GUNTYPES.Shotgun    : "res://Scenes&Scripts/Guns/Shotgun.tscn",
+	GUNTYPES.Machinegun : "res://Scenes&Scripts/Guns/Machinegun.tscn",
+	GUNTYPES.Pistol     : "res://Scenes&Scripts/Guns/Pistol.tscn",
+	GUNTYPES.SplitRifle : "res://Scenes&Scripts/Guns/SplitRifle.tscn",
+	GUNTYPES.HeavyCanon : "res://Scenes&Scripts/Guns/HeavyCanon.tscn",
+	GUNTYPES.Mixed      : "res://Scenes&Scripts/Guns/MixedGun.tscn"
+};
 
 
 #Colour-to-gun mapping

@@ -12,7 +12,7 @@ var minionSpawnTimeCounter : float
 @export var minionSpawnRange : float = 85
 @export var maxMinions : int = 8 ## The max number of minions this enemy can maintain.
 var minionsCreated : int = 0
-var minionScene : PackedScene = load(GlobalReferences.minionPath)
+@export var minionScene : PackedScene
 var minions : Array = []
 
 

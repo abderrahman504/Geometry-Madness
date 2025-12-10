@@ -104,15 +104,7 @@ func get_new_gun(gunPickupType : int):
 		gun2.queue_free() #Deletes the older of the two guns
 		gun.queue_free() #Delete the old mixed gun
 	
-	var newGun : Node
-	if gunPickupType == GlobalReferences.GUNTYPES.Machinegun:
-		newGun = load(GlobalReferences.GunPaths["machinegun"]).instantiate()
-	elif gunPickupType == GlobalReferences.GUNTYPES.Shotgun:
-		newGun = load(GlobalReferences.GunPaths["shotgun"]).instantiate()
-	elif gunPickupType == GlobalReferences.GUNTYPES.SplitRifle:
-		newGun = load(GlobalReferences.GunPaths["split rifle"]).instantiate()
-	elif gunPickupType == GlobalReferences.GUNTYPES.HeavyCanon:
-		newGun = load(GlobalReferences.GunPaths["heavy canon"]).instantiate()
+	var newGun : Node = load(GlobalReferences.GunPaths[gunPickupType]).instantiate()
 	
 	newGun.user = self
 	
@@ -127,7 +119,7 @@ func get_new_gun(gunPickupType : int):
 	gun2 = gun1
 	gun1 = newGun
 	add_child(newGun)
-	var mixedGun = load(GlobalReferences.GunPaths["mixed gun"]).instantiate()
+	var mixedGun = load(GlobalReferences.GunPaths[GlobalReferences.GUNTYPES.Mixed]).instantiate()
 	mixedGun.user = self
 	mixedGun.parent1 = gun1
 	mixedGun.parent2 = gun2
