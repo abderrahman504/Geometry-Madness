@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 signal died
+## Emitted when the player shoots.
+signal shot_fired(angle : float, gun : BaseGun)
 
 @export var maxSpeed: float
 @export var acceleration: float
@@ -42,6 +44,7 @@ func _ready():
 	GlobalReferences.sceneRoot.add_child.call_deferred(healthbar_node)
 	gun = base_gun
 	base_gun.user = self
+	base_gun.fired.connect(_on_gun_fired)
 
 
 
@@ -107,6 +110,7 @@ func get_new_gun(gunPickupType : int):
 	var newGun : Node = load(GlobalReferences.GunPaths[gunPickupType]).instantiate()
 	
 	newGun.user = self
+	newGun.fired.connect(_on_gun_fired)
 	
 	
 	if gun == base_gun:
@@ -125,5 +129,9 @@ func get_new_gun(gunPickupType : int):
 	mixedGun.parent2 = gun2
 	gun = mixedGun
 	add_child(gun)
-	
+	mixedGun.fired.connect(_on_gun_fired)
 
+
+
+func _on_gun_fired() -> void:
+	shot_fired.emit(rotation, gun)

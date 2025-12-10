@@ -79,6 +79,7 @@ func shoot(target):
 			GlobalReferences.player.gun = GlobalReferences.player.base_gun
 		
 	cooldown = 1/fireRate
+	fired.emit()
 
 
 

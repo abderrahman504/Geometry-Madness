@@ -1,6 +1,9 @@
 extends Node
 class_name BaseGun
 
+## Emitted when the gun fires.
+signal fired
+
 
 @export var gunType : GlobalReferences.GUNTYPES
 
@@ -67,6 +70,7 @@ func shoot(target : Vector2):
 			GlobalReferences.player.gun = GlobalReferences.player.base_gun
 	
 	cooldown = 1/fireRate
+	fired.emit()
 
 
 
