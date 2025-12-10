@@ -28,7 +28,7 @@ func _ready() -> void:
 			_adjusted_positon = _original_position
 
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	if Engine.is_editor_hint():
 		update_configuration_warnings()
 	else:

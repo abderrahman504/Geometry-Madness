@@ -9,7 +9,7 @@ var desired_player_range : float = 50
 
 
 
-func handle_movement(delta):
+func handle_movement(_delta):
 	if not GlobalReferences.playerExists:
 		return
 	

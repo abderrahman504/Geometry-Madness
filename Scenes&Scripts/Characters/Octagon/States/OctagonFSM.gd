@@ -30,12 +30,12 @@ func _process(delta):
 			_process_defense(delta)
 
 
-func _process_active(delta : float) -> void:
+func _process_active(_delta : float) -> void:
 	if GlobalReferences.player.position.distance_to(character.position) <= player_dist_threshold:
 		current = $Defense
 
 
-func _process_defense(delta : float) -> void:
+func _process_defense(_delta : float) -> void:
 	pass
 
 

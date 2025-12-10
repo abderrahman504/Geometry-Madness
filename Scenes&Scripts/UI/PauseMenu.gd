@@ -2,7 +2,7 @@ extends Control
 
 
 
-func _input(event : InputEvent) -> void:
+func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Escape"):
 		get_tree().paused = not get_tree().paused
 		visible = get_tree().paused
