@@ -75,7 +75,7 @@ func teleport() -> void:
 	var floors: PackedVector2Array = GlobalReferences.level_tilemap.get_floor_tiles()
 	var valid_positions : PackedVector2Array = []
 	for tile in floors:
-		var pos : Vector2 = GlobalReferences.level_tilemap.get_global_tile_pos(tile)
+		var pos : Vector2 = GlobalReferences.level_tilemap.get_global_tile_pos(tile) + 0.5 * GlobalReferences.level_tilemap.get_global_tile_size()
 		if (not GlobalReferences.playerExists):
 			valid_positions.append(pos)
 		elif ((pos - GlobalReferences.player.global_position).length() >= min_distance_to_player and 
