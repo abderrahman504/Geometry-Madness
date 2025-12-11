@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx2aa6o5apcrm"]
+
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="1_bvts7"]
+[ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/PositionManager.gd" id="2_dinki"]
+[ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/FollowNode.gd" id="3_puqxj"]
+[ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/EaserIn.gd" id="4_lwhu0"]
+
+[node name="MovingScoreLabel" type="Node2D"]
+process_mode = 3
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 14.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bvts7")
+text = "100"
+
+[node name="PositionManager" type="Node" parent="." node_paths=PackedStringArray("target", "_positioner_chain")]
+script = ExtResource("2_dinki")
+physics_based = false
+target = NodePath("..")
+_positioner_chain = [NodePath("FollowNode"), NodePath("EaserIn")]
+
+[node name="FollowNode" type="Node" parent="PositionManager"]
+script = ExtResource("3_puqxj")
+
+[node name="EaserIn" type="Node" parent="PositionManager"]
+script = ExtResource("4_lwhu0")

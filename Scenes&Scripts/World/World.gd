@@ -14,6 +14,10 @@ var lvl : int = 1
 @export var BRCorner : Vector2
 @onready var music_player : MusicPlayer = $MusicPlayer
 
+@export_group("Moving Score Object")
+@export var moving_score_obj_scene : PackedScene
+@export var score_marker : Node2D
+
 
 func _init():
 	GlobalReferences.sceneRoot = self
@@ -37,14 +41,25 @@ func transition():
 
 
 func on_enemy_died(enemy: BaseEnemy):
+	if enemy.score_value == 0:
+		return
+	
 	# Update the score
 	score += enemy.score_value
-	if tween != null:
-		tween.kill()
-	tween = create_tween()
-	tween.tween_property(self, "tweened_score", score, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+
+	# Create moving score label
+	var moving_score : Node2D = moving_score_obj_scene.instantiate()
+	moving_score.global_position = enemy.global_position
+	moving_score.get_node("Label").text = str(enemy.score_value)
+	moving_score.get_node("PositionManager/FollowNode").followed= score_marker
+	
+	add_child(moving_score)
+	moving_score.get_node("PositionManager/EaserIn").destination_reached.connect(tween_score)
+	moving_score.get_node("PositionManager/EaserIn").destination_reached.connect(func(): moving_score.queue_free())
+	
 	if score >= transition_score:
 		transition()
+
 
 
 func _on_player_died() -> void:
@@ -52,3 +67,10 @@ func _on_player_died() -> void:
 	var deathMenu = load(GlobalReferences.DeathMenu).instantiate()
 	GlobalReferences.game_ui.add_child(deathMenu)
 	GlobalReferences.sceneRoot.get_node("DeathSound").play()
+
+
+func tween_score() -> void:
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "tweened_score", score, 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)

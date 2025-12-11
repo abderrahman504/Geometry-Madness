@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://btobiu2ims31j"]
+[gd_scene load_steps=10 format=3 uid="uid://btobiu2ims31j"]
 
 [ext_resource type="Script" path="res://Scenes&Scripts/World/World.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cx2aa6o5apcrm" path="res://Scenes&Scripts/moving_score_label.tscn" id="2_8ldxm"]
 [ext_resource type="PackedScene" uid="uid://ddkou35812lc7" path="res://Scenes&Scripts/UI/UI.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dqks7hjmtwpxi" path="res://Scenes&Scripts/UI/pause menu.tscn" id="5_3q4hc"]
 [ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/PositionManager.gd" id="5_vf273"]
@@ -9,8 +10,10 @@
 [ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/Smoother.gd" id="7_vslec"]
 [ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/CameraShaker.gd" id="8_7wu7i"]
 
-[node name="BasicWorld" type="Node2D"]
+[node name="BasicWorld" type="Node2D" node_paths=PackedStringArray("score_marker")]
 script = ExtResource("1")
+moving_score_obj_scene = ExtResource("2_8ldxm")
+score_marker = NodePath("Camera2D/ScorePos")
 
 [node name="Player" parent="." instance=ExtResource("6")]
 position = Vector2(288, 112)
@@ -30,6 +33,9 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 112)
+
+[node name="ScorePos" type="Marker2D" parent="Camera2D"]
+position = Vector2(0, -300)
 
 [node name="PositionManager" type="Node" parent="Camera2D" node_paths=PackedStringArray("target", "_positioner_chain")]
 script = ExtResource("5_vf273")
