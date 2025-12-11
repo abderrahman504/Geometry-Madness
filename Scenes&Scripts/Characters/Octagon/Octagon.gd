@@ -16,6 +16,6 @@ func _process(_delta):
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, 200 * delta)
-	move_and_slide()
+	#move_and_slide()
 
 
