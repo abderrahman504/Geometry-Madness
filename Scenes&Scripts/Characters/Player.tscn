@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c510g1is0el7b"]
+[gd_scene load_steps=8 format=3 uid="uid://c510g1is0el7b"]
 
 [ext_resource type="Texture2D" uid="uid://c6ubryjhmwjwx" path="res://Sprites/Shapes/Triangle.png" id="1"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Player.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://yf1x3thojxfd" path="res://Sprites/Effects/triangle particle 32x32.png" id="2_bu5du"]
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://Music/SoundEffects/gameover.wav" id="3"]
+[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://Scenes&Scripts/Other/death_effect.tscn" id="3_8fq31"]
+[ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://Scenes&Scripts/Effects/directed_particles.tscn" id="4_kih2a"]
 [ext_resource type="PackedScene" uid="uid://b7bl27i5rj743" path="res://Scenes&Scripts/Guns/Pistol.tscn" id="4_vhgxf"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("base_gun")]
@@ -13,6 +16,9 @@ acceleration = 1500.0
 deceleration = 1000.0
 maxHealth = 20
 base_gun = NodePath("Pistol")
+particle_texture = ExtResource("2_bu5du")
+death_vfx_scene = ExtResource("3_8fq31")
+hit_vfx_scene = ExtResource("4_kih2a")
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

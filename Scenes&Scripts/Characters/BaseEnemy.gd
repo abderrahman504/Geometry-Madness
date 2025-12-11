@@ -99,7 +99,7 @@ func recieve_damage(damage : float, impact_pos : Vector2):
 		var particles : GPUParticles2D = hit_effect.get_node("GPUParticles2D")
 		particles.texture = particle_texture
 		particles.modulate = $Sprite2D.modulate
-		particles.amount = 2 * damage
+		particles.amount = ceili(2 * damage)
 		var explosion_dir := (impact_pos - position).normalized()
 
 		hit_effect.position = impact_pos
