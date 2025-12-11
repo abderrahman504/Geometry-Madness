@@ -60,25 +60,33 @@ theme_override_fonts/font = SubResource("1")
 text = "you died!"
 
 [node name="Retry" parent="tileset2" instance=ExtResource("2")]
-layout_mode = 0
-anchor_right = 1.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552
+anchor_top = 1.0
+anchor_right = 0.881
 anchor_bottom = 1.0
-offset_left = 237.0
-offset_top = 164.0
-offset_right = -51.0
+offset_left = 0.191986
+offset_top = -79.0
+offset_right = 0.0509949
 offset_bottom = -35.7895
 theme = ExtResource("4_jy6k8")
 theme_override_fonts/font = SubResource("2")
 text = "Retry"
 
 [node name="Exit" parent="tileset2" instance=ExtResource("2")]
-layout_mode = 0
-anchor_right = 1.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 1.0
+anchor_right = 0.446
 anchor_bottom = 1.0
-offset_left = 51.2106
-offset_top = 164.0
-offset_right = -237.789
+offset_left = 0.159599
+offset_top = -79.0
+offset_right = -0.123001
 offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("4_jy6k8")
 theme_override_fonts/font = SubResource("2")
 text = "Exit"
