@@ -32,10 +32,10 @@ visible = false
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(288, 112)
+position = Vector2(640, 360)
 
 [node name="ScorePos" type="Marker2D" parent="Camera2D"]
-position = Vector2(0, -300)
+position = Vector2(0, -292.155)
 
 [node name="PositionManager" type="Node" parent="Camera2D" node_paths=PackedStringArray("target", "_positioner_chain")]
 script = ExtResource("5_vf273")
@@ -54,3 +54,5 @@ duration = 0.5
 dist = 10.0
 
 [connection signal="shot_fired" from="Player" to="Camera2D/PositionManager/Shaker" method="_on_player_shot_fired"]
+
+[editable path="CanvasLayer/GameUI"]
