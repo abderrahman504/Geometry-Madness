@@ -51,15 +51,29 @@ func get_dodge_vector(bullet : Bullet) -> Vector2:
 func _dodge_teleport(dodge_vector : Vector2) -> void:
 	dodge_vector = dodge_vector * ((max_teleport_range - min_teleport_range) * randf() + min_teleport_range)
 	# Check if there is a wall in the way of the dodge teleport
+	# First attempt
 	var query := PhysicsRayQueryParameters2D.create(
 		character.global_position, 
 		character.global_position + dodge_vector,
 		4
 	)
 	var res := character.get_world_2d().direct_space_state.intersect_ray(query)
-
 	if not res.is_empty():
 		dodge_vector *= -1
+
+	# Second attempt
+	query.to = character.global_position + dodge_vector
+	res = character.get_world_2d().direct_space_state.intersect_ray(query)
+	if not res.is_empty():
+		dodge_vector = dodge_vector.orthogonal()
+	
+	# Last attempt
+	query.to = character.global_position + dodge_vector
+	res = character.get_world_2d().direct_space_state.intersect_ray(query)
+	if not res.is_empty():
+		dodge_vector *= -1
+	
+
 
 	# Perform short teleport
 	var vfx = teleport_effect.instantiate()
