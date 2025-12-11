@@ -6,5 +6,5 @@ class_name Smoother
 @export var rapidity : float = 15
 
 func get_desired_position(prev_position : Vector2, delta : float) -> Vector2:
-	var dist := (prev_position - target.position).length()
-	return target.position.move_toward(prev_position, max(delta * rapidity * dist, 2))
+	var dist := (prev_position - target.global_position).length()
+	return target.global_position.move_toward(prev_position, max(delta * rapidity * dist, 2))

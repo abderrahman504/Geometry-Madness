@@ -7,7 +7,6 @@ class_name Positioner
 var target : Node2D
 
 
-
 ## Called on every positioner in the chain.
 ## [code]position[/code] is either the output of the previous positioner in the chain, 
 ## or the position of the target in case of the first positioner.

@@ -33,7 +33,6 @@ position = Vector2(288, 112)
 
 [node name="PositionManager" type="Node" parent="Camera2D" node_paths=PackedStringArray("target", "_positioner_chain")]
 script = ExtResource("5_vf273")
-physics_based = true
 target = NodePath("..")
 _positioner_chain = [NodePath("CursorFollow"), NodePath("Smoother"), NodePath("Shaker")]
 

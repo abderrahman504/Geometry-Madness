@@ -3,7 +3,7 @@ class_name PositionManager
 
 
 ## If true, the manager will update the position of the target during the physics frame instead of the idle frame.
-@export var physics_based : bool = false
+@export var physics_based : bool = true
 
 ## The node whose position is managed by this class.
 @export var target : Node2D:
@@ -19,9 +19,19 @@ func _ready() -> void:
 	for positioner in _positioner_chain:
 		positioner.target = target
 
+
+func _process(delta : float) -> void:
+	if not physics_based:
+		var pos : Vector2 = target.global_position
+		for poser in _positioner_chain:
+			pos = poser.get_desired_position(pos, delta)		
+		target.global_position = pos
+
+
+
 func _physics_process(delta) -> void:
-	var pos : Vector2 = target.position
-	for poser in _positioner_chain:
-		pos = poser.get_desired_position(pos, delta)
-	
-	target.position = pos
+	if physics_based:
+		var pos : Vector2 = target.global_position
+		for poser in _positioner_chain:
+			pos = poser.get_desired_position(pos, delta)
+		target.global_position = pos
