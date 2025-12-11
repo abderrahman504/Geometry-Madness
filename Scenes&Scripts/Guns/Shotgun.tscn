@@ -13,4 +13,3 @@ spread = 20.0
 spread_distribution = SubResource("Curve_fmprd")
 pellet_count = 5
 speed_variance = 0.2
-bulletDamage = 0.5
