@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=20 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://Scenes&Scripts/World/BasicWorld.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://1670xiuyjea6" path="res://Scenes&Scripts/World/EnemySpawner.tscn" id="2"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://bdb0wo8qvgt7f" path="res://Scenes&Scripts/Characters/Lvl2Hexagon.tscn" id="12_187ll"]
 [ext_resource type="PackedScene" uid="uid://c8hyxdxnynsbd" path="res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn" id="13_xpe4i"]
 [ext_resource type="PackedScene" uid="uid://dnvg8bgt3otoc" path="res://Scenes&Scripts/World/music_player.tscn" id="14_olkut"]
+[ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://Scenes&Scripts/Effects/directed_particles.tscn" id="15_n7jmq"]
+[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://Scenes&Scripts/Other/death_effect.tscn" id="16_jibkm"]
+[ext_resource type="PackedScene" uid="uid://b2o10jdd11x7v" path="res://Scenes&Scripts/Characters/Octagon/teleport_vfx.tscn" id="17_bvsa2"]
+[ext_resource type="PackedScene" uid="uid://fqgjrj7b7tbq" path="res://Scenes&Scripts/Characters/Octagon/teleport_vfx_2.tscn" id="18_lkh4a"]
 
 [sub_resource type="Curve2D" id="Curve2D_wgd75"]
 _data = {
@@ -72,6 +76,18 @@ rotation = 3.1402
 progress = 5384.52
 
 [node name="MusicPlayer" parent="." index="7" instance=ExtResource("14_olkut")]
+
+[node name="DirectedParticles" parent="." index="8" instance=ExtResource("15_n7jmq")]
+position = Vector2(-1017.95, 2044.4)
+
+[node name="DeathEffect" parent="." index="9" instance=ExtResource("16_jibkm")]
+position = Vector2(-588.033, 1931.26)
+
+[node name="TeleportVFX" parent="DeathEffect" index="2" instance=ExtResource("17_bvsa2")]
+position = Vector2(627.911, 84.8528)
+
+[node name="TeleportVFX" parent="DeathEffect/TeleportVFX" index="4" instance=ExtResource("18_lkh4a")]
+position = Vector2(831.558, -5.65698)
 
 [editable path="CanvasLayer/GameUI"]
 [editable path="CanvasLayer/Debug"]
