@@ -15,6 +15,7 @@ func _ready():
 	$Defense.teleported.connect(_on_teleported)
 	$Defense.character = character
 	$Active.character = character
+	$Defense.charge_timer = $Defense.teleport_charge_time
 
 
 func _process(delta):
