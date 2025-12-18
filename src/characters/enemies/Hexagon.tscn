@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://m6i6cdcnre43"]
+
+[ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://src/characters/enemies/BaseEnemy.tscn" id="1_hmtof"]
+[ext_resource type="Texture2D" uid="uid://c8lcdtv5wa046" path="res://assets/textures/Shapes/Hexagon.png" id="2"]
+[ext_resource type="Script" path="res://src/characters/enemies/Hexagon.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bqqfm31sqx0jc" path="res://src/pickups/SplitRiflePickup.tscn" id="3_dpybk"]
+[ext_resource type="PackedScene" uid="uid://c04y8w4vvybtc" path="res://src/guns/SplitRifle.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://o8hmnxx3x34u" path="res://assets/textures/particles/hexagon particle 32x32.png" id="4_5nq1s"]
+
+[node name="Hexagon" node_paths=PackedStringArray("gun") instance=ExtResource("1_hmtof")]
+script = ExtResource("3")
+maxRange = 250.0
+acceleration = 150
+deceleration = 200
+gun = NodePath("SplitRifle")
+enemyType = 2
+max_speed = 100
+attackInterval = 4.0
+gunDropScene = ExtResource("3_dpybk")
+particle_texture = ExtResource("4_5nq1s")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+rotation = 0.0137139
+polygon = PackedVector2Array(-25.1845, -43.5172, 24.622, -44.06, 48.7899, -0.751587, 25.8188, 43.2033, -24.1222, 44.1689, -48.6898, 0.423843)
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.964706, 0.976471, 0.0941176, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2")
+
+[node name="SplitRifle" parent="." index="2" instance=ExtResource("4")]
+
+[node name="BulletSpawnPos" parent="." index="4"]
+position = Vector2(52.845, 0)
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -54)

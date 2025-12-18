@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddkou35812lc7"]
+
+[ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_rdomt"]
+[ext_resource type="Script" path="res://src/world/UI/ScoreCounter.gd" id="2"]
+[ext_resource type="Script" path="res://src/world/UI/GameUI.gd" id="2_47uen"]
+[ext_resource type="PackedScene" uid="uid://xgljuucwiqb6" path="res://src/world/UI/AmmoBar.tscn" id="4_tg3fc"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.640025
+offset_top = -0.887614
+offset_right = -0.640015
+offset_bottom = -0.887695
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rdomt")
+script = ExtResource("2_47uen")
+
+[node name="ScoreCounter" type="Label" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.0
+offset_top = 29.0
+offset_right = 179.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2")
+
+[node name="AmmoBars" parent="." instance=ExtResource("4_tg3fc")]
+layout_mode = 1
+offset_left = -69.3599
+offset_top = 15.8876
+offset_right = -21.3599
+offset_bottom = 150.888

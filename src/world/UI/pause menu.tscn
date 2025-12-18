@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqks7hjmtwpxi"]
+
+[ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_hssxd"]
+[ext_resource type="Script" path="res://src/world/UI/PauseMenu.gd" id="2_66vqw"]
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="3_7o2ip"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hssxd")
+script = ExtResource("2_66vqw")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.341176, 0.341176, 0.341176, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.395
+anchor_top = 0.317
+anchor_right = 0.605
+anchor_bottom = 0.631
+offset_left = -0.600006
+offset_top = -0.240005
+offset_right = -0.400024
+offset_bottom = -0.320038
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_7o2ip")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 19.0
+offset_right = 85.0
+offset_bottom = 57.0
+grow_horizontal = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.45
+theme_override_font_sizes/font_size = 25
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 54.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hssxd")
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_up" from="Panel/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="button_up" from="Panel/VBoxContainer/Exit" to="." method="exit"]

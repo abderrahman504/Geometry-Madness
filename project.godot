@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="GeometryMadness"
-run/main_scene="res://Scenes&Scripts/MainMenu/MainMenu.tscn"
+run/main_scene="res://src/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon2.png"
 
 [autoload]
 
-GlobalReferences="*res://Scenes&Scripts/GlobalScripts/GlobalReferences.gd"
-EnemySignalBus="*res://Scenes&Scripts/Characters/EnemySignalBus.gd"
-ScoreStorage="*res://Scenes&Scripts/GlobalScripts/ScoreStorage.gd"
+GlobalReferences="*res://src/globals/GlobalReferences.gd"
+EnemySignalBus="*res://src/globals/EnemySignalBus.gd"
+ScoreStorage="*res://src/globals/ScoreStorage.gd"
 
 [debug]
 

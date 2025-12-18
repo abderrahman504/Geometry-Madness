@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://f8lrhqu4dsi6"]
+
+[ext_resource type="Script" path="res://src/characters/enemies/BaseEnemy.gd" id="1_0j3gh"]
+[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://src/effects/death_effect.tscn" id="2_vui2x"]
+[ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://src/effects/directed_particles.tscn" id="3_w6abm"]
+[ext_resource type="AudioStream" uid="uid://d31t818n51ron" path="res://assets/audio/sound_effects/impactPlank_medium_001.ogg" id="4_d3nas"]
+
+[node name="BaseEnemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_0j3gh")
+death_vfx_scene = ExtResource("2_vui2x")
+hit_vfx_scene = ExtResource("3_w6abm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d3nas")
+
+[node name="BulletSpawnPos" type="Marker2D" parent="."]
+position = Vector2(25, 0)
+gizmo_extents = 5.0
+
+[node name="HealthbarPos" type="Marker2D" parent="."]

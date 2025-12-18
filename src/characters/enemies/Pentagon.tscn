@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://3iinl8s7slmm"]
+
+[ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://src/characters/enemies/BaseEnemy.tscn" id="1_oeds5"]
+[ext_resource type="Texture2D" uid="uid://d1bh7b5u7q4r0" path="res://assets/textures/Shapes/Pentagon.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://cadusu6b6lpxg" path="res://src/guns/HeavyCanon.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ce2tsoia8xsqw" path="res://src/pickups/HeavyCanonPickup.tscn" id="3_37ul2"]
+[ext_resource type="Script" path="res://src/characters/enemies/Pentagon.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://clh4w8nyggxhr" path="res://assets/textures/particles/pentagon particle 32x32.png" id="4_pvlic"]
+
+[node name="Pentagon" node_paths=PackedStringArray("gun") instance=ExtResource("1_oeds5")]
+script = ExtResource("4")
+acceleration = 400
+deceleration = 500
+min_range_to_player = 150.0
+max_range_to_player = 300.0
+gun = NodePath("HeavyCanon")
+enemyType = 1
+max_speed = 300
+attackInterval = 5.0
+gunDropScene = ExtResource("3_37ul2")
+particle_texture = ExtResource("4_pvlic")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+rotation = 1.5708
+polygon = PackedVector2Array(-0.134405, -47.6658, 45.7514, -14.8905, 32.2668, 43.7308, -32.7223, 43.5437, -45.8326, -14.7029)
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.0901961, 0.309804, 0.894118, 1)
+position = Vector2(1.77946, -0.115845)
+rotation = 1.5708
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2")
+
+[node name="HeavyCanon" parent="." index="2" instance=ExtResource("3")]
+
+[node name="BulletSpawnPos" parent="." index="4"]
+position = Vector2(55, 0)
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -60)

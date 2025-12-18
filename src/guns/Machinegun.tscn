@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://be0epg74fm1dd"]
+
+[ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://src/guns/BaseGun.tscn" id="1"]
+
+[node name="Machinegun" instance=ExtResource("1")]
+fireRate = 4.0
+spread = 3.0
+maxAmmo = 20
+speed_variance = 0.1
+bulletDamage = 2.0

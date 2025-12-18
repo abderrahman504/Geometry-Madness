@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce2tsoia8xsqw"]
+
+[ext_resource type="PackedScene" uid="uid://bmxygqo10in4m" path="res://src/pickups/BaseGunPickup.tscn" id="2"]
+
+[node name="HeavyCanonPickup" instance=ExtResource("2")]
+gunType = 1
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0.0901961, 0.309804, 0.894118, 1)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwv5r7g651dgf"]
+
+[ext_resource type="Script" path="res://src/pickups/BasePickup.gd" id="2"]
+
+[node name="BasePickup" type="Node2D"]
+script = ExtResource("2")
+lifeSpan = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

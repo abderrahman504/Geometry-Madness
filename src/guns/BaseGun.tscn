@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://conig1fahpyg4"]
+
+[ext_resource type="Script" path="res://src/guns/BaseGun.gd" id="1"]
+
+[node name="BaseGun" type="Node"]
+script = ExtResource("1")
+fireRate = 1.0

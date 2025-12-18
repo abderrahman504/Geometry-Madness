@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://brrm4o1pbxjgj"]
+
+[ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_7isr3"]
+[ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://src/main_menu/Menubutton.tscn" id="2_hedmk"]
+[ext_resource type="Script" path="res://src/main_menu/MainMenu.gd" id="2_lg20e"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7isr3")
+script = ExtResource("2_lg20e")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_right = 0.504
+offset_left = -367.62
+offset_top = 64.0
+offset_right = 366.38
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 30
+text = "GEOMETRY MADNESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -192.5
+offset_right = 200.0
+offset_bottom = 192.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="Play" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+start_focused = true
+
+[node name="Tutorial" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Tutorial"
+
+[node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
+layout_mode = 2
+size_flags_vertical = 3
+action_mode = 0
+text = "Credits"
+
+[node name="Exit" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit Game"
+
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]
+[connection signal="button_up" from="VBoxContainer/Tutorial" to="." method="on_tutorial_pressed"]
+[connection signal="button_up" from="VBoxContainer/Credits" to="." method="on_credits_pressed"]
+[connection signal="button_up" from="VBoxContainer/Exit" to="." method="on_exit_pressed"]

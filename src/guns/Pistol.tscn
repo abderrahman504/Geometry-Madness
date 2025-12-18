@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7bl27i5rj743"]
+
+[ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://src/guns/BaseGun.tscn" id="1"]
+
+[node name="Pistol" instance=ExtResource("1")]
+gunType = 4
+fireRate = 1.5
+infinite_ammo = true

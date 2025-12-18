@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://xgljuucwiqb6"]
+
+[ext_resource type="Script" path="res://src/world/UI/AmmoBars.gd" id="1_hw75l"]
+[ext_resource type="Texture2D" uid="uid://bg5cbyj1vfg37" path="res://assets/textures/UI/VSplitBarProgress.png" id="2_ex8rq"]
+[ext_resource type="Texture2D" uid="uid://hlikkhj5rve3" path="res://assets/textures/UI/BarOver.png" id="3_n7ra3"]
+
+[node name="AmmoUI" type="GridContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -83.0
+offset_top = 11.0
+offset_right = -22.0
+offset_bottom = 174.0
+grow_horizontal = 0
+columns = 2
+script = ExtResource("1_hw75l")
+
+[node name="Bar1" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 63.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_ex8rq")
+texture_over = ExtResource("3_n7ra3")
+texture_progress = ExtResource("2_ex8rq")
+tint_under = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="Bar2" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 42.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("2_ex8rq")
+texture_over = ExtResource("3_n7ra3")
+texture_progress = ExtResource("2_ex8rq")
+tint_under = Color(0.317647, 0.317647, 0.317647, 1)

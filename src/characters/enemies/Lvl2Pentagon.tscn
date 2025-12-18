@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://sjvhpyf6da0q"]
+
+[ext_resource type="PackedScene" uid="uid://3iinl8s7slmm" path="res://src/characters/enemies/Pentagon.tscn" id="1"]
+[ext_resource type="Script" path="res://src/characters/enemies/Lvl2Pentagon.gd" id="2"]
+
+
+[node name="Lvl2Pentagon" instance=ExtResource("1")]
+script = ExtResource("2")
+acceleration = 2000
+deceleration = 2000
+score_value = 200
+max_speed = 1500
+attackInterval = 6.0

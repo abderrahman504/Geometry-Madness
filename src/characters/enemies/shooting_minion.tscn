@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpui13dsb6gju"]
+
+[ext_resource type="PackedScene" uid="uid://f8lrhqu4dsi6" path="res://src/characters/enemies/BaseEnemy.tscn" id="1_ot6xd"]
+[ext_resource type="Script" path="res://src/characters/enemies/ShootingMinion.gd" id="2_i3dk1"]
+[ext_resource type="Texture2D" uid="uid://cq6sns5hh4fqo" path="res://assets/textures/Shapes/minion2.png" id="3_7tv58"]
+[ext_resource type="Texture2D" uid="uid://068bkm6dbkgq" path="res://assets/textures/particles/star particle 32x32.png" id="3_bdld5"]
+[ext_resource type="PackedScene" uid="uid://b7bl27i5rj743" path="res://src/guns/Pistol.tscn" id="3_q8r71"]
+
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4xvw"]
+radius = 30.0
+height = 82.0
+
+[node name="ShootingMinion" node_paths=PackedStringArray("gun") instance=ExtResource("1_ot6xd")]
+script = ExtResource("2_i3dk1")
+gun = NodePath("Pistol")
+enemyType = -1
+score_value = 50
+max_speed = 100
+max_health = 2
+attackInterval = 1.0
+breakTime = 0.0
+healthDropChance = 0.0
+particle_texture = ExtResource("3_bdld5")
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.635294, 0.0627451, 0.133333, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_7tv58")
+
+[node name="BulletSpawnPos" parent="." index="3"]
+position = Vector2(40, 0)
+
+[node name="Pistol" parent="." index="4" instance=ExtResource("3_q8r71")]
+
+[node name="HealthbarPos" parent="." index="5"]
+position = Vector2(0, -51)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="6"]
+visible = false
+shape = SubResource("CapsuleShape2D_h4xvw")

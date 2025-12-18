@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk5mve24dqebh"]
+
+[ext_resource type="Texture2D" uid="uid://caim6r0shk7kh" path="res://assets/Effects/Shatter265x260.png" id="1_lo5cv"]
+[ext_resource type="Script" path="res://src/effects/ShatterEffect.gd" id="2_4mspw"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Shatter"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75svs"]
+_data = {
+"Shatter": SubResource("1")
+}
+
+[node name="ShatterEffect" type="Sprite2D"]
+modulate = Color(0.4, 0.4, 0.4, 1)
+z_index = 1
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_lo5cv")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 795, 260)
+script = ExtResource("2_4mspw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_75svs")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

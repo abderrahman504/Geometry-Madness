@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cadusu6b6lpxg"]
+
+[ext_resource type="PackedScene" uid="uid://conig1fahpyg4" path="res://src/guns/BaseGun.tscn" id="1"]
+
+[node name="HeavyCanon" instance=ExtResource("1")]
+gunType = 1
+maxAmmo = 7
+bulletDamage = 3.0
+bulletScaleFactor = 3.0
+bulletSpeedFactor = 0.75
+piercingBullets = true
