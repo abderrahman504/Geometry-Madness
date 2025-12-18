@@ -46,7 +46,7 @@ func _enter() -> void:
 	charge_bar.show()
 	charge_bar.max_value = 100
 	charge_bar.value = 0
-	minion_spawn_timer = minion_spawn_time
+	minion_spawn_timer = minion_spawn_time-0.5
 
 
 func _exit() -> void:

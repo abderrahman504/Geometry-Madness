@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c510g1is0el7b"]
+[gd_scene load_steps=11 format=3 uid="uid://c510g1is0el7b"]
 
 [ext_resource type="Texture2D" uid="uid://c6ubryjhmwjwx" path="res://Sprites/Shapes/Triangle.png" id="1"]
 [ext_resource type="Script" path="res://Scenes&Scripts/Characters/Player.gd" id="2"]
@@ -7,6 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://Scenes&Scripts/Other/death_effect.tscn" id="3_8fq31"]
 [ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://Scenes&Scripts/Effects/directed_particles.tscn" id="4_kih2a"]
 [ext_resource type="PackedScene" uid="uid://b7bl27i5rj743" path="res://Scenes&Scripts/Guns/Pistol.tscn" id="4_vhgxf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpnsf"]
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t8w58"]
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6p0k"]
+height = 20.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("base_gun")]
 collision_mask = 6
@@ -20,9 +29,6 @@ particle_texture = ExtResource("2_bu5du")
 death_vfx_scene = ExtResource("3_8fq31")
 hit_vfx_scene = ExtResource("4_kih2a")
 metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-17, -30, 20, 0, -17, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0117647, 0.639216, 0.152941, 1)
@@ -41,3 +47,15 @@ position = Vector2(45, 0)
 
 [node name="Pistol" parent="." instance=ExtResource("4_vhgxf")]
 bulletDamage = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12.32, 0)
+shape = SubResource("CapsuleShape2D_dpnsf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1.04, 0)
+shape = SubResource("CapsuleShape2D_t8w58")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(11.36, 0)
+shape = SubResource("CapsuleShape2D_r6p0k")
