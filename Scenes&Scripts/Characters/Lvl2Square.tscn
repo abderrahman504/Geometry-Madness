@@ -11,6 +11,9 @@ position = Vector2(1.41418, 0)
 script = ExtResource("2")
 dodgeCooldown = 5.0
 dodgeDistance = 100.0
+dodgeAccel = 600.0
+dodge_max_speed = 500.0
+score_value = 200
 
 [node name="BulletDetector" type="Area2D" parent="." index="3"]
 visible = false

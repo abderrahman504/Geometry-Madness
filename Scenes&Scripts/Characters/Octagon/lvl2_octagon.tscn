@@ -13,6 +13,7 @@
 radius = 164.012
 
 [node name="Lvl2Octagon" instance=ExtResource("1_2duds")]
+score_value = 200
 
 [node name="Defense" parent="HierarchicalStateMachine" index="1" node_paths=PackedStringArray("entry")]
 script = ExtResource("2_x4wum")

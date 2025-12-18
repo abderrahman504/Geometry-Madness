@@ -10,3 +10,4 @@ minionSpawnNumber = 4
 minionSpawnRange = 90.0
 maxMinions = 8
 minionScene = ExtResource("3_4lt5t")
+score_value = 200

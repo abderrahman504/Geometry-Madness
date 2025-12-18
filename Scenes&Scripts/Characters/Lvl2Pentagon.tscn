@@ -5,7 +5,8 @@
 
 [node name="Lvl2Pentagon" instance=ExtResource("1")]
 script = ExtResource("2")
-max_speed = 1500
 acceleration = 2000
 deceleration = 2000
+score_value = 200
+max_speed = 1500
 attackInterval = 6.0
