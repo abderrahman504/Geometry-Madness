@@ -72,10 +72,13 @@ func _on_player_died() -> void:
 func show_scoreboard() -> void:
 	scoreboard.show()
 	scoreboard.get_node("Labels/Score").text = str(score)
-	scoreboard.get_node("Labels/HighScore").text = "High Score : " + str(score)
-	scoreboard.get_node("Labels/NewRecord").show()
+	scoreboard.get_node("Labels/HighScore").text = "High Score : " + str(ScoreStorage.high_score)
+	scoreboard.get_node("Labels/NewRecord").hide()
 	# implement later : read high score and check if new score is higher or not 
-
+	if score > ScoreStorage.high_score:
+		scoreboard.get_node("Labels/NewRecord").show()
+		ScoreStorage.high_score = score
+		ScoreStorage.save_high_score()
 	
 
 func tween_score() -> void:

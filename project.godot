@@ -19,6 +19,7 @@ config/icon="res://icon2.png"
 
 GlobalReferences="*res://Scenes&Scripts/GlobalScripts/GlobalReferences.gd"
 EnemySignalBus="*res://Scenes&Scripts/Characters/EnemySignalBus.gd"
+ScoreStorage="*res://Scenes&Scripts/GlobalScripts/ScoreStorage.gd"
 
 [debug]
 
