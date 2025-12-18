@@ -27,7 +27,7 @@ func _process(delta : float) -> void:
 
 
 func shake(direction : Vector2) -> void:
-	print("shaking: F = %f, D = %f, A = %f" % [frequency, duration, dist])
+	#print("shaking: F = %f, D = %f, A = %f" % [frequency, duration, dist])
 	_timer = 0
 	self.shake_direction = direction
 
