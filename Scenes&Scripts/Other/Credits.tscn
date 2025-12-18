@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://yhu1j3xvstrr"]
+[gd_scene load_steps=6 format=3 uid="uid://yhu1j3xvstrr"]
+
+[ext_resource type="Script" path="res://Scenes&Scripts/MainMenu/Credits.gd" id="1_ubmkq"]
+[ext_resource type="PackedScene" uid="uid://brrm4o1pbxjgj" path="res://Scenes&Scripts/MainMenu/MainMenu.tscn" id="2_2fmyo"]
 
 [sub_resource type="Animation" id="Animation_irguu"]
 length = 0.001
@@ -44,18 +47,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ubmkq")
+scroll_speed = 50.0
+main_scene = ExtResource("2_2fmyo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "new_animation"
 libraries = {
 "": SubResource("AnimationLibrary_jifgx")
 }
 
 [node name="Container" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 538.0
+offset_bottom = 596.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -76,8 +85,7 @@ text = "[center][b]Made by[/b][/center]
 
 [center][b]Music[/b][/center]						
 [font size=5] [/font]
-[center]Boss Battle #1 - nene[/center]
-[center]Boss Battle #2 - nene[/center]
+[center]Boss Battle #1, #2 - nene[/center]
 
 [center][b]UI[/b][/center]
 [font size=5] [/font]
@@ -92,3 +100,23 @@ text = "[center][b]Made by[/b][/center]
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Start" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="End" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
