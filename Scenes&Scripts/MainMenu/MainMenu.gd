@@ -3,7 +3,7 @@ extends Control
 
 
 func on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes&Scripts/World/MainWorld.tscn")
+	get_tree().change_scene_to_file(GlobalReferences.main_level_scene)
 
 
 func on_tutorial_pressed():

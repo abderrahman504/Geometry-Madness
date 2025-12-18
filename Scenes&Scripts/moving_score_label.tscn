@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="1_bvts7"]
 [ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/PositionManager.gd" id="2_dinki"]
-[ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/FollowNode.gd" id="3_puqxj"]
+[ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/FollowControl.gd" id="3_mhb4k"]
 [ext_resource type="Script" path="res://Scenes&Scripts/World/Camera/Positioner/EaserIn.gd" id="4_lwhu0"]
 
 [node name="MovingScoreLabel" type="Node2D"]
@@ -27,10 +27,10 @@ text = "100"
 script = ExtResource("2_dinki")
 physics_based = false
 target = NodePath("..")
-_positioner_chain = [NodePath("FollowNode"), NodePath("EaserIn")]
+_positioner_chain = [NodePath("FollowControl"), NodePath("EaserIn")]
 
-[node name="FollowNode" type="Node" parent="PositionManager"]
-script = ExtResource("3_puqxj")
+[node name="FollowControl" type="Node" parent="PositionManager"]
+script = ExtResource("3_mhb4k")
 
 [node name="EaserIn" type="Node" parent="PositionManager"]
 script = ExtResource("4_lwhu0")

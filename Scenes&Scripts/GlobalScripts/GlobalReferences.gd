@@ -1,12 +1,15 @@
 extends Node
 
+# Scenes
+
+var main_menu_scene : String = "res://Scenes&Scripts/MainMenu/MainMenu.tscn"
+var main_level_scene : String = "res://Scenes&Scripts/World/MainWorld.tscn"
+
 var sceneRoot : World; # This is a variable that contains the root of the world scene
 var game_ui : GameUI
 var level_tilemap : LevelTileMap
 var player : CharacterBody2D;
 var playerExists : bool = false;
-var MainMenu : String = "res://Scenes&Scripts/MainMenu/MainMenu.tscn";
-var DeathMenu : String = "res://Scenes&Scripts/UI/you died.tscn";
 var bullet : String = "res://Scenes&Scripts/Other/Bullet.tscn";#The bullet scene path
 var healthbarPath : String = "res://Scenes&Scripts/Other/HealthBar.tscn";
 var hitEffect : String = "res://Scenes&Scripts/Other/HitEffect.tscn";

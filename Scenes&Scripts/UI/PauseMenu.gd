@@ -16,7 +16,7 @@ func resume():
 func exit():
 	hide()
 	get_tree().paused = false
-	get_tree().change_scene_to_file(GlobalReferences.MainMenu)
+	get_tree().change_scene_to_file(GlobalReferences.main_menu_scene)
 
 
 func open_debug():
