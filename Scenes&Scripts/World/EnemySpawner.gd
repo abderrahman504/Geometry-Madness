@@ -14,18 +14,16 @@ class_name EnemySpawner
 @export var start_break_time: float = 4
 ## The base amount of time between two enemy spawns.
 ## The actual amount of time is extended/reduced based on the number of alive enemies.
-@export var base_enemy_spawn_time: float
+@export_range(0, 50) var base_enemy_spawn_time: float
 ## The maximum number of enemies that can be in the level at once.
-@export var maxNumberOfEnemies: int = 10
+@export_range(1, 30) var maxNumberOfEnemies: int = 10
 var _spawned_enemies_count : int = 0
 
 var _adjusted_enemy_spawn_time : float:
 	get:
-		return base_enemy_spawn_time * (1 + spawnDelayFactor * (float(_spawned_enemies_count) / maxNumberOfEnemies))
+		return base_enemy_spawn_time * (1 + 1 / maxNumberOfEnemies)
 
 var enemy_spawn_timer : float
-## Positive values extend spawning time. negative values reduce it.
-@export var spawnDelayFactor: float = 2
 @onready var pathFollow : PathFollow2D = $Path2D/PathFollow2D
 
 var lvl : int = 1

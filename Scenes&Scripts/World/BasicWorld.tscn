@@ -111,9 +111,6 @@ text = "Main Menu"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 
-[node name="ScorePos" type="Marker2D" parent="Camera2D"]
-position = Vector2(0, -292.155)
-
 [node name="PositionManager" type="Node" parent="Camera2D" node_paths=PackedStringArray("target", "_positioner_chain")]
 script = ExtResource("5_vf273")
 target = NodePath("..")
