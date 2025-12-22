@@ -101,7 +101,7 @@ func register_bool_attribute(attribute : String, default : bool) -> bool:
 
 ## Register a new enumeration attribute. Enumeration attributes are restricted by a predefined set of values.
 ## Returns false if an attribute with the same name is already registered.
-func register_enum_attribute(attribute : String, default : String, values : Array[String]) -> bool:
+func register_enum_attribute(attribute : String, default : String, values : Array) -> bool:
 	assert(values.has(default), "Registered enum attribute %s has default value %s not in specified values %s" % [attribute, default, str(values)])
 	
 	if _registered_attrs.has(attribute):
