@@ -8,7 +8,7 @@ var speed : float = 350;
 var deceleration : float = 500;
 
 
-@export var pickUpRange : float = 75;
+@export var pickUpRange : float = 150;
 @export var lifeSpan : float = 8;
 @export var fadeTime : float = 5;
 @export var fadeSpeed : float = 250;
@@ -61,7 +61,8 @@ func get_picked_up():
 
 
 func move_to_player_finished():
-	run_pickup_effect()
+	if GlobalReferences.playerExists:
+		run_pickup_effect()
 	queue_free()
 
 
