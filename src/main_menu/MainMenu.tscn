@@ -54,6 +54,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Tutorial"
 
+[node name="Settings" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
 [node name="Credits" parent="VBoxContainer" instance=ExtResource("2_hedmk")]
 layout_mode = 2
 size_flags_vertical = 3
@@ -67,5 +72,6 @@ text = "Exit Game"
 
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]
 [connection signal="button_up" from="VBoxContainer/Tutorial" to="." method="on_tutorial_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_up" from="VBoxContainer/Credits" to="." method="on_credits_pressed"]
 [connection signal="button_up" from="VBoxContainer/Exit" to="." method="on_exit_pressed"]

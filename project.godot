@@ -20,6 +20,8 @@ config/icon="res://icon2.png"
 GlobalReferences="*res://src/globals/GlobalReferences.gd"
 EnemySignalBus="*res://src/globals/EnemySignalBus.gd"
 ScoreStorage="*res://src/globals/ScoreStorage.gd"
+SettingsManager="*res://src/globals/SettingsManager.gd"
+GameSettings="*res://src/globals/GameSettings.gd"
 
 [debug]
 

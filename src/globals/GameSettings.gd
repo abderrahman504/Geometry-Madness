@@ -45,7 +45,7 @@ var settings : Dictionary = {
 		"min" : 1,
 		"max" : 5,
 	},
-	"Font size" : {
+	"Font Size" : {
 		"type" : SettingsManager.AttributeType.INT,
 		"default" : 10,
 		"min" : 5,

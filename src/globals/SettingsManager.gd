@@ -142,6 +142,13 @@ func set_attribute(attribute : String, new_value) -> bool:
 	return true
 		
 
+## Gets the value of the specified attribute, or null if the attribute isn't registered.
+func get_attribute(attribute : String) -> Variant:
+	if not _registered_attrs.has(attribute):
+		return null
+	return _attribute_values[attribute]
+
+
 ## Used to return the latest error from a [code]set_attribute[/code] call
 func get_error() -> SetAttributeError:
 	return _set_attr_error
@@ -156,7 +163,12 @@ func _load_settings() -> void:
 	
 	for section in fh.get_sections():
 		for key in fh.get_section_keys(section):
-			_loaded_values[key] = fh.get_value(section, key)
+			if _registered_attrs.has(key):
+				var success = set_attribute(key, fh.get_value(section, key))
+				if not success:
+					printerr("Failed to set settings attribute '%s' during load_settings()" % key)
+			else:
+				_loaded_values[key] = fh.get_value(section, key)
 
 
 ## Saves current settings to disk
@@ -173,7 +185,7 @@ func save_settings() -> void:
 func _is_value_valid_for_attribute(attribute : String, value) -> bool:
 	if not _registered_attrs.has(attribute):
 		return false
-	var type : AttributeType = _registered_attrs[attribute]
+	var type : AttributeType = _registered_attrs[attribute].type
 	match(type):
 		AttributeType.FLOAT:
 			if (not (value is float or value is int) or

@@ -1,0 +1,280 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdfkl5rl8qftx"]
+
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="1_bchbi"]
+[ext_resource type="Script" path="res://src/main_menu/settings_menu.gd" id="2_uodci"]
+[ext_resource type="Texture2D" uid="uid://d00ws7wljnit4" path="res://assets/ui theme/UIpack_vector.svg" id="3_hjn1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fejvu"]
+atlas = ExtResource("3_hjn1e")
+region = Rect2(150, 644, 36, 36)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bchbi")
+script = ExtResource("2_uodci")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.529412, 0.529412, 0.529412, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Display"
+horizontal_alignment = 1
+
+[node name="Display" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Resolution" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Display"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Display/Resolution"]
+layout_mode = 2
+theme_type_variation = &"S1Label"
+text = "Resolution"
+
+[node name="resolution" type="OptionButton" parent="Panel/MarginContainer/VBoxContainer/Display/Resolution"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+
+[node name="Fullscreen" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Display"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Display/Fullscreen"]
+layout_mode = 2
+theme_type_variation = &"S1Label"
+text = "Fullscreen"
+
+[node name="fullscreen" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/Display/Fullscreen"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSync" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Display"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Display/VSync"]
+layout_mode = 2
+theme_type_variation = &"S1Label"
+text = "VSync"
+
+[node name="vsync" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/Display/VSync"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="Audio" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundEffects" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+theme_type_variation = &"S1Label"
+text = "Sound Effects"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+theme_type_variation = &"S1Label"
+text = "100"
+horizontal_alignment = 2
+
+[node name="soundeffects" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 33.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Music" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Audio/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+theme_type_variation = &"S1Label"
+text = "Music"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Audio/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+theme_type_variation = &"S1Label"
+text = "50"
+horizontal_alignment = 2
+
+[node name="music" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Audio/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 33.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"H2Label"
+text = "Game"
+horizontal_alignment = 1
+
+[node name="Game" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Difficulty" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Game"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/Difficulty"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+theme_type_variation = &"S1Label"
+text = "Difficulty"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/Difficulty"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.05
+theme_type_variation = &"S1Label"
+text = "3"
+horizontal_alignment = 2
+
+[node name="difficulty" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Game/Difficulty"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 5.0
+value = 2.0
+scrollable = false
+tick_count = 5
+ticks_on_borders = true
+
+[node name="FontSize" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Game"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/FontSize"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+theme_type_variation = &"S1Label"
+text = "FontSize"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/FontSize"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.05
+theme_type_variation = &"S1Label"
+text = "12"
+horizontal_alignment = 2
+
+[node name="fontsize" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Game/FontSize"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = 10.0
+max_value = 30.0
+value = 13.0
+scrollable = false
+
+[node name="CamShakeIntensity" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Game"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+theme_type_variation = &"S1Label"
+text = "Camera Shake"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.05
+theme_type_variation = &"S1Label"
+text = "3"
+horizontal_alignment = 2
+
+[node name="camshake" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+scrollable = false
+
+[node name="Close" type="CheckBox" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_top = 13.0
+offset_right = -21.0
+offset_bottom = 54.0
+grow_horizontal = 0
+theme_override_icons/checked = SubResource("AtlasTexture_fejvu")
+button_pressed = true
+
+[connection signal="item_selected" from="Panel/MarginContainer/VBoxContainer/Display/Resolution/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Display/Fullscreen/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/Display/VSync/vsync" to="." method="_on_vsync_toggled"]
+[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects/soundeffects" to="." method="_on_soundeffects_drag_ended"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects/soundeffects" to="." method="_on_soundeffects_value_changed"]
+[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/Audio/Music/music" to="." method="_on_music_drag_ended"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Audio/Music/music" to="." method="_on_music_value_changed"]
+[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/Game/Difficulty/difficulty" to="." method="_on_difficulty_drag_ended"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Game/Difficulty/difficulty" to="." method="_on_difficulty_value_changed"]
+[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/Game/FontSize/fontsize" to="." method="_on_fontsize_drag_ended"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Game/FontSize/fontsize" to="." method="_on_fontsize_value_changed"]
+[connection signal="drag_ended" from="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity/camshake" to="." method="_on_camshake_drag_ended"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity/camshake" to="." method="_on_camshake_value_changed"]
+[connection signal="toggled" from="Panel/Close" to="." method="_on_close_toggled"]
