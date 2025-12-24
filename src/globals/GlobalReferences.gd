@@ -1,5 +1,7 @@
 extends Node
 
+var difficulty : int = 3
+
 # Scenes
 
 var main_menu_scene : String = "res://src/main_menu/MainMenu.tscn"
@@ -40,4 +42,11 @@ var colourToGunMap : Array = [
 
 
 
+func _ready() -> void:
+	SettingsManager.attribute_updated.connect(func(attr, val): if (attr == "Difficulty"): _on_difficulty_changed(val))
+	if SettingsManager.get_attribute("Difficulty") != null:
+		difficulty = SettingsManager.get_attribute("Difficulty")
 
+
+func _on_difficulty_changed(value : int) -> void:
+	difficulty = value

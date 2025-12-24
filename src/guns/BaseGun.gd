@@ -37,6 +37,16 @@ var user : CharacterBody2D
 var cooldown : float;
 var bulletScene : PackedScene = load(GlobalReferences.bullet)
 
+func _ready() -> void:
+	var difficulty_mods := {
+		1 : 1.4,
+		2 : 1.2,
+		3 : 1.0,
+		4 : 0.8,
+		5 : 0.6,
+	}
+	maxAmmo *= difficulty_mods[GlobalReferences.difficulty]
+
 
 func shoot(target : Vector2):
 	if cooldown > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://mkw5fx3tffxl"]
+[gd_scene load_steps=24 format=3 uid="uid://mkw5fx3tffxl"]
 
 [ext_resource type="PackedScene" uid="uid://btobiu2ims31j" path="res://src/world/BasicWorld.tscn" id="1_y6s3h"]
 [ext_resource type="PackedScene" uid="uid://bd1wi665ltel1" path="res://src/world/TileMap.tscn" id="2_8wqxm"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://src/effects/death_effect.tscn" id="16_5x7mi"]
 [ext_resource type="PackedScene" uid="uid://b2o10jdd11x7v" path="res://src/effects/teleport_vfx.tscn" id="17_fg7gx"]
 [ext_resource type="PackedScene" uid="uid://fqgjrj7b7tbq" path="res://src/effects/teleport_vfx_2.tscn" id="18_ow1gl"]
+[ext_resource type="PackedScene" uid="uid://pqs0864so60h" path="res://src/pickups/MachineGunPickup.tscn" id="19_p40cn"]
+[ext_resource type="PackedScene" uid="uid://ce2tsoia8xsqw" path="res://src/pickups/HeavyCanonPickup.tscn" id="20_waoqi"]
+[ext_resource type="PackedScene" uid="uid://bqqfm31sqx0jc" path="res://src/pickups/SplitRiflePickup.tscn" id="21_bev4g"]
+[ext_resource type="PackedScene" uid="uid://d21ysl3tkhca6" path="res://src/pickups/shotgun_pickup.tscn" id="22_vt7ey"]
 
 [sub_resource type="Curve2D" id="Curve2D_wgd75"]
 _data = {
@@ -89,6 +93,18 @@ position = Vector2(627.911, 84.8528)
 
 [node name="TeleportVFX" parent="DeathEffect/TeleportVFX" index="4" instance=ExtResource("18_ow1gl")]
 position = Vector2(831.558, -5.65698)
+
+[node name="MachineGunPickup" parent="." index="10" instance=ExtResource("19_p40cn")]
+position = Vector2(763, 142)
+
+[node name="HeavyCanonPickup" parent="." index="11" instance=ExtResource("20_waoqi")]
+position = Vector2(1141, 126)
+
+[node name="SplitRiflePickup" parent="." index="12" instance=ExtResource("21_bev4g")]
+position = Vector2(519, 119)
+
+[node name="ShotgunPickup" parent="." index="13" instance=ExtResource("22_vt7ey")]
+position = Vector2(962, 136)
 
 [editable path="CanvasLayer/GameUI"]
 [editable path="CanvasLayer/Debug"]

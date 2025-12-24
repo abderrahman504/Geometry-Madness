@@ -45,6 +45,16 @@ var bulletSpawnDistance : float:
 
 func _ready():
 	player = GlobalReferences.player
+
+	var difficulty_mods := {
+		1 : 0.6,
+		2 : 0.8,
+		3 : 1.0,
+		4 : 1.2,
+		5 : 1.4,
+	}
+	max_health *= difficulty_mods[GlobalReferences.difficulty]	
+	
 	attackIntervalCounter = attackInterval
 	breakTimeCounter = 1
 	health = max_health

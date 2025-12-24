@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm38fnc67j0v6"]
+[gd_scene load_steps=3 format=3 uid="uid://cm38fnc67j0v6"]
 
 [ext_resource type="Script" path="res://src/world/UI/debug_cam_shake.gd" id="1_1fbfb"]
+[ext_resource type="Script" path="res://src/world/UI/debug_pistol_props.gd" id="2_x420u"]
 
 [node name="Debug" type="Control"]
 layout_mode = 3
@@ -9,9 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CameraShake" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 159.0
 offset_bottom = 187.0
@@ -73,4 +76,67 @@ text = "Y"
 layout_mode = 2
 placeholder_text = "0"
 
+[node name="PistolProps" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_right = 340.0
+offset_bottom = 187.0
+script = ExtResource("2_x420u")
+
+[node name="Damage" type="HBoxContainer" parent="PistolProps"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PistolProps/Damage"]
+layout_mode = 2
+text = "Damage"
+
+[node name="LineEdit" type="LineEdit" parent="PistolProps/Damage"]
+layout_mode = 2
+placeholder_text = "2"
+
+[node name="Pellets" type="HBoxContainer" parent="PistolProps"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PistolProps/Pellets"]
+layout_mode = 2
+text = "Pellets"
+
+[node name="LineEdit" type="LineEdit" parent="PistolProps/Pellets"]
+layout_mode = 2
+placeholder_text = "1"
+
+[node name="Dist" type="HBoxContainer" parent="PistolProps"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PistolProps/Dist"]
+layout_mode = 2
+text = "Distance"
+
+[node name="LineEdit" type="LineEdit" parent="PistolProps/Dist"]
+layout_mode = 2
+placeholder_text = "15"
+
+[node name="Dir" type="HBoxContainer" parent="PistolProps"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PistolProps/Dir"]
+layout_mode = 2
+text = "X"
+
+[node name="LineEdit" type="LineEdit" parent="PistolProps/Dir"]
+layout_mode = 2
+placeholder_text = "1"
+
+[node name="Label2" type="Label" parent="PistolProps/Dir"]
+layout_mode = 2
+text = "Y"
+
+[node name="LineEdit2" type="LineEdit" parent="PistolProps/Dir"]
+layout_mode = 2
+placeholder_text = "0"
+
 [connection signal="button_up" from="CameraShake/Button" to="CameraShake" method="_on_button_button_up"]
+[connection signal="text_changed" from="PistolProps/Damage/LineEdit" to="PistolProps" method="_on_damage_text_changed"]
+[connection signal="text_changed" from="PistolProps/Pellets/LineEdit" to="PistolProps" method="_on_pellets_text_changed"]

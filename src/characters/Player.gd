@@ -39,7 +39,18 @@ func _init():
 
 func _ready():
 	GlobalReferences.playerExists = true
-	#Creating the player health bar
+	
+	# Adjusting max health based on difficulty
+	var difficulty_mods := {
+		1 : 1.6, 
+		2 : 1.3,
+		3: 1, 
+		4 : 0.7,
+		5 : 0.4,
+	}
+	maxHealth *= difficulty_mods[GlobalReferences.difficulty]
+
+	# Creating the player health bar
 	health = maxHealth
 	healthbar_node = load(GlobalReferences.healthbarPath).instantiate()
 	myHealthBar = healthbar_node.get_node("TextureProgressBar")

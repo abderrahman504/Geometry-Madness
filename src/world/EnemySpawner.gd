@@ -28,6 +28,27 @@ var enemy_spawn_timer : float
 
 var lvl : int = 1
 
+
+func _ready() -> void:
+	var diff_spawn_time_mod := {
+		1 : 2.,
+		2 : 1.5,
+		3 : 1,
+		4 : 0.8,
+		5 : 0.7,
+	}
+	var diff_max_enemies_mod := {
+		1 : 0.4,
+		2 : 0.7,
+		3 : 1,
+		4 : 1.3,
+		5 : 1.6,
+	}
+
+	base_enemy_spawn_time *= diff_spawn_time_mod[GlobalReferences.difficulty]
+	maxNumberOfEnemies *= diff_max_enemies_mod[GlobalReferences.difficulty]
+
+
 func _process(delta):
 	start_break_time -= delta
 	if start_break_time > 0:
