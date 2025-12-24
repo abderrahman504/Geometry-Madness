@@ -57,6 +57,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="Resolution" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Display"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -80,12 +81,15 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Display/Fullscreen"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
 theme_type_variation = &"S1Label"
 text = "Fullscreen"
 
 [node name="fullscreen" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/Display/Fullscreen"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VSync" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Display"]
 layout_mode = 2
@@ -93,12 +97,15 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Display/VSync"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
 theme_type_variation = &"S1Label"
 text = "VSync"
 
 [node name="vsync" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/Display/VSync"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -130,8 +137,10 @@ horizontal_alignment = 2
 
 [node name="soundeffects" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Audio/SoundEffects"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.8
 value = 33.0
 tick_count = 10
 ticks_on_borders = true
@@ -157,8 +166,10 @@ horizontal_alignment = 2
 
 [node name="music" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/Audio/Music"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.8
 value = 33.0
 tick_count = 10
 ticks_on_borders = true
@@ -178,12 +189,14 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/Difficulty"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 theme_type_variation = &"S1Label"
 text = "Difficulty"
 
 [node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/Difficulty"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 theme_type_variation = &"S1Label"
 text = "3"
@@ -193,6 +206,8 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.8
 min_value = 1.0
 max_value = 5.0
 value = 2.0
@@ -206,12 +221,14 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/FontSize"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 theme_type_variation = &"S1Label"
-text = "FontSize"
+text = "Font Size"
 
 [node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/FontSize"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 theme_type_variation = &"S1Label"
 text = "12"
@@ -221,6 +238,8 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.8
 min_value = 10.0
 max_value = 30.0
 value = 13.0
@@ -232,12 +251,14 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 theme_type_variation = &"S1Label"
 text = "Camera Shake"
 
 [node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.05
 theme_type_variation = &"S1Label"
 text = "3"
@@ -247,8 +268,10 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.8
 max_value = 1.0
-step = 0.01
+step = 0.1
 scrollable = false
 
 [node name="Close" type="CheckBox" parent="Panel"]

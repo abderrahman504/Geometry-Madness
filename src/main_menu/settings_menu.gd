@@ -118,7 +118,7 @@ func _on_fontsize_drag_ended(value_changed):
 
 
 func _on_camshake_value_changed(value):
-	$Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity/Value.text = str(value)
+	$Panel/MarginContainer/VBoxContainer/Game/CamShakeIntensity/Value.text = "%1.1f" % value
 
 
 func _on_camshake_drag_ended(value_changed):
@@ -129,6 +129,6 @@ func _on_camshake_drag_ended(value_changed):
 		printerr("Failed to set value for settings attribute 'Camera Shake Intensity'")
 
 
-func _on_close_toggled(button_pressed):
+func _on_close_toggled(_button_pressed):
 	SettingsManager.save_settings()
 	get_tree().change_scene_to_file(GlobalReferences.main_menu_scene)

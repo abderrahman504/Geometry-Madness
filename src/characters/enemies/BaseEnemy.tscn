@@ -19,6 +19,7 @@ hit_vfx_scene = ExtResource("3_w6abm")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d3nas")
+bus = &"Sound Effects"
 
 [node name="BulletSpawnPos" type="Marker2D" parent="."]
 position = Vector2(25, 0)

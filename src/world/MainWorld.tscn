@@ -5,19 +5,19 @@
 [ext_resource type="AudioStream" uid="uid://bpsojeb44adj4" path="res://assets/audio/gameover.wav" id="3_kngci"]
 [ext_resource type="PackedScene" uid="uid://cm38fnc67j0v6" path="res://src/world/UI/debug.tscn" id="4_i0p04"]
 [ext_resource type="PackedScene" uid="uid://1670xiuyjea6" path="res://src/world/EnemySpawner.tscn" id="5_oe480"]
-[ext_resource type="PackedScene" uid="uid://m6i6cdcnre43" path="res://Scenes&Scripts/Characters/Hexagon.tscn" id="6_f4j46"]
-[ext_resource type="PackedScene" uid="uid://3iinl8s7slmm" path="res://Scenes&Scripts/Characters/Pentagon.tscn" id="7_jof3h"]
-[ext_resource type="PackedScene" uid="uid://celvxrlgko2b2" path="res://Scenes&Scripts/Characters/Square.tscn" id="8_5hfmb"]
-[ext_resource type="PackedScene" uid="uid://b77rrjxl7avcx" path="res://Scenes&Scripts/Characters/Octagon/octagon.tscn" id="9_q3om2"]
-[ext_resource type="PackedScene" uid="uid://bu6ngkdrp1l2p" path="res://Scenes&Scripts/Characters/Lvl2Square.tscn" id="10_pcbrp"]
-[ext_resource type="PackedScene" uid="uid://sjvhpyf6da0q" path="res://Scenes&Scripts/Characters/Lvl2Pentagon.tscn" id="11_ntvpp"]
-[ext_resource type="PackedScene" uid="uid://bdb0wo8qvgt7f" path="res://Scenes&Scripts/Characters/Lvl2Hexagon.tscn" id="12_7abft"]
-[ext_resource type="PackedScene" uid="uid://c8hyxdxnynsbd" path="res://Scenes&Scripts/Characters/Octagon/lvl2_octagon.tscn" id="13_xqdc4"]
+[ext_resource type="PackedScene" uid="uid://m6i6cdcnre43" path="res://src/characters/enemies/Hexagon.tscn" id="6_f4j46"]
+[ext_resource type="PackedScene" uid="uid://3iinl8s7slmm" path="res://src/characters/enemies/Pentagon.tscn" id="7_jof3h"]
+[ext_resource type="PackedScene" uid="uid://celvxrlgko2b2" path="res://src/characters/enemies/Square.tscn" id="8_5hfmb"]
+[ext_resource type="PackedScene" uid="uid://b77rrjxl7avcx" path="res://src/characters/enemies/octagon/octagon.tscn" id="9_q3om2"]
+[ext_resource type="PackedScene" uid="uid://bu6ngkdrp1l2p" path="res://src/characters/enemies/Lvl2Square.tscn" id="10_pcbrp"]
+[ext_resource type="PackedScene" uid="uid://sjvhpyf6da0q" path="res://src/characters/enemies/Lvl2Pentagon.tscn" id="11_ntvpp"]
+[ext_resource type="PackedScene" uid="uid://bdb0wo8qvgt7f" path="res://src/characters/enemies/Lvl2Hexagon.tscn" id="12_7abft"]
+[ext_resource type="PackedScene" uid="uid://c8hyxdxnynsbd" path="res://src/characters/enemies/octagon/lvl2_octagon.tscn" id="13_xqdc4"]
 [ext_resource type="PackedScene" uid="uid://dnvg8bgt3otoc" path="res://src/world/music_player.tscn" id="14_4yww7"]
-[ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://Scenes&Scripts/Effects/directed_particles.tscn" id="15_kkew2"]
-[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://Scenes&Scripts/Other/death_effect.tscn" id="16_5x7mi"]
-[ext_resource type="PackedScene" uid="uid://b2o10jdd11x7v" path="res://Scenes&Scripts/Characters/Octagon/teleport_vfx.tscn" id="17_fg7gx"]
-[ext_resource type="PackedScene" uid="uid://fqgjrj7b7tbq" path="res://Scenes&Scripts/Characters/Octagon/teleport_vfx_2.tscn" id="18_ow1gl"]
+[ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://src/effects/directed_particles.tscn" id="15_kkew2"]
+[ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://src/effects/death_effect.tscn" id="16_5x7mi"]
+[ext_resource type="PackedScene" uid="uid://b2o10jdd11x7v" path="res://src/effects/teleport_vfx.tscn" id="17_fg7gx"]
+[ext_resource type="PackedScene" uid="uid://fqgjrj7b7tbq" path="res://src/effects/teleport_vfx_2.tscn" id="18_ow1gl"]
 
 [sub_resource type="Curve2D" id="Curve2D_wgd75"]
 _data = {
@@ -41,6 +41,7 @@ deceleration = 1000.0
 
 [node name="DeathSound" parent="." index="3"]
 stream = ExtResource("3_kngci")
+bus = &"Music"
 
 [node name="GameUI" parent="CanvasLayer" index="1"]
 mouse_filter = 2

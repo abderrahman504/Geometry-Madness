@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c4j5ulpu4fsxt" path="res://assets/textures/BulletOuter.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cue4dfr5mje1l" path="res://assets/textures/BulletInner.png" id="4"]
 
-
 [sub_resource type="CircleShape2D" id="1"]
 
 [node name="Bullet" type="Area2D"]

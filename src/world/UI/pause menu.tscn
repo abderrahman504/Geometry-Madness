@@ -44,7 +44,7 @@ offset_bottom = 57.0
 grow_horizontal = 2
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.45
-theme_override_font_sizes/font_size = 25
+theme_type_variation = &"H2Label"
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -65,10 +65,12 @@ alignment = 1
 
 [node name="Resume" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"S1Label"
 text = "Resume"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"S1Label"
 text = "Quit"
 
 [connection signal="button_up" from="Panel/VBoxContainer/Resume" to="." method="resume"]
