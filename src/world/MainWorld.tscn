@@ -64,6 +64,7 @@ duration = 0.3
 dist = 5.0
 
 [node name="EnemySpawner" parent="." index="6" instance=ExtResource("5_oe480")]
+process_mode = 4
 position = Vector2(288, 112)
 lvl1_enemies = Array[PackedScene]([ExtResource("6_f4j46"), ExtResource("7_jof3h"), ExtResource("8_5hfmb"), ExtResource("9_q3om2")])
 lvl2_enemies = Array[PackedScene]([ExtResource("10_pcbrp"), ExtResource("11_ntvpp"), ExtResource("12_7abft"), ExtResource("13_xqdc4")])

@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqks7hjmtwpxi"]
+[gd_scene load_steps=7 format=3 uid="uid://dqks7hjmtwpxi"]
 
 [ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_hssxd"]
 [ext_resource type="Script" path="res://src/world/UI/PauseMenu.gd" id="2_66vqw"]
 [ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="3_7o2ip"]
+[ext_resource type="PackedScene" uid="uid://bdfkl5rl8qftx" path="res://src/main_menu/settings_menu.tscn" id="4_r2jfv"]
+[ext_resource type="Texture2D" uid="uid://d00ws7wljnit4" path="res://assets/ui theme/UIpack_vector.svg" id="5_or585"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnw6v"]
+atlas = ExtResource("5_or585")
+region = Rect2(150, 644, 36, 36)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -26,7 +32,7 @@ anchor_bottom = 0.631
 offset_left = -0.600006
 offset_top = -0.240005
 offset_right = -0.400024
-offset_bottom = -0.320038
+offset_bottom = 74.68
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_7o2ip")
@@ -68,10 +74,43 @@ layout_mode = 2
 theme_type_variation = &"S1Label"
 text = "Resume"
 
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"S1Label"
+text = "Settings"
+
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"S1Label"
 text = "Quit"
 
+[node name="SettingsMenu" parent="." instance=ExtResource("4_r2jfv")]
+visible = false
+layout_mode = 1
+
+[node name="Difficulty" parent="SettingsMenu/Panel/MarginContainer/VBoxContainer/Game" index="0"]
+visible = false
+
+[node name="Close" parent="SettingsMenu/Panel" index="1"]
+visible = false
+
+[node name="Close2" type="CheckBox" parent="SettingsMenu/Panel" index="2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_top = 27.0
+offset_right = -18.0
+offset_bottom = 63.0
+grow_horizontal = 0
+theme_override_icons/checked = SubResource("AtlasTexture_wnw6v")
+theme_override_icons/unchecked = SubResource("AtlasTexture_wnw6v")
+button_pressed = true
+
 [connection signal="button_up" from="Panel/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="Panel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_up" from="Panel/VBoxContainer/Exit" to="." method="exit"]
+[connection signal="pressed" from="SettingsMenu/Panel/Close2" to="." method="_on_settings_close_pressed"]
+
+[editable path="SettingsMenu"]

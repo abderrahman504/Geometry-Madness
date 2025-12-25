@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btobiu2ims31j"]
+[gd_scene load_steps=14 format=3 uid="uid://btobiu2ims31j"]
 
 [ext_resource type="Script" path="res://src/world/World.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cx2aa6o5apcrm" path="res://src/misc/moving_score_label.tscn" id="2_8ldxm"]
@@ -14,12 +14,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f83gk"]
 shader = ExtResource("6_kocl3")
-shader_parameter/min_alpha = 0.305
-shader_parameter/gradient_length_norm = 0.12
-shader_parameter/gradient_length_pixels = 30.0
+shader_parameter/min_alpha = 0.235
+shader_parameter/gradient_length_norm = 0.16
+shader_parameter/gradient_length_pixels = 20.0
 shader_parameter/use_norm_len = false
 shader_parameter/rect_size = Vector2(453, 345)
 shader_parameter/ignore_text = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr573"]
+bg_color = Color(1, 1, 1, 0.603922)
 
 [node name="BasicWorld" type="Node2D" node_paths=PackedStringArray("score_marker_control")]
 script = ExtResource("1")
@@ -56,6 +59,7 @@ offset_right = 239.0
 offset_bottom = 193.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fr573")
 metadata/_edit_group_ = true
 
 [node name="Labels" type="VBoxContainer" parent="CanvasLayer/Scoreboard"]
@@ -91,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -47.5
-offset_top = -87.0
-offset_right = 48.5
-offset_bottom = -12.0
+offset_left = -53.5
+offset_top = -132.0
+offset_right = 55.5
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("7_2mxah")
