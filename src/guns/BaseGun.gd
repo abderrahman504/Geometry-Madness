@@ -16,7 +16,7 @@ signal fired
 @export var pellet_count : int = 1
 @export var maxAmmo : int = 10
 @export var infinite_ammo : bool = false
-@onready var ammoCount : int = maxAmmo
+var ammoCount : int
 #@export var ammoConsumption: int
 
 @export_category("Bullet Properties")
@@ -37,6 +37,7 @@ var user : CharacterBody2D
 var cooldown : float;
 var bulletScene : PackedScene = load(GlobalReferences.bullet)
 
+
 func _ready() -> void:
 	var difficulty_mods := {
 		1 : 1.4,
@@ -46,6 +47,7 @@ func _ready() -> void:
 		5 : 0.6,
 	}
 	maxAmmo *= difficulty_mods[GlobalReferences.difficulty]
+	ammoCount = maxAmmo
 
 
 func shoot(target : Vector2):
