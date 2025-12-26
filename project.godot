@@ -23,6 +23,7 @@ ScoreStorage="*res://src/globals/ScoreStorage.gd"
 SettingsManager="*res://src/globals/SettingsManager.gd"
 GameSettings="*res://src/globals/GameSettings.gd"
 DisplayNAudio="*res://src/globals/DisplayNAudio.gd"
+InputDeviceTracker="*res://src/globals/InputDeviceTracker.gd"
 
 [debug]
 

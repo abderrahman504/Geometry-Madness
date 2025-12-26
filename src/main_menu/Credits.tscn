@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://yhu1j3xvstrr"]
+[gd_scene load_steps=5 format=3 uid="uid://yhu1j3xvstrr"]
 
 [ext_resource type="Script" path="res://src/main_menu/Credits.gd" id="1_ubmkq"]
-[ext_resource type="PackedScene" uid="uid://brrm4o1pbxjgj" path="res://src/main_menu/MainMenu.tscn" id="2_oyc3m"]
 
 [sub_resource type="Animation" id="Animation_irguu"]
 length = 0.001
@@ -49,7 +48,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ubmkq")
 scroll_speed = 50.0
-main_scene = ExtResource("2_oyc3m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -66,7 +64,7 @@ anchor_bottom = 0.5
 offset_left = -640.0
 offset_top = -360.0
 offset_right = -102.0
-offset_bottom = 236.0
+offset_bottom = 394.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -85,9 +83,13 @@ text = "[center][b]Made by[/b][/center]
 [center]Sebastiano Zezza[/center]
 [center]Abdelrahman Khayri[/center]
 
+[center][b]Extra Code From[/b][/center]
+[font size=5] [/font]
+[center]nathanhoad - github/godot_input_helper[/center]
+
 [center][b]Music[/b][/center]						
 [font size=5] [/font]
-[center]Boss Battle #1, #2 - nene[/center]
+[center]nene - Boss Battle #1, #2[/center]
 
 [center][b]UI[/b][/center]
 [font size=5] [/font]

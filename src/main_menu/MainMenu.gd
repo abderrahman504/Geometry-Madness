@@ -3,6 +3,8 @@ extends Control
 
 @export var tutorial_scene : PackedScene
 
+func _ready() -> void:
+	InputDeviceTracker.device_changed.connect(_on_input_device_changed)
 
 func on_play_pressed():
 	get_tree().change_scene_to_file(GlobalReferences.main_level_scene)
@@ -22,3 +24,9 @@ func on_exit_pressed():
 
 func _on_settings_pressed():
 	get_tree().change_scene_to_file("res://src/main_menu/settings_menu.tscn")
+
+
+func _on_input_device_changed(device : int) -> void:
+	$TextureRect.texture = InputDeviceTracker.device_icons[device]
+	$TextureRect/AnimationPlayer.stop()
+	$TextureRect/AnimationPlayer.play("reveal_icon")

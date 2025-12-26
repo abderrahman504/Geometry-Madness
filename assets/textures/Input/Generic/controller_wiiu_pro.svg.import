@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v6ee5je87mxo"
-path="res://.godot/imported/keyboard.svg-cfd60e9305865a52610a8a079a054cf0.ctex"
+uid="uid://bqpgrrnblpjww"
+path="res://.godot/imported/controller_wiiu_pro.svg-83af1d0b50135c65c77b31b839f65604.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Input/Keyboard-Mouse/keyboard.svg"
-dest_files=["res://.godot/imported/keyboard.svg-cfd60e9305865a52610a8a079a054cf0.ctex"]
+source_file="res://assets/textures/Input/Generic/controller_wiiu_pro.svg"
+dest_files=["res://.godot/imported/controller_wiiu_pro.svg-83af1d0b50135c65c77b31b839f65604.ctex"]
 
 [params]
 
@@ -32,6 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=3.0
+svg/scale=4.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

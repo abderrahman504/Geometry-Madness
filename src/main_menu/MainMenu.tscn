@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://brrm4o1pbxjgj"]
+[gd_scene load_steps=8 format=3 uid="uid://brrm4o1pbxjgj"]
 
 [ext_resource type="Theme" uid="uid://xdmr7ygweveg" path="res://assets/ui theme/kenneyUI-green.tres" id="1_7isr3"]
 [ext_resource type="PackedScene" uid="uid://drq003e2vmhqg" path="res://src/main_menu/Menubutton.tscn" id="2_hedmk"]
 [ext_resource type="Script" path="res://src/main_menu/MainMenu.gd" id="2_lg20e"]
+[ext_resource type="Texture2D" uid="uid://v6ee5je87mxo" path="res://assets/textures/Input/Keyboard-Mouse/keyboard.svg" id="4_8xwow"]
+
+[sub_resource type="Animation" id="Animation_0n73c"]
+resource_name = "reveal_icon"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.9, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rsfrs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vluyn"]
+_data = {
+"RESET": SubResource("Animation_rsfrs"),
+"reveal_icon": SubResource("Animation_0n73c")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -69,6 +107,26 @@ text = "Credits"
 layout_mode = 2
 size_flags_vertical = 3
 text = "Exit Game"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -244.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_8xwow")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+autoplay = "reveal_icon"
+libraries = {
+"": SubResource("AnimationLibrary_vluyn")
+}
 
 [connection signal="button_up" from="VBoxContainer/Play" to="." method="on_play_pressed"]
 [connection signal="button_up" from="VBoxContainer/Tutorial" to="." method="on_tutorial_pressed"]
