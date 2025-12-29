@@ -8,7 +8,6 @@ var device_icons := {
 	InputDeviceTracker.Device.GENERIC : preload("res://assets/textures/Input/Generic/controller_wiiu_pro.svg"),
 }
 
-@export var tutorial_scene : PackedScene
 
 func _ready() -> void:
 	InputDeviceTracker.device_changed.connect(_on_input_device_changed)
@@ -18,7 +17,7 @@ func on_play_pressed():
 
 
 func on_tutorial_pressed():
-	get_tree().change_scene_to_packed(tutorial_scene)
+	get_tree().change_scene_to_file("res://src/world/tutorial.tscn")
 
 
 func on_credits_pressed():

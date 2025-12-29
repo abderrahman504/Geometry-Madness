@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx2atuu7rx1ha"
-path="res://.godot/imported/keyboard_arrows.svg-82954225f9692d14f80344683f86151a.ctex"
+uid="uid://crl6e2oeqvpkl"
+path="res://.godot/imported/xbox_lt.svg-189481cdef90b997582037bee9efbbd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Input/Keyboard-Mouse/keyboard_arrows.svg"
-dest_files=["res://.godot/imported/keyboard_arrows.svg-82954225f9692d14f80344683f86151a.ctex"]
+source_file="res://assets/textures/Input/Xbox/xbox_lt.svg"
+dest_files=["res://.godot/imported/xbox_lt.svg-189481cdef90b997582037bee9efbbd7.ctex"]
 
 [params]
 

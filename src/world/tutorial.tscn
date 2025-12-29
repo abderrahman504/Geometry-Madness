@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvjy5gcl0nahk"]
+
+[ext_resource type="PackedScene" uid="uid://mkw5fx3tffxl" path="res://src/world/MainWorld.tscn" id="1_kog87"]
+[ext_resource type="PackedScene" uid="uid://celvxrlgko2b2" path="res://src/characters/enemies/Square.tscn" id="2_fnryr"]
+[ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="2_ujlk6"]
+[ext_resource type="Script" path="res://src/world/TutorialText.gd" id="3_ndc3i"]
+
+[node name="Tutorial" instance=ExtResource("1_kog87")]
+
+[node name="TutorialText" type="Panel" parent="CanvasLayer" index="4"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("2_ujlk6")
+script = ExtResource("3_ndc3i")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TutorialText" index="0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Square" parent="." index="11" instance=ExtResource("2_fnryr")]
+process_mode = 4
+position = Vector2(1023, 285)
+
+[editable path="CanvasLayer/GameUI"]
+[editable path="CanvasLayer/Debug"]
+[editable path="EnemySpawner"]
