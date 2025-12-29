@@ -1,9 +1,8 @@
-extends Node2D
+extends CharacterBody2D
 class_name BasePickup
 
 #Spawn variables.
 var directionVector : Vector2;
-var velocity : Vector2;
 var speed : float = 350;
 var deceleration : float = 500;
 
@@ -14,7 +13,7 @@ var deceleration : float = 500;
 @export var fadeSpeed : float = 250;
 var increasingAlpha : bool = false;
 var beingPickedUp : bool = false;
-
+var _life_timer : float = 0
 
 
 func _ready():
@@ -25,30 +24,26 @@ func _process(delta):
 	if not GlobalReferences.playerExists:
 		return
 	var player = GlobalReferences.player
-	position += velocity * delta
+	
+	move_and_slide()
 	velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	var distanceFromPlayer = (position - player.position).length()
 	if distanceFromPlayer <= pickUpRange and not beingPickedUp:
 		get_picked_up()
 	
-	lifeSpan -= delta
-	if lifeSpan <= fadeTime:
+	_life_timer += delta
+	if _life_timer >= lifeSpan - fadeTime:
 		run_fade_effect(delta);
 	
-	if lifeSpan <= 0:
+	if _life_timer >= lifeSpan:
 		queue_free()
 
 
 
-func run_fade_effect(delta):
-	if increasingAlpha:
-		modulate.a8 += fadeSpeed * delta;
-		if modulate.a8 >= 255:
-			increasingAlpha = false;
-	else:
-		modulate.a8 -= fadeSpeed * delta;
-		if modulate.a8 <= 0:
-			increasingAlpha = true;
+func run_fade_effect(delta : float) -> void:
+	var _fade_timer = _life_timer - (lifeSpan - fadeTime)
+	_fade_timer = max(_fade_timer, 0)
+	modulate.a = abs(cos(_fade_timer * 2*PI / (fadeTime * 0.8)))
 	
 
 func get_picked_up():
