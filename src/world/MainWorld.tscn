@@ -112,6 +112,9 @@ position = Vector2(519, 119)
 [node name="ShotgunPickup" parent="." index="13" instance=ExtResource("22_vt7ey")]
 position = Vector2(962, 136)
 
+[node name="Cursor" parent="." index="14"]
+top_level = true
+
 [editable path="CanvasLayer/GameUI"]
 [editable path="CanvasLayer/Debug"]
 [editable path="EnemySpawner"]
