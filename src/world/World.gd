@@ -28,6 +28,7 @@ func _ready():
 	EnemySignalBus.enemy_died.connect(on_enemy_died)
 	$Player.died.connect(_on_player_died)
 	music_player.switch_to_track(music_player.music_tracks[0])
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func transition():
@@ -67,6 +68,7 @@ func _on_player_died() -> void:
 	music_player.switch_to_track(null)
 	show_scoreboard()
 	$DeathSound.play()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func show_scoreboard() -> void:

@@ -32,7 +32,8 @@ var device_icons := {
 }
 
 var _current_device : Device = Device.KEYBOARD
-
+var current_device : Device:
+	get: return _current_device
 
 
 func _input(event : InputEvent) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btobiu2ims31j"]
+[gd_scene load_steps=16 format=3 uid="uid://btobiu2ims31j"]
 
 [ext_resource type="Script" path="res://src/world/World.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cx2aa6o5apcrm" path="res://src/misc/moving_score_label.tscn" id="2_8ldxm"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://src/misc/Positioner/CursorFollow.gd" id="9_7owud"]
 [ext_resource type="Script" path="res://src/misc/Positioner/Smoother.gd" id="10_jxsch"]
 [ext_resource type="Script" path="res://src/misc/Positioner/CameraShaker.gd" id="11_4qewy"]
+[ext_resource type="Texture2D" uid="uid://d1nyru0slx001" path="res://assets/textures/target_round_b.svg" id="12_7gp0f"]
+[ext_resource type="Script" path="res://src/misc/Positioner/FollowNode.gd" id="12_vhkp4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f83gk"]
 shader = ExtResource("6_kocl3")
@@ -29,8 +31,10 @@ script = ExtResource("1")
 moving_score_obj_scene = ExtResource("2_8ldxm")
 score_marker_control = NodePath("CanvasLayer/GameUI/ScoreCounter")
 
-[node name="Player" parent="." instance=ExtResource("6")]
+[node name="Player" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("6")]
 position = Vector2(288, 112)
+cursor = NodePath("../Cursor")
+cursor_max_distance = 200.0
 acceleration = 600.0
 deceleration = 600.0
 
@@ -130,6 +134,36 @@ script = ExtResource("10_jxsch")
 script = ExtResource("11_4qewy")
 duration = 0.5
 dist = 10.0
+
+[node name="JoypadPositionManager" type="Node" parent="Camera2D" node_paths=PackedStringArray("target", "_positioner_chain")]
+script = ExtResource("8_fnq87")
+target = NodePath("..")
+_positioner_chain = [NodePath("FollowNode"), NodePath("Smoother"), NodePath("Shaker")]
+
+[node name="FollowNode" type="Node" parent="Camera2D/JoypadPositionManager" node_paths=PackedStringArray("followed")]
+script = ExtResource("12_vhkp4")
+followed = NodePath("../../../Cursor")
+
+[node name="Smoother" type="Node" parent="Camera2D/JoypadPositionManager"]
+script = ExtResource("10_jxsch")
+
+[node name="Shaker" type="Node" parent="Camera2D/JoypadPositionManager"]
+script = ExtResource("11_4qewy")
+duration = 0.5
+dist = 10.0
+
+[node name="Cursor" type="Sprite2D" parent="."]
+position = Vector2(483, 190)
+texture = ExtResource("12_7gp0f")
+
+[node name="PositionManager" type="Node" parent="Cursor" node_paths=PackedStringArray("target", "_positioner_chain")]
+script = ExtResource("8_fnq87")
+target = NodePath("..")
+_positioner_chain = [NodePath("CursorFollow")]
+
+[node name="CursorFollow" type="Node" parent="Cursor/PositionManager"]
+script = ExtResource("9_7owud")
+follow_ratio = 1.0
 
 [connection signal="shot_fired" from="Player" to="Camera2D/PositionManager/Shaker" method="_on_player_shot_fired"]
 [connection signal="pressed" from="CanvasLayer/Scoreboard/Buttons/Restart" to="." method="_on_restart_pressed"]

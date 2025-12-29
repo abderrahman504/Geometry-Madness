@@ -4,7 +4,6 @@ class_name CursorFollow
 ## Positions the target somewhere between the player and the cursor.
 
 
-## Where the camera should try to position itself along the line between the player and the cursor.
 ## 0 is at the player and 1 is at the cursor.
 @export_range(0,1, 0.1) var follow_ratio : float = 0.2
 

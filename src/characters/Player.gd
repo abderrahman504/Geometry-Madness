@@ -5,6 +5,8 @@ signal died
 ## Emitted when the player shoots.
 signal shot_fired(angle : float, gun : BaseGun)
 
+@export var cursor : Sprite2D
+@export var cursor_max_distance : float = 100
 @export var maxSpeed: float
 @export var acceleration: float
 @export var deceleration: float
@@ -58,24 +60,37 @@ func _ready():
 	myHealthBar.max_value = maxHealth
 	myHealthBar.value = health
 	GlobalReferences.sceneRoot.add_child.call_deferred(healthbar_node)
+	# Initializing base gun
 	gun = base_gun
 	base_gun.user = self
 	base_gun.fired.connect(_on_gun_fired)
-
+	
+	InputDeviceTracker.device_changed.connect(_on_input_device_changed)
+	_on_input_device_changed(InputDeviceTracker.current_device)
 
 
 func _process(_delta):
 	#If the lmb is pressed, the gun will try to shoot - if the gun cool down is 0 then it will shoot
 	if Input.is_action_pressed("LMB"):
-		gun.shoot(get_global_mouse_position())
+		gun.shoot(cursor.global_position)
 
 
 func _physics_process(delta):
-	#This block of code is for Movement and Rotation
-	look_at(get_global_mouse_position())
-	inputVector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	inputVector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	inputVector = inputVector.normalized()
+	# In case of controller then move cursor based on look input
+	if InputDeviceTracker.current_device != InputDeviceTracker.Device.KEYBOARD:
+		var look_vec : Vector2 = Input.get_vector("look left", "look right", "look up", "look down")
+		look_vec *= cursor_max_distance
+		# Clamp a zero vector
+		if look_vec == Vector2.ZERO:
+			look_vec = Vector2.from_angle(rotation) * 0.2 * cursor_max_distance
+		cursor.global_position = position + look_vec
+		
+		
+	# This block of code is for Movement and Rotation
+	look_at(cursor.global_position)
+	inputVector = Input.get_vector("left", "right", "up", "down")
+	if InputDeviceTracker.current_device == InputDeviceTracker.Device.KEYBOARD:
+		inputVector = inputVector.normalized()
 	if inputVector != Vector2.ZERO:
 		velocity = velocity.move_toward(inputVector*maxSpeed, acceleration * delta)
 	else:
@@ -171,3 +186,11 @@ func get_new_gun(gunPickupType : int):
 
 func _on_gun_fired() -> void:
 	shot_fired.emit(rotation, gun)
+
+
+func _on_input_device_changed(device : InputDeviceTracker.Device) -> void:
+	var is_keyboard := device == InputDeviceTracker.Device.KEYBOARD
+	cursor.get_node("PositionManager").process_mode = Node.PROCESS_MODE_INHERIT if is_keyboard else PROCESS_MODE_DISABLED
+	GlobalReferences.sceneRoot.get_node("Camera2D/PositionManager").process_mode = Node.PROCESS_MODE_INHERIT if is_keyboard else PROCESS_MODE_DISABLED
+	GlobalReferences.sceneRoot.get_node("Camera2D/JoypadPositionManager").process_mode = Node.PROCESS_MODE_INHERIT if not is_keyboard else PROCESS_MODE_DISABLED
+	

@@ -6,12 +6,15 @@ func _input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("Escape"):
 		get_tree().paused = not get_tree().paused
 		visible = get_tree().paused
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if visible else Input.MOUSE_MODE_HIDDEN
 		$SettingsMenu.visible = !visible
+		$Panel/VBoxContainer/Resume.grab_focus()
 
 
 func resume():
 	hide()
 	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func exit():
