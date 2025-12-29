@@ -102,8 +102,32 @@ func teleport() -> void:
 
 func _spawn_minion() -> void:
 	var minion : CharacterBody2D = minion_scene.instantiate()
+	# Find non-wall position to place minion 
+	var spawn_vector := Vector2.from_angle(randf()) * minion_spawn_distance
+
+	# First attempt
+	var query := PhysicsRayQueryParameters2D.create(
+		character.global_position, 
+		character.global_position + spawn_vector,
+		4
+	)
+	var res := character.get_world_2d().direct_space_state.intersect_ray(query)
+	if not res.is_empty():
+		spawn_vector *= -1
+
+	# Second attempt
+	query.to = character.global_position + spawn_vector
+	res = character.get_world_2d().direct_space_state.intersect_ray(query)
+	if not res.is_empty():
+		spawn_vector = spawn_vector.orthogonal()
 	
-	minion.position = character.position + Vector2.from_angle(randf()) * minion_spawn_distance
+	# Last attempt
+	query.to = character.global_position + spawn_vector
+	res = character.get_world_2d().direct_space_state.intersect_ray(query)
+	if not res.is_empty():
+		spawn_vector *= -1
+
+	minion.position = character.global_position + spawn_vector
 	minion.died.connect(_on_minion_died)
 	GlobalReferences.sceneRoot.add_child(minion)
 
