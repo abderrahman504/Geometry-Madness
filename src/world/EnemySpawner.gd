@@ -21,7 +21,7 @@ var _spawned_enemies_count : int = 0
 
 var _adjusted_enemy_spawn_time : float:
 	get:
-		return base_enemy_spawn_time * (1 + 1 / maxNumberOfEnemies)
+		return pow(base_enemy_spawn_time * _spawned_enemies_count / maxNumberOfEnemies, 2) + base_enemy_spawn_time
 
 var enemy_spawn_timer : float
 @onready var pathFollow : PathFollow2D = $Path2D/PathFollow2D
