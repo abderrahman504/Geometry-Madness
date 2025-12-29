@@ -23,13 +23,6 @@ var device_names := {
 	Device.GENERIC : GENERIC_CONTROLLER,
 }
 
-## Maps Device enum values to Texture2Ds for controller icons
-var device_icons := {
-	Device.KEYBOARD : preload("res://assets/textures/Input/Keyboard-Mouse/keyboard.svg"),
-	Device.XBOX : preload("res://assets/textures/Input/Xbox/controller_xboxone.svg"),
-	Device.PLAYSTATION : preload("res://assets/textures/Input/PlayStation/controller_playstation5.svg"),
-	Device.GENERIC : preload("res://assets/textures/Input/Generic/controller_wiiu_pro.svg"),
-}
 
 var _current_device : Device = Device.KEYBOARD
 var current_device : Device:
