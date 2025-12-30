@@ -4,6 +4,9 @@ class_name Player
 signal died
 ## Emitted when the player shoots.
 signal shot_fired(angle : float, gun : BaseGun)
+signal looked
+signal moved
+signal gun_picked
 
 @export var cursor : Sprite2D
 @export var cursor_max_distance : float = 100
@@ -83,15 +86,19 @@ func _physics_process(delta):
 		# Clamp a zero vector
 		if look_vec == Vector2.ZERO:
 			look_vec = Vector2.from_angle(rotation) * 0.2 * cursor_max_distance
+		else:
+			looked.emit()
 		cursor.global_position = position + look_vec
-		
-		
+	
+	elif Input.get_last_mouse_velocity().length_squared() > 1:
+		looked.emit()
 	# This block of code is for Movement and Rotation
 	look_at(cursor.global_position)
 	inputVector = Input.get_vector("left", "right", "up", "down")
 	if InputDeviceTracker.current_device == InputDeviceTracker.Device.KEYBOARD:
 		inputVector = inputVector.normalized()
 	if inputVector != Vector2.ZERO:
+		moved.emit()
 		velocity = velocity.move_toward(inputVector*maxSpeed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
@@ -140,7 +147,7 @@ func heal(amount : float) -> void:
 
 
 func get_new_gun(gunPickupType : int):
-	
+	gun_picked.emit()
 	if gun.gunType == gunPickupType:
 		gun.ammoCount = gun.maxAmmo
 		return

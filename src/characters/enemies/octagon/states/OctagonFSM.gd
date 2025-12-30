@@ -22,7 +22,8 @@ func _process(delta):
 	super._process(delta)
 	if not GlobalReferences.playerExists:
 		return
-	
+	if current == null:
+		return
 	match current.name:
 		"Active":
 			_process_active(delta)

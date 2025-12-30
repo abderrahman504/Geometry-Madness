@@ -1,31 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvjy5gcl0nahk"]
+[gd_scene load_steps=7 format=3 uid="uid://dvjy5gcl0nahk"]
 
 [ext_resource type="PackedScene" uid="uid://mkw5fx3tffxl" path="res://src/world/MainWorld.tscn" id="1_kog87"]
+[ext_resource type="Script" path="res://src/world/tutorial.gd" id="2_770gx"]
 [ext_resource type="PackedScene" uid="uid://celvxrlgko2b2" path="res://src/characters/enemies/Square.tscn" id="2_fnryr"]
 [ext_resource type="Theme" uid="uid://boe7op2ax2trp" path="res://assets/ui theme/kenneyUI.tres" id="2_ujlk6"]
 [ext_resource type="Script" path="res://src/world/TutorialText.gd" id="3_ndc3i"]
+[ext_resource type="PackedScene" uid="uid://b77rrjxl7avcx" path="res://src/characters/enemies/octagon/octagon.tscn" id="6_ds3l0"]
 
 [node name="Tutorial" instance=ExtResource("1_kog87")]
+script = ExtResource("2_770gx")
 
-[node name="TutorialText" type="Panel" parent="CanvasLayer" index="4"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+[node name="PauseMenu" parent="CanvasLayer" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="GameUI" parent="CanvasLayer" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Scoreboard" parent="CanvasLayer" index="3"]
+metadata/_edit_lock_ = true
+
+[node name="TutorialText" type="PanelContainer" parent="CanvasLayer" index="4"]
+self_modulate = Color(0.564706, 0.564706, 0.564706, 1)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -149.0
+offset_right = 131.0
+offset_bottom = -44.0
+grow_vertical = 0
 theme = ExtResource("2_ujlk6")
+theme_type_variation = &"Panel"
 script = ExtResource("3_ndc3i")
+metadata/_edit_group_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TutorialText" index="0"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=20][img=30]res://assets/textures/Input/Keyboard-Mouse/mouse_move.svg[/img] To look.
+[img=30]res://assets/textures/Input/Keyboard-Mouse/keyboard_w.svg[/img][img=30]res://assets/textures/Input/Keyboard-Mouse/keyboard_a.svg[/img][img=30]res://assets/textures/Input/Keyboard-Mouse/keyboard_s.svg[/img][img=30]res://assets/textures/Input/Keyboard-Mouse/keyboard_d.svg[/img] or arrow keys to move.[/font_size]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="EnemySpawner" parent="." index="6"]
+process_mode = 4
+
+[node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
+position = Vector2(5.50919, 849.424)
 
 [node name="Square" parent="." index="11" instance=ExtResource("2_fnryr")]
 process_mode = 4
-position = Vector2(1023, 285)
+position = Vector2(-1109, 279)
+
+[node name="Octagon" parent="." index="12" instance=ExtResource("6_ds3l0")]
+position = Vector2(800, 207)
+
+[node name="SquareSpawnPosition" type="Marker2D" parent="." index="13"]
+position = Vector2(590, 224)
+gizmo_extents = 105.0
+
+[connection signal="gun_picked" from="Player" to="." method="_on_gun_picked_up"]
+[connection signal="looked" from="Player" to="." method="_on_player_looked"]
+[connection signal="moved" from="Player" to="." method="_on_player_moved"]
+[connection signal="shot_fired" from="Player" to="." method="_on_player_shot"]
+[connection signal="died" from="Square" to="." method="_on_square_died"]
+[connection signal="died" from="Octagon" to="." method="_on_octagon_died"]
 
 [editable path="CanvasLayer/GameUI"]
 [editable path="CanvasLayer/Debug"]

@@ -96,6 +96,8 @@ func handle_shooting(delta):
 
 
 func recieve_damage(damage : float, impact_pos : Vector2):
+	if health <= 0:
+		return
 	health -= damage
 	if tween != null:
 		tween.kill()
