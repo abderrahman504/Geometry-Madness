@@ -13,7 +13,10 @@ func _ready() -> void:
 	InputDeviceTracker.device_changed.connect(_on_input_device_changed)
 
 func on_play_pressed():
-	get_tree().change_scene_to_file(GlobalReferences.main_level_scene)
+	if GameState.tutorial_played:
+		get_tree().change_scene_to_file(GlobalReferences.main_level_scene)
+	else:
+		on_tutorial_pressed()
 
 
 func on_tutorial_pressed():

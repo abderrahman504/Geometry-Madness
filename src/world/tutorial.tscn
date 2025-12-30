@@ -46,9 +46,6 @@ autowrap_mode = 0
 [node name="EnemySpawner" parent="." index="6"]
 process_mode = 4
 
-[node name="PathFollow2D" parent="EnemySpawner/Path2D" index="0"]
-position = Vector2(5.50919, 849.424)
-
 [node name="Square" parent="." index="11" instance=ExtResource("2_fnryr")]
 process_mode = 4
 position = Vector2(-1109, 279)

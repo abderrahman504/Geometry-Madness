@@ -14,6 +14,7 @@ var looked := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
+	GameState.on_tutorial_played()
 	$Octagon/HierarchicalStateMachine.stop()
 
 

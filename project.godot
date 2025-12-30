@@ -24,6 +24,7 @@ SettingsManager="*res://src/globals/SettingsManager.gd"
 GameSettings="*res://src/globals/GameSettings.gd"
 DisplayNAudio="*res://src/globals/DisplayNAudio.gd"
 InputDeviceTracker="*res://src/globals/InputDeviceTracker.gd"
+GameState="*res://src/globals/GameState.gd"
 
 [debug]
 
