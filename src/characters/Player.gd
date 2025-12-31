@@ -108,6 +108,7 @@ func _physics_process(delta):
 
 func recieve_damage(damage: float, impact_pos : Vector2):
 	health -= damage
+	$HitSound.play()
 	if tween != null:
 		tween.kill()
 	tween = create_tween()
@@ -139,6 +140,7 @@ func recieve_damage(damage: float, impact_pos : Vector2):
 
 
 func heal(amount : float) -> void:
+	$HealthPickupSound.play()
 	health = min(maxHealth, health + amount)
 	if tween != null:
 		tween.kill()
@@ -147,6 +149,7 @@ func heal(amount : float) -> void:
 
 
 func get_new_gun(gunPickupType : int):
+	$GunPickupSound.play()
 	gun_picked.emit()
 	if gun.gunType == gunPickupType:
 		gun.ammoCount = gun.maxAmmo
@@ -192,6 +195,7 @@ func get_new_gun(gunPickupType : int):
 
 
 func _on_gun_fired() -> void:
+	$ShootSound.play()
 	shot_fired.emit(rotation, gun)
 
 

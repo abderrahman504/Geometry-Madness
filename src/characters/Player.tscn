@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c510g1is0el7b"]
+[gd_scene load_steps=17 format=3 uid="uid://c510g1is0el7b"]
 
 [ext_resource type="Script" path="res://src/characters/Player.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://yf1x3thojxfd" path="res://assets/textures/particles/triangle particle 32x32.png" id="2_hcyli"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://src/effects/directed_particles.tscn" id="4_kih2a"]
 [ext_resource type="PackedScene" uid="uid://b7bl27i5rj743" path="res://src/guns/Pistol.tscn" id="4_vhgxf"]
 [ext_resource type="Texture2D" uid="uid://c6ubryjhmwjwx" path="res://assets/textures/Shapes/Triangle.png" id="5_aq4hi"]
+[ext_resource type="AudioStream" uid="uid://bi8cn0bdqmnff" path="res://assets/audio/sound_effects/glitch_004.ogg" id="8_35s46"]
+[ext_resource type="AudioStream" uid="uid://djt2y6pnupdu7" path="res://assets/audio/sound_effects/error_004.ogg" id="9_oa0li"]
+[ext_resource type="AudioStream" uid="uid://botdppyddmd3n" path="res://assets/audio/sound_effects/drop_004.ogg" id="10_i170t"]
+[ext_resource type="AudioStream" uid="uid://bpqtd3vq5jss8" path="res://assets/audio/sound_effects/maximize_006.ogg" id="11_6dhtu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpnsf"]
 height = 60.0
@@ -16,6 +20,16 @@ height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6p0k"]
 height = 20.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xscvo"]
+streams_count = 1
+stream_0/stream = ExtResource("8_35s46")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vbln2"]
+streams_count = 1
+stream_0/stream = ExtResource("9_oa0li")
+stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("base_gun")]
 collision_mask = 6
@@ -59,3 +73,16 @@ shape = SubResource("CapsuleShape2D_t8w58")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(11.36, 0)
 shape = SubResource("CapsuleShape2D_r6p0k")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xscvo")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vbln2")
+volume_db = -10.0
+
+[node name="GunPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_i170t")
+
+[node name="HealthPickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6dhtu")

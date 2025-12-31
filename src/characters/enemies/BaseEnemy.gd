@@ -106,6 +106,7 @@ func recieve_damage(damage : float, impact_pos : Vector2):
 	if health <= 0:
 		die()
 	else:
+		$HitSound.play()
 		# Create hit effect
 		var hit_effect = hit_vfx_scene.instantiate()
 		var particles : GPUParticles2D = hit_effect.get_node("GPUParticles2D")
@@ -122,11 +123,10 @@ func recieve_damage(damage : float, impact_pos : Vector2):
 
 ## Runs logic related to enemy death
 func die():
-	# the enemy_died signal calls a function that updates the score
+	$DeathSound.play()
 	EnemySignalBus.enemy_died.emit(self)
 	died.emit()
 	queue_free()
-	$DeathSound.play()
 	# Create death effect
 	if death_vfx_scene != null:
 		var death_effect = death_vfx_scene.instantiate()

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://f8lrhqu4dsi6"]
+[gd_scene load_steps=7 format=3 uid="uid://f8lrhqu4dsi6"]
 
 [ext_resource type="Script" path="res://src/characters/enemies/BaseEnemy.gd" id="1_0j3gh"]
 [ext_resource type="PackedScene" uid="uid://i5k44huwuweq" path="res://src/effects/death_effect.tscn" id="2_vui2x"]
 [ext_resource type="PackedScene" uid="uid://der150y66bigf" path="res://src/effects/directed_particles.tscn" id="3_w6abm"]
 [ext_resource type="AudioStream" uid="uid://d31t818n51ron" path="res://assets/audio/sound_effects/impactPlank_medium_001.ogg" id="4_d3nas"]
+[ext_resource type="AudioStream" uid="uid://d22x17yv8pjba" path="res://assets/audio/sound_effects/click_005.ogg" id="5_4hshk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8b22b"]
+streams_count = 1
+stream_0/stream = ExtResource("5_4hshk")
+stream_0/weight = 1.0
 
 [node name="BaseEnemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -19,6 +25,10 @@ hit_vfx_scene = ExtResource("3_w6abm")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_d3nas")
+bus = &"Sound Effects"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8b22b")
 bus = &"Sound Effects"
 
 [node name="BulletSpawnPos" type="Marker2D" parent="."]
