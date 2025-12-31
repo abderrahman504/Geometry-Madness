@@ -44,10 +44,11 @@ func register_float_attribute(attribute : String, default : float, min_val : flo
 	if _loaded_values.has(attribute) and _is_value_valid_for_attribute(attribute, _loaded_values[attribute]):
 		_attribute_values[attribute] = _loaded_values[attribute]
 		_loaded_values.erase(attribute)
+		attribute_updated.emit(attribute, _attribute_values[attribute])
 	else:
 		_attribute_values[attribute] = default
+		attribute_updated.emit(attribute, default)
 
-	attribute_updated.emit(attribute, default)
 
 	return true
 
@@ -69,10 +70,11 @@ func register_int_attribute(attribute : String, default : int, min_val : int, ma
 	if _loaded_values.has(attribute) and _is_value_valid_for_attribute(attribute, _loaded_values[attribute]):
 		_attribute_values[attribute] = _loaded_values[attribute]
 		_loaded_values.erase(attribute)
+		attribute_updated.emit(attribute, _attribute_values[attribute])
 	else:
 		_attribute_values[attribute] = default
+		attribute_updated.emit(attribute, default)
 
-	attribute_updated.emit(attribute, default)
 
 	return true
 
@@ -91,10 +93,11 @@ func register_bool_attribute(attribute : String, default : bool) -> bool:
 	if _loaded_values.has(attribute) and _is_value_valid_for_attribute(attribute, _loaded_values[attribute]):
 		_attribute_values[attribute] = _loaded_values[attribute]
 		_loaded_values.erase(attribute)
+		attribute_updated.emit(attribute, _attribute_values[attribute])
 	else:
 		_attribute_values[attribute] = default
+		attribute_updated.emit(attribute, default)
 
-	attribute_updated.emit(attribute, default)
 
 	return true
 
@@ -116,10 +119,11 @@ func register_enum_attribute(attribute : String, default : String, values : Arra
 	if _loaded_values.has(attribute) and _is_value_valid_for_attribute(attribute, _loaded_values[attribute]):
 		_attribute_values[attribute] = _loaded_values[attribute]
 		_loaded_values.erase(attribute)
+		attribute_updated.emit(attribute, _attribute_values[attribute])
 	else:
 		_attribute_values[attribute] = default
+		attribute_updated.emit(attribute, default)
 
-	attribute_updated.emit(attribute, default)
 	
 	return true	
 
