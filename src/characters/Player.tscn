@@ -52,6 +52,7 @@ texture = ExtResource("5_aq4hi")
 
 [node name="GameoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3")
+bus = &"Music"
 
 [node name="HealthbarPos" type="Marker2D" parent="."]
 position = Vector2(0, -65)
@@ -76,13 +77,17 @@ shape = SubResource("CapsuleShape2D_r6p0k")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xscvo")
+bus = &"Sound Effects"
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vbln2")
 volume_db = -10.0
+bus = &"Sound Effects"
 
 [node name="GunPickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_i170t")
+bus = &"Sound Effects"
 
 [node name="HealthPickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6dhtu")
+bus = &"Sound Effects"

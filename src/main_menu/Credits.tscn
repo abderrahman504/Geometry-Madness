@@ -61,8 +61,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 538.0
-offset_bottom = 754.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -102.0
+offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -78,12 +80,16 @@ theme_override_font_sizes/mono_font_size = 26
 bbcode_enabled = true
 text = "[center][b]Made by[/b][/center]
 [font size=5] [/font]
-[center]Sebastiano Zezza[/center]
 [center]Abdelrahman Khayri[/center]
+[center]Sebastiano Zezza[/center]
 
 [center][b]Extra Code From[/b][/center]
 [font size=5] [/font]
 [center]nathanhoad - github/godot_input_helper[/center]
+
+[center][b]Sound[/b][/center]						
+[font size=5] [/font]
+[center]Kenney Interface Sounds[/center]
 
 [center][b]Music[/b][/center]						
 [font size=5] [/font]
@@ -91,12 +97,12 @@ text = "[center][b]Made by[/b][/center]
 
 [center][b]UI[/b][/center]
 [font size=5] [/font]
-[center]kenney (UI Pack) and azayaga[/center]
+[center]Kenney (UI Pack) and azayaga[/center]
 
 [center][b]Art[/b][/center]
 [font size=5] [/font]
-[center]Sebastiano Zezza[/center]
 [center]Abdelrahman Khayri[/center]
+[center]Sebastiano Zezza[/center]
 [center]MedicineStorm - dungeon crawl 32x32 tiles[/center]
 [center]bongbonggun - bubble explosion[/center]"
 fit_content = true
