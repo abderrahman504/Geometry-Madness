@@ -25,6 +25,7 @@ GameSettings="*res://src/globals/GameSettings.gd"
 DisplayNAudio="*res://src/globals/DisplayNAudio.gd"
 InputDeviceTracker="*res://src/globals/InputDeviceTracker.gd"
 GameState="*res://src/globals/GameState.gd"
+ScreenShotter="*res://src/globals/ScreenShotter.gd"
 
 [debug]
 
@@ -168,6 +169,11 @@ debug={
 "look right"={
 "deadzone": 0.5,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
+]
+}
+screenshot={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"echo":false,"script":null)
 ]
 }
 
