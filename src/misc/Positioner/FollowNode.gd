@@ -5,4 +5,5 @@ class_name FollowNode
 
 
 func get_desired_position(prev_position : Vector2, delta : float) -> Vector2:
-	return followed.global_position
+	
+	return followed.global_position if followed != null else prev_position
