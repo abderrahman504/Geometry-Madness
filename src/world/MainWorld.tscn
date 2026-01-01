@@ -65,6 +65,10 @@ dist = 5.0
 [node name="FollowNode" parent="Camera2D/JoypadPositionManager" index="0" node_paths=PackedStringArray("followed")]
 followed = NodePath("../../../Player")
 
+[node name="Shaker" parent="Camera2D/JoypadPositionManager" index="2"]
+duration = 0.3
+dist = 5.0
+
 [node name="EnemySpawner" parent="." index="6" instance=ExtResource("5_oe480")]
 position = Vector2(288, 112)
 lvl1_enemies = Array[PackedScene]([ExtResource("6_f4j46"), ExtResource("7_jof3h"), ExtResource("8_5hfmb"), ExtResource("9_q3om2")])
@@ -99,6 +103,8 @@ position = Vector2(831.558, -5.65698)
 [node name="Cursor" parent="." index="10"]
 top_level = true
 position = Vector2(396, 311)
+
+[connection signal="shot_fired" from="Player" to="Camera2D/JoypadPositionManager/Shaker" method="_on_player_shot_fired"]
 
 [editable path="CanvasLayer/GameUI"]
 [editable path="CanvasLayer/Debug"]
